@@ -1,0 +1,46 @@
+change: radar-tecnologico-electronica
+artifact_store: openspec
+execution_mode: auto
+delivery_strategy: ask-on-risk
+review_budget_lines: 800
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/radar-tecnologico-electronica/exploration.md
+  propose:
+    status: done
+    artifact: openspec/changes/radar-tecnologico-electronica/proposal.md
+  spec:
+    status: done
+    artifact: openspec/changes/radar-tecnologico-electronica/specs/{radar-dataset,radar-application,tech-detail-expansion,authorship-attribution,trajectory-map-placeholder}/spec.md
+    note: "radar-dataset 'Áreas Tecnológicas Folding' requirement corrected after fresh-context gate FAIL to target schema.metadata.sectorAreas (verified against src/core/types.ts) instead of the nonexistent sector.description/sector.metadata."
+  design:
+    status: done
+    artifact: openspec/changes/radar-tecnologico-electronica/design.md
+    gate: "fresh-context validation FAIL -> one corrective sdd-spec re-run -> resolved"
+  tasks:
+    status: done
+    artifact: openspec/changes/radar-tecnologico-electronica/tasks.md
+    review_workload_forecast: "High risk, chained delivery recommended"
+    delivery_decision: "size:exception granted for Batch 1 (scaffold vendor-copy); Batches 2-3 follow normal 800-line budget"
+    batch_plan:
+      - "Batch 1: scaffold v5 tree in-place + git init (Phase 1 tasks) — size:exception"
+      - "Batch 2: extend tools/ingest-xlsx + curate 5-sector/25-item electronica dataset + curation-log.md (Phases 2-3 tasks)"
+      - "Batch 3: AboutModal port, TechDetail expansion panel, TrajectoryMapCard placeholder, 2026-2036 branding sweep, verification (Phases 4-7 tasks)"
+  apply:
+    status: pending
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+decisions:
+  time_horizon: "2026-2036 (per Electronics source pptx; diverges intentionally from 2025-2035 shown by electricidad/telecom)"
+  sublines_and_trends_ux: "Short summary in item.description for the normal view; full tendencias text + sublines stashed in item.metadata, revealed via an expandable panel inside the existing TechDetail component (no new screen)."
+  areas_tecnologicas_modeling: "Adapt minimally per the original radar's existing schema/fields (fold into sector description/metadata) rather than introducing new custom fields — preserve institutional identity and consistency with the reference project."
+  repo_layout: "Scaffold the Next.js app in-place at the repository root (E:\\Repositorio\\radar_tecnologico_electronica), alongside docs/ and openspec/ — not in a subdirectory."
+  ring_taxonomy: "Reuse the same 4 institutional rings as electricidad/telecom: ADOPTAR / PROBAR / EVALUAR / MONITOREAR."
+  ring_trl_curation_ownership: "The apply-phase agent proposes ring/TRL/impact/horizon values per línea from the tendencias narrative; the user reviews and validates them after sdd-apply, before archive."
+
+next_recommended: sdd-propose
