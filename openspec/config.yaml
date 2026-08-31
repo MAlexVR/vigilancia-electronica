@@ -1,0 +1,59 @@
+schema: spec-driven
+
+context: |
+  Project: radar_tecnologico_electronica (Radar Tecnológico - Electrónica)
+  Type: content-authoring deliverable, NOT a software codebase (no git, no package manager, no build/test tooling)
+  Source inputs: docs/Vigilancia_Cientifico-Tecnologica_Electronica_2026.pptx (tech-watch slides),
+    docs/Vigilancia_Cientifico_-_Tecnológica-Electronica.xlsx (tech-watch spreadsheet)
+  Target output format: undetermined — to be resolved in sdd-explore/sdd-propose (candidates:
+    a generated web app like sibling radar_tecnologico, or a static docx/xlsx/pdf deliverable)
+  Reference siblings (style/model only, not to be deep-explored during init):
+    - E:\Repositorio\radar_tecnologico — Next.js app, style/composition template to imitate
+    - E:\Repositorio\radar_tecnologico_electricidad — Next.js app, source of authorship/cover-page model
+
+rules:
+  proposal:
+    - Include a rollback plan for any change that edits or replaces the source pptx/xlsx
+    - State explicitly which target output format was chosen and why
+  specs:
+    - Use Given/When/Then for scenarios describing deliverable content/structure requirements
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Document how data flows from the source pptx/xlsx into the target deliverable
+    - If a generator app is introduced, document the chosen stack with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    guidelines:
+      - No existing code conventions apply; if a generator app is introduced, follow the
+        patterns already present in radar_tecnologico and radar_tecnologico_electricidad
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: ""
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+    - Never overwrite or delete the original source pptx/xlsx without an explicit backup step
+
+testing:
+  strict_tdd: false
+  test_runner: none
+  reason: >
+    No test runner, build system, or git repository detected. This is a document-authoring
+    project (source: pptx + xlsx) with no code present yet. The global "Strict TDD Mode:
+    enabled" marker does not apply until/unless a code-based generator is introduced (see
+    sibling projects for precedent); re-evaluate this flag in sdd-explore/sdd-design if that
+    happens.
+  test_layers:
+    unit: false
+    integration: false
+    e2e: false
+  coverage:
+    available: false
+  quality_tools:
+    linter: false
+    type_checker: false
+    formatter: false
