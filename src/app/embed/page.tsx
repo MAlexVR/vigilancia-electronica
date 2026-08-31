@@ -11,7 +11,7 @@ import schemaJson from "../../../public/data/ceet-electronica.json";
 function EmbedContent() {
   const searchParams = useSearchParams();
 
-  const schemaParam = searchParams.get("schema") || "ceet-telecom";
+  const schemaParam = searchParams.get("schema") || "ceet-electronica";
   const theme = searchParams.get("theme") || "sena";
   const locale = searchParams.get("locale") || "es";
   const filtersParam = searchParams.get("filters");

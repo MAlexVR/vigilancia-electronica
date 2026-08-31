@@ -60,7 +60,7 @@ export function HelpModal({ open, onOpenChange }: HelpModalProps) {
             id="help-modal-description"
             className="text-sena-gray-dark/80 mt-1"
           >
-            Conceptos clave del Radar Tecnológico de Telecomunicaciones
+            Conceptos clave del Radar Tecnológico de Electrónica
           </DialogDescription>
         </DialogHeader>
 

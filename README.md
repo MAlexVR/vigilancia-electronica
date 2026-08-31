@@ -1,4 +1,4 @@
-# Radar Tecnológico — Telecomunicaciones CEET 2025-2035
+# Radar Tecnológico — Electrónica CEET 2026-2036
 
 ![Version](https://img.shields.io/badge/version-2.1.0-39A900?style=flat-square)
 ![SENA](https://img.shields.io/badge/SENA-CEET-00324D?style=flat-square)
@@ -8,7 +8,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-Radix-000000?style=flat-square)
 
-Aplicación web interactiva de vigilancia científico-tecnológica para el área de telecomunicaciones del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA.
+Aplicación web interactiva de vigilancia científico-tecnológica para el área de electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA.
 
 Grupo de Investigación, Innovación y Producción Académica — **GICS**
 
@@ -214,7 +214,7 @@ src/
     └── radar.ts             # Interfaces legacy (@deprecated)
 public/
 ├── data/
-│   └── ceet-telecom.json    # Schema v5 — fuente de verdad (Fase A1)
+│   └── ceet-electronica.json # Schema v5 — fuente de verdad (Fase A1)
 └── assets/logos/            # Logos institucionales
 tools/
 └── ingest-xlsx/             # Pipeline Excel → JSON (Fase A3)
@@ -256,7 +256,12 @@ messages/
 - Radar SVG interactivo con 24 tecnologías
 - Zoom, pan, filtros y exportación PNG/PDF
 
-## Autor
+## Autores
+
+**Ing. Óscar Andrés Pulido Casallas** — Instructor — Área de Electrónica
+**Ing. Diana Cristina Limas Ramirez** — Instructora — Área de Electrónica
+
+### Coautor
 
 **Ing. Mauricio Alexander Vargas Rodríguez, MSc., MBA Esp. PM.**
 Instructor G14 — Centro de Electricidad, Electrónica y Telecomunicaciones
