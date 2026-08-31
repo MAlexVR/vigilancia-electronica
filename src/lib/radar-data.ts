@@ -58,6 +58,8 @@ export const TECHNOLOGIES: Technology[] = schema.items.map((item) => {
     desc: (item.description as string) ?? "",
     impact: (item.metadata?.impact as string) ?? "",
     horizon: (item.metadata?.horizon as string) ?? "",
+    sublines: item.metadata?.sublines as string[] | undefined,
+    tendencias: item.metadata?.tendencias as string | undefined,
   };
 });
 
