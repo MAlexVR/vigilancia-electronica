@@ -38,9 +38,9 @@ feature-branch-chain) and whether PR 1 ships under `size:exception` before `sdd-
 
 ## Phase 1: Scaffold (D1)
 
-- [ ] 1.1 Copy `radar_tecnologico` v5 tree to repo root, excluding `.git`, `node_modules`, `.next`, `ceet-telecom.json`.
-- [ ] 1.2 `git init` at repo root; commit copied tree as baseline.
-- [ ] 1.3 Run `npm install` + `npm run build` unmodified; confirm baseline parity.
+- [x] 1.1 Copy `radar_tecnologico` v5 tree to repo root, excluding `.git`, `node_modules`, `.next`, `ceet-telecom.json`.
+- [x] 1.2 `git init` at repo root; commit copied tree as baseline.
+- [x] 1.3 Run `npm install` + `npm run build` unmodified; confirm baseline parity. (`npm install` clean; `npm run build` and `npm run lint` fail with exactly 3 "Cannot find module '.../ceet-telecom.json'" errors — the intended, deferred consequence of excluding the telecom dataset per D1. No other structural errors. Full green build is a Batch 2 exit criterion once `ceet-electronica.json` lands; see apply-progress.md.)
 
 ## Phase 2: Ingest tool extension (D2, D3)
 
