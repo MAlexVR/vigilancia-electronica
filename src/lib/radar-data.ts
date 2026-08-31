@@ -1,4 +1,4 @@
-import schemaJson from "../../public/data/ceet-telecom.json";
+import schemaJson from "../../public/data/ceet-electronica.json";
 import type { RadarSchema } from "@/core";
 import type { Ring, Sector, Technology } from "@/types/radar";
 

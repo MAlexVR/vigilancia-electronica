@@ -44,21 +44,21 @@ feature-branch-chain) and whether PR 1 ships under `size:exception` before `sdd-
 
 ## Phase 2: Ingest tool extension (D2, D3)
 
-- [ ] 2.1 Add `tools/ingest-xlsx/src/csv-source.ts`: `--in-dir` reader for rings/sectors/items CSV + narrative `.md` merge.
-- [ ] 2.2 Modify `parser.ts`: split `*_HEADERS` required/optional; add `sublines`, `tendencias` columns.
-- [ ] 2.3 Modify `transformer.ts`: emit `metadata.sublines` (split `|`), `metadata.tendencias` (merge by `code`), `schema.metadata.sectorAreas`, CLI-driven schema id/title.
-- [ ] 2.4 Test: Vitest fixtures for csv-source, optional headers, narrative merge, rubric mapper (`tools/ingest-xlsx/__tests__`).
-- [ ] 2.5 Confirm legacy `--in file.xlsx` path still passes (regression).
-- [ ] 2.6 Update `docs/data-template.md` for `--in-dir` source + new optional columns.
+- [x] 2.1 Add `tools/ingest-xlsx/src/csv-source.ts`: `--in-dir` reader for rings/sectors/items CSV + narrative `.md` merge.
+- [x] 2.2 Modify `parser.ts`: split `*_HEADERS` required/optional; add `sublines`, `tendencias` columns.
+- [x] 2.3 Modify `transformer.ts`: emit `metadata.sublines` (split `|`), `metadata.tendencias` (merge by `code`), `schema.metadata.sectorAreas`, CLI-driven schema id/title.
+- [x] 2.4 Test: Vitest fixtures for csv-source, optional headers, narrative merge, rubric mapper (`tools/ingest-xlsx/__tests__`). (36 tests: `csv-source.test.ts`, `parser-headers.test.ts`, `rubric.test.ts`.)
+- [x] 2.5 Confirm legacy `--in file.xlsx` path still passes (regression). (Automated regression test in `parser-headers.test.ts` builds a minimal 3-sheet in-memory workbook via exceljs and asserts a clean parse/transform.)
+- [x] 2.6 Update `docs/data-template.md` for `--in-dir` source + new optional columns.
 
 ## Phase 3: Curate Electronics dataset
 
-- [ ] 3.1 Author `data/electronica/{rings,sectors,items}.csv` (5 sectors D1-D5, 25 items L01-L25, `ÁREAS TECNOLÓGICAS` text).
-- [ ] 3.2 Author `data/electronica/narrative/L01..L25.md` (short summary + 3 sublíneas + full tendencias).
-- [ ] 3.3 Apply R1-R5 rubric per línea in precedence order for TRL/ring/impact/horizon; log any ±1 override reason.
-- [ ] 3.4 Write `data/electronica/curation-log.md` (code | signal | rule | TRL | ring | impact | horizon | override).
-- [ ] 3.5 Run `npm run data:build -- --in-dir data/electronica --out public/data/ceet-electronica.json`.
-- [ ] 3.6 Test: Vitest integration over real dataset — 5 sectors, 25 items, 3 sublines/item, no unknown refs.
+- [x] 3.1 Author `data/electronica/{rings,sectors,items}.csv` (5 sectors D1-D5, 25 items L01-L25, `ÁREAS TECNOLÓGICAS` text).
+- [x] 3.2 Author `data/electronica/narrative/L01..L25.md` (short summary + 3 sublíneas + full tendencias).
+- [x] 3.3 Apply R1-R5 rubric per línea in precedence order for TRL/ring/impact/horizon; log any ±1 override reason. (Applied via `tools/ingest-xlsx/src/rubric.ts`'s `deriveRubric()`/`deriveImpact()`, mechanically re-run against the committed narrative text to cross-check every value — see `data/electronica/curation-log.md`. Two líneas — L02, L11 — had no literal R1-R5 phrase and used a logged manual nearest-fit judgment call instead. Zero ±1 overrides were ultimately needed.)
+- [x] 3.4 Write `data/electronica/curation-log.md` (code | signal | rule | TRL | ring | impact | horizon | override).
+- [x] 3.5 Run `npm run data:build -- --in-dir data/electronica --out public/data/ceet-electronica.json`. (Ran with `--id ceet-electronica-2026-2036 --title "Radar Tecnológico — Electrónica CEET 2026-2036"`; 4 rings / 5 sectors / 25 items, zero errors/warnings; passes `validateSchema()`.)
+- [x] 3.6 Test: Vitest integration over real dataset — 5 sectors, 25 items, 3 sublines/item, no unknown refs. (`tools/ingest-xlsx/__tests__/electronica-integration.test.ts`, 7 tests, runs the real `--in-dir` pipeline over `data/electronica`.)
 
 ## Phase 4: About modal (authorship-attribution)
 

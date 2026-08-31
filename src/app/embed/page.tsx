@@ -6,7 +6,7 @@ import { RadarChart } from "@/components/organisms/RadarChart";
 import { RadarProvider } from "@/components/radar/RadarProvider";
 import { TECHNOLOGIES } from "@/lib/radar-data";
 import type { Technology } from "@/types/radar";
-import schemaJson from "../../../public/data/ceet-telecom.json";
+import schemaJson from "../../../public/data/ceet-electronica.json";
 
 function EmbedContent() {
   const searchParams = useSearchParams();
