@@ -29,9 +29,18 @@ phases:
       - "Batch 2: extend tools/ingest-xlsx + curate 5-sector/25-item electronica dataset + curation-log.md (Phases 2-3 tasks)"
       - "Batch 3: AboutModal port, TechDetail expansion panel, TrajectoryMapCard placeholder, 2026-2036 branding sweep, verification (Phases 4-7 tasks)"
   apply:
-    status: pending
+    status: done
+    batch_1: "done — scaffold + git init, commits b031cb2/132d9e6/f07486d/354e2da"
+    batch_2: "done — dataset+ingest extension, commits 0e35147/0e5aff5/1cc94cc/64a1cc1"
+    batch_3: "done — AboutModal/TechDetail panel/TrajectoryMapCard/branding, commits 89c0656/b48d5de/2d70285/4eb14a3; 37/37 tasks"
+    chain_strategy: "not applicable — no git remote/PRs exist yet; batches proceeded as sequential commits on a single local branch"
+    orchestrator_verification: "re-ran npm run build (clean) + npx vitest run (137/137 passed) + grep for stray 2025-2035 (none) + read AboutModal.tsx and TrajectoryMapCard.tsx content directly — matches confirmed author names/roles and honest-placeholder requirement"
   verify:
-    status: pending
+    status: done
+    artifact: openspec/changes/radar-tecnologico-electronica/verify-report.md
+    verdict: "pass_with_warnings — first pass FAILED (radar label overlap blocker), fixed by corrective batch 4, re-verified PASS; remaining warnings are non-blocking doc staleness (README, now fixed by orchestrator) and one statically-verified-only export-filename scenario"
+    corrective_batch_4: "done — commits a27321b/b729a65/349f232/92e7449/b87a97d/31981f4; adopt ring 56%→28%, label word-wrap + pointer-events-none + hit-rect, nav-safety test added"
+    post_verify_cleanup: "done — README version badge (1.0.0) and Direccionadores table (real D1-D5 electronica sector names) corrected by orchestrator, commit 26e5196"
   archive:
     status: pending
 
