@@ -282,3 +282,201 @@ left untouched here (out of this agent's edit scope) — batch_2 is now done per
 
 15/37 tasks complete (Phases 1-3 of 7). `npm run build` and `npx tsc --noEmit` are both fully
 green. Ready for Batch 3 (`sdd-apply` — Phase 4-7 tasks).
+
+---
+
+## Batch 3 (Phases 4-7 — AboutModal, TechDetail expansion, TrajectoryMapCard, branding sweep, verification) — COMPLETE (FINAL BATCH)
+
+**Mode**: Standard (`openspec/config.yaml testing.strict_tdd: false`; focused Testing Library tests
+written for all 3 new/changed components per the batch's explicit test tasks, without RED-GREEN-
+REFACTOR ceremony).
+
+### Completed Tasks
+
+- [x] 4.1 Ported `AboutModal.tsx` structure — the inherited v5 scaffold's `AboutModal.tsx` already
+      carried the electricidad-equivalent structure (logo, Entidad/Centro/Regional/Grupo I+D
+      table with CEET tooltip, footer copyright); only the credits block and intro copy needed
+      area-specific edits, so no structural port was needed beyond that.
+- [x] 4.2-4.3 Replaced the single "Autor:" block with an "Autores:" block (Pulido Casallas + Limas
+      Ramirez, both "Instructores — Área de Electrónica", verbatim per spec) and a separate
+      "Coautor:" block (Vargas Rodríguez, "Instructor G14 — Área de Telecomunicaciones", unchanged).
+- [x] 4.4 Intro paragraph: "área de telecomunicaciones" → "área de electrónica",
+      "horizonte 2025-2035" → "horizonte 2026-2036".
+- [x] 4.5 Modal-to-Header wiring: already present (inherited from scaffold); verified by reading
+      `Header.tsx` — no change needed.
+- [x] 4.6 `src/components/molecules/AboutModal.test.tsx` — 4 Testing Library tests.
+- [x] 5.1-5.2 `src/types/radar.ts` `Technology` gains `sublines?: string[]`, `tendencias?: string`;
+      `src/lib/radar-data.ts`'s `TECHNOLOGIES` map now carries both from `item.metadata`.
+- [x] 5.3 `TechDetail.tsx`'s own local `convertItem()` (used by the store-based render path) also
+      updated to carry the same two fields — this is a second conversion site not named in
+      design's File Changes table (radar-data.ts's `TECHNOLOGIES` build and TechDetail's
+      store-based `convertItem` are two independent mapping sites over the same schema; both
+      needed the change for the panel to work regardless of which render path is active).
+      Added a `<details>` panel right after the Description block: sublíneas as a bulleted list,
+      then `tendencias` in a `max-h-[320px] overflow-y-auto` block, matching the exact pattern
+      and Tailwind classes of `RadarTemplate.tsx`'s existing Nomenclaturas `<details>`. Panel is
+      omitted entirely (not rendered) when both `sublines` and `tendencias` are absent.
+- [x] 5.4 `src/components/organisms/TechDetail.test.tsx` — 4 tests: short summary only + panel
+      closed by default; expand reveals all 3 sublíneas + full tendencias; collapses back on
+      second toggle; panel entirely absent when both fields are undefined. Confirmed jsdom
+      natively supports `<details>`/`<summary>` `open` toggling via `fireEvent.click` — no
+      polyfill or userEvent needed.
+- [x] 5.5 `src/components/molecules/TrajectoryMapCard.tsx` — new `<details>` card reusing the same
+      summary/chevron/badge pattern as the Nomenclaturas panel, with a "Pendiente" badge and an
+      honest Spanish paragraph stating the source report has not been delivered yet. Includes the
+      exact `PENDING:` comment block specified in the batch prompt, naming
+      `Vigilancia_Cientifico-Tecnologica_Electronica_2026.pptx` slide 10 as the blocker.
+- [x] 5.6 Mounted in `RadarTemplate.tsx`'s desktop right rail, directly below the Nomenclaturas
+      `<details>` (separated by a `<Separator />`), and in `MobileLayout.tsx`'s "legend" tab,
+      below `<RadarLegend />` inside its own `Card`/`CardContent` wrapper — both per D6.
+- [x] 5.7 `src/components/molecules/TrajectoryMapCard.test.tsx` — 3 tests: visible label present;
+      Spanish pending copy present with no `img`/`figure` role (no chart/fabricated data); source
+      file contains the `PENDING:` comment naming the exact pptx filename.
+- [x] 6.1-6.5 Full `2026-2036`/Electrónica branding sweep — see "Branding Sweep — Exact File List"
+      below for every file touched and exactly what changed. Grep-verified zero "2025-2035" or
+      "2025_2035" hits anywhere in the app (only pre-existing hits are inside
+      `openspec/changes/.../` SDD planning artifacts — the audit trail, intentionally untouched).
+      Fixed the `embed/page.tsx` `"ceet-telecom"` fallback string flagged by Batch 2. Swept
+      remaining generic "Telecomunicaciones"-branded UI copy in `FilterSidebar.tsx` and
+      `HelpModal.tsx` to "Electrónica"; left the institution's full name "Centro de Electricidad,
+      Electrónica y Telecomunicaciones (CEET)" and the co-author's own role string unchanged
+      (both are correct, per the batch's explicit instruction not to touch them).
+- [x] 7.1 Full `npx vitest run` — 21 test files, 137 tests, all green (includes the 3 new
+      component test files: 4+4+3 = 11 new tests for this batch; prior batches: 126 tests).
+- [x] 7.2-7.4 See "Verification — Spec Scenario Cross-Check" below. Playwright/dev-server/visual
+      checks were explicitly out of scope for this environment (no browser tooling); substituted
+      with build + typecheck + Testing Library coverage. Flagged as NOT independently visually
+      verified in Risks below.
+
+### Branding Sweep — Exact File List
+
+| File | Change |
+|---|---|
+| `messages/es.json` | `radar.title`, `radar.appDescription`, `about.version` (→ "1.0.0" to match `package.json`), `about.aboutText`, `help.description`, `header.subtitle` → Electrónica/2026-2036; renamed unused `about.author`/`authorName`/`authorRole` keys to `about.authors`/`authorsNames`/`authorsRole`/`coauthor`/`coauthorName`/`coauthorRole` (confirmed via grep these keys are not wired into any component — `Header.tsx` only reads `header.about`, not `about.*`) |
+| `src/app/layout.tsx` | `metadata.title`, `metadata.description`, `keywords` (telecom-specific `5G`/`6G`/`telecomunicaciones` → `electrónica`/`IIoT`/`microelectrónica`) |
+| `public/manifest.json` | `name`, `description` |
+| `src/components/templates/RadarTemplate.tsx` | Export filenames → `Radar_Tecnologico_CEET_Electronica_2026-2036.{png,pdf}` |
+| `src/components/templates/MobileLayout.tsx` | Mobile radar-tab guide subtitle |
+| `src/app/embed/page.tsx` | `"ceet-telecom"` fallback → `"ceet-electronica"` |
+| `src/components/molecules/FilterSidebar.tsx` | Sidebar intro paragraph |
+| `src/components/molecules/HelpModal.tsx` | `DialogDescription` text |
+| `README.md` | Title (line 1), intro paragraph, directory-tree dataset filename reference, "## Autor" → "## Autores" + "### Coautor" split matching the new authorship model |
+| `examples/minimal-consumer/README.md` | Dataset filename reference (was pointing at a file that no longer exists) |
+| `data/electronica/*.csv` | Not touched — dataset `id`/`title` already `2026-2036` since Batch 2's `--id`/`--title` CLI flags; no `id`/`title` columns exist in the CSVs by design (CLI-driven schema identity, per D2/2.3) |
+
+### Verification — Spec Scenario Cross-Check
+
+| Spec | Scenario | How verified |
+|---|---|---|
+| authorship-attribution | Modal shows shared institutional structure | `AboutModal.test.tsx` test 3 (logo alt text, table labels, footer copy) + component read |
+| authorship-attribution | Both autores appear with exact spelling and role | `AboutModal.test.tsx` test 1 |
+| authorship-attribution | Coautor appears with exact spelling and role | `AboutModal.test.tsx` test 2 |
+| tech-detail-expansion | Selecting an item shows only the short summary | `TechDetail.test.tsx` test 1 — description visible, panel's `<details open>` attribute is `false` by default |
+| tech-detail-expansion | Expanding the panel reveals full content | `TechDetail.test.tsx` test 2 — all 3 sublines + full tendencias text present after `fireEvent.click` on summary |
+| tech-detail-expansion | Collapsing the panel hides the full content again | `TechDetail.test.tsx` test 3 — `open` toggles back to `false` on second click |
+| tech-detail-expansion | Expansion does not navigate away (no new route) | Manual reasoning + component read only — the panel is a plain client-side `<details>` toggle with no `Link`/router call anywhere in the added code; not covered by an automated route-assertion test since the app has no client-side router transition to assert against in this component |
+| trajectory-map-placeholder | User finds the trajectory map section | `TrajectoryMapCard.test.tsx` test 1 + component read confirming it's mounted in both `RadarTemplate.tsx` and `MobileLayout.tsx` |
+| trajectory-map-placeholder | User opens the section and sees the pending message | `TrajectoryMapCard.test.tsx` test 2 — Spanish "aún no ha sido entregado" text present, no `img`/`figure` role rendered |
+| trajectory-map-placeholder | Developer finds the PENDING marker in source | `TrajectoryMapCard.test.tsx` test 3 — reads the actual source file and asserts the `PENDING:` comment + exact pptx filename are present |
+
+**NOT independently verified** (explicitly out of scope for this environment per the batch prompt —
+no browser/dev-server tooling available):
+- `proposal.md` success criterion "Composition, theme, and export flows visually match the
+  reference radar" — no screenshot/visual diff was taken. Mitigated by reusing the exact same
+  Tailwind utility classes, `sena-*`/`muted`/`border` design tokens, and `<details>/<summary>`
+  structural pattern already present in the surrounding code (`RadarTemplate.tsx`'s Nomenclaturas
+  panel), so no new ad-hoc styling was introduced — but this is a code-level argument, not a
+  rendered visual confirmation.
+- Task 7.2's Playwright smoke test (select línea → expand → export → assert filename) was not run
+  — no browser tooling in this environment. `npm run build` (production build) and
+  `npx tsc --noEmit` both pass cleanly as the substitute verification bar per the batch's explicit
+  instructions.
+
+### Work Unit Evidence
+
+| Evidence | Value |
+|---|---|
+| Focused test command and exact result | `npx vitest run src/components/molecules/AboutModal.test.tsx` → 4/4 passed; `npx vitest run src/components/organisms/TechDetail.test.tsx` → 4/4 passed; `npx vitest run src/components/molecules/TrajectoryMapCard.test.tsx` → 3/3 passed |
+| Broader regression check | `npx vitest run --project '!storybook'` (ran all 21 projects incl. storybook browser tests regardless of the filter) → 21 test files, 137 tests, all passed |
+| Runtime harness command/scenario and exact result | `npm run build` (Next.js production build, Turbopack) → compiles, typechecks, and generates all 3 static routes (`/`, `/_not-found`, `/embed`) with zero errors; `npx tsc --noEmit` → zero errors; `npm run data:validate` → "✅ Schema validation passed" (4 rings/5 sectors/25 items, id `ceet-electronica-2026-2036`) |
+| Rollback boundary | Revert `src/components/molecules/AboutModal.tsx` to restore the single-author telecom version; delete `src/components/molecules/{AboutModal,TechDetail,TrajectoryMapCard}.test.tsx`; revert `src/types/radar.ts`, `src/lib/radar-data.ts`, `src/components/organisms/TechDetail.tsx` to drop the `sublines`/`tendencias` fields and panel; delete `src/components/molecules/TrajectoryMapCard.tsx` and its two mount-site diffs in `RadarTemplate.tsx`/`MobileLayout.tsx`; revert the branding-sweep diffs listed in the file table above independently of the other two units. Each of the 3 suggested work units (AboutModal, TechDetail+TrajectoryMapCard, branding) is independently revertable; branding touches only string literals, no logic. |
+
+### Exact Commands Run
+
+```
+npx vitest run src/components/molecules/AboutModal.test.tsx        # 4/4 green
+npx vitest run src/components/organisms/TechDetail.test.tsx        # 4/4 green
+npx vitest run src/components/molecules/TrajectoryMapCard.test.tsx # 3/3 green
+npx tsc --noEmit -p tsconfig.json                                  # zero errors (after Phase 4-5)
+npx vitest run --project '!storybook'                               # 21 files / 137 tests, all green
+npm run build                                                        # Next.js production build succeeds
+npx tsc --noEmit -p tsconfig.json                                  # zero errors (final)
+npm run data:validate                                                # ✅ Schema validation passed
+```
+
+### Deviations from Design / Task Wording
+
+1. **Design's File Changes table lists only `src/components/organisms/TechDetail.tsx` for the
+   `sublines`/`tendencias` mapping**, but `TechDetail.tsx` internally has *two* independent
+   conversion paths: the prop-based path (via `radar-data.ts`'s module-level `TECHNOLOGIES`
+   array) and the store-based path (via `TechDetail.tsx`'s own local `convertItem()` function,
+   used when a `RadarStoreContext` is present). Both needed the same two-field addition for the
+   panel to work under either rendering mode — this is the same class of "two mapping sites over
+   one schema" gap Batch 2 already flagged for `sectorAreas`/CLI options.
+2. **Design's AboutModal delta note says `Autora:` → `Autores:`**, referencing electricidad's
+   female-form label. Electronica's inherited AboutModal (pre-this-batch) already used the
+   male-form `Autor:` (matching its then-single telecom author), so the actual delta applied was
+   `Autor:` → `Autores:`, not `Autora:` → `Autores:`. Content and spec compliance are identical;
+   noted only because design's own wording assumed the electricidad starting point literally,
+   which wasn't this file's starting point.
+3. **`about.author`/`authorName`/`authorRole` keys in `messages/es.json` were renamed** rather
+   than left as stale singular-author strings, since they are unused by any component
+   (`AboutModal.tsx` hardcodes its own Spanish text directly, does not use `useTranslations`) —
+   confirmed via grep before editing. Not explicitly requested by any task, but leaving a
+   contradictory unused "Autor:"/single-name block in the messages file while the actual UI shows
+   Autores+Coautor seemed clearly wrong; flagged here as a proactive consistency fix, not a spec
+   requirement.
+4. **`about.version` in `messages/es.json`** was stale at `"2.1.0"` (unused by the component,
+   which reads `APP_VERSION` from `package.json` at `"1.0.0"` since Batch 1). Updated to
+   `"1.0.0"` for consistency; not explicitly named in any task but directly adjacent to the
+   `aboutText` edit task 6.1 named.
+5. **README.md received a few edits beyond the literal `README.md:1` design reference** (intro
+   paragraph, directory-tree filename, Autor→Autores/Coautor section) since the prompt's Phase 6
+   scope explicitly says "README.md if user-facing" and leaving those specific lines
+   self-contradictory (wrong dataset filename, sole "Autor" credit when the app now shows
+   Autores+Coautor) would have shipped a known-stale doc. The README's "Direccionadores" table
+   (D1-D5 labels carried over from telecom, now factually describing the wrong domains) and the
+   version badge (`2.1.0`, stale since Batch 1 set `package.json` to `1.0.0`) were **left
+   untouched** — out of the explicit branding-sweep scope (2025-2035/telecom-generic-copy), and
+   correcting them accurately would require re-deriving sector-by-sector content not requested by
+   any task or spec scenario. Flagged as a known remaining doc-staleness item below.
+
+### Issues Found / Known Remaining Items (informational, non-blocking)
+
+- `README.md`'s "Direccionadores" table (lines ~62-68) still lists the five *telecom* sector
+  names/tech-counts (e.g. "Inteligencia Nativa y Redes Autónomas"), not the electronics D1-D5
+  sectors from `data/electronica/sectors.csv`. Out of this batch's explicit branding-sweep scope
+  (which targeted `2025-2035`/generic telecom UI copy, not full content re-derivation) and not
+  covered by any spec scenario. Recommend a follow-up doc pass if the README is treated as a
+  user-facing deliverable rather than internal dev notes.
+- `README.md`'s version badge (`version-2.1.0`) is stale versus `package.json`'s `"1.0.0"` — a
+  pre-existing Batch 1 discrepancy, not introduced or worsened by this batch, left as-is since it
+  wasn't named in any task.
+- No Playwright/visual verification was performed (see "NOT independently verified" above) — this
+  is the one proposal.md success criterion this batch cannot claim full verification for.
+
+### Untouched (not this batch's scope)
+
+- `data/electronica/*.csv`, `narrative/*.md`, `curation-log.md`, `public/data/ceet-electronica.json`
+  — Batch 2 content, not re-touched.
+- `openspec/changes/.../design.md`, `proposal.md`, `specs/*`, `exploration.md`, `state.yaml` — read
+  only this batch; only `tasks.md` (checkbox marks) and `apply-progress.md` (this record) edited.
+- `.storybook/`, `e2e/radar.spec.ts`, CI workflow — not touched; existing Storybook stories for
+  `TechDetail` continued to pass unmodified against the new panel (verified — the panel renders
+  additively after Description and doesn't change any existing assertions).
+
+### Status
+
+37/37 tasks complete (Phases 1-7 of 7 — ALL PHASES DONE). `npm run build`, `npx tsc --noEmit`, and
+the full `npx vitest run` suite (137 tests) are all green. This was the final `sdd-apply` batch.
+Ready for `sdd-verify`.

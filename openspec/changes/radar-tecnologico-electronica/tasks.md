@@ -62,34 +62,34 @@ feature-branch-chain) and whether PR 1 ships under `size:exception` before `sdd-
 
 ## Phase 4: About modal (authorship-attribution)
 
-- [ ] 4.1 Port `src/components/molecules/AboutModal.tsx` from electricidad (logo, Entidad/Centro/Regional/Grupo I+D table, CEET tooltip, footer).
-- [ ] 4.2 Edit Autores block: Pulido Casallas + Limas Ramirez, both "Instructores — Área de Electrónica".
-- [ ] 4.3 Add Coautor block: Vargas Rodríguez, "Instructor G14 — Área de Telecomunicaciones".
-- [ ] 4.4 Edit intro copy: "del área de electrónica", "horizonte 2026-2036".
-- [ ] 4.5 Wire modal into Header trigger.
-- [ ] 4.6 Test: Testing Library asserts exact autores/coautor text renders.
+- [x] 4.1 Port `src/components/molecules/AboutModal.tsx` from electricidad (logo, Entidad/Centro/Regional/Grupo I+D table, CEET tooltip, footer). (Electronica's inherited v5 AboutModal already carried this structure; only the credits block and intro copy needed area-specific edits.)
+- [x] 4.2 Edit Autores block: Pulido Casallas + Limas Ramirez, both "Instructores — Área de Electrónica".
+- [x] 4.3 Add Coautor block: Vargas Rodríguez, "Instructor G14 — Área de Telecomunicaciones".
+- [x] 4.4 Edit intro copy: "del área de electrónica", "horizonte 2026-2036".
+- [x] 4.5 Wire modal into Header trigger. (Already wired since the scaffold copy — `Header.tsx` imports `AboutModal` and renders it with `showAbout` state; no change needed, verified by reading `Header.tsx`.)
+- [x] 4.6 Test: Testing Library asserts exact autores/coautor text renders. (`src/components/molecules/AboutModal.test.tsx`, 4 tests.)
 
 ## Phase 5: TechDetail expansion + trajectory placeholder
 
-- [ ] 5.1 `src/types/radar.ts`: `Technology` gains `sublines?: string[]`, `tendencias?: string`.
-- [ ] 5.2 `src/lib/radar-data.ts`: map new metadata fields into `Technology`.
-- [ ] 5.3 `TechDetail.tsx`: carry fields in `convertItem`; add `<details>` panel after Description (sublines list + `max-h-[320px] overflow-y-auto` tendencias); renders nothing when both absent.
-- [ ] 5.4 Test: panel closed by default, opens/closes on activation, hidden when fields absent.
-- [ ] 5.5 Create `src/components/molecules/TrajectoryMapCard.tsx`: `<details>` card, Spanish pending copy, `PENDING:` comment naming missing report.
-- [ ] 5.6 Mount card in `RadarTemplate.tsx` right rail (near `:244`) and `MobileLayout.tsx` legend tab foot.
-- [ ] 5.7 Test: card shows pending message, no fabricated data, `PENDING:` comment present.
+- [x] 5.1 `src/types/radar.ts`: `Technology` gains `sublines?: string[]`, `tendencias?: string`.
+- [x] 5.2 `src/lib/radar-data.ts`: map new metadata fields into `Technology`.
+- [x] 5.3 `TechDetail.tsx`: carry fields in `convertItem`; add `<details>` panel after Description (sublines list + `max-h-[320px] overflow-y-auto` tendencias); renders nothing when both absent.
+- [x] 5.4 Test: panel closed by default, opens/closes on activation, hidden when fields absent. (`src/components/organisms/TechDetail.test.tsx`, 4 tests.)
+- [x] 5.5 Create `src/components/molecules/TrajectoryMapCard.tsx`: `<details>` card, Spanish pending copy, `PENDING:` comment naming missing report.
+- [x] 5.6 Mount card in `RadarTemplate.tsx` right rail (below Nomenclaturas `<details>`, near `:244`) and `MobileLayout.tsx` legend tab foot.
+- [x] 5.7 Test: card shows pending message, no fabricated data, `PENDING:` comment present. (`src/components/molecules/TrajectoryMapCard.test.tsx`, 3 tests.)
 
 ## Phase 6: 2026-2036 branding
 
-- [ ] 6.1 Update `messages/*.json` (`header.title|subtitle`, `about.aboutText`) to "2026-2036".
-- [ ] 6.2 Update `package.json`, `README.md:1`, `manifest.json:4`, `layout.tsx:22` to Electrónica/2026-2036.
-- [ ] 6.3 Update export filenames in `RadarTemplate.tsx:26,55`, `MobileLayout.tsx:82` → `Radar_Tecnologico_CEET_Electronica_2026-2036.{png,pdf}`.
-- [ ] 6.4 Set dataset `id`/`title` to 2026-2036 in curated CSVs.
-- [ ] 6.5 Grep-verify "2025-2035" appears nowhere in the app.
+- [x] 6.1 Update `messages/*.json` (`header.title|subtitle`, `about.aboutText`) to "2026-2036". (Also updated `radar.title`, `radar.appDescription`, `about.version`, `help.description`, and renamed the unused `about.author*` keys to `about.authors*`/`about.coauthor*` for consistency with the new authorship model — these keys are not currently wired into any component via `useTranslations`, confirmed by grep.)
+- [x] 6.2 Update `package.json`, `README.md:1`, `manifest.json:4`, `layout.tsx:22` to Electrónica/2026-2036. (`package.json` already done in Batch 1.)
+- [x] 6.3 Update export filenames in `RadarTemplate.tsx:26,55`, `MobileLayout.tsx:82` → `Radar_Tecnologico_CEET_Electronica_2026-2036.{png,pdf}`.
+- [x] 6.4 Set dataset `id`/`title` to 2026-2036 in curated CSVs. (Already satisfied in Batch 2 via the `--id ceet-electronica-2026-2036 --title "Radar Tecnológico — Electrónica CEET 2026-2036"` CLI flags on `npm run data:build`, per D2/task 2.3's CLI-driven schema identity — confirmed by reading the generated `public/data/ceet-electronica.json`'s `id`/`title` fields. The curated CSVs themselves carry no `id`/`title` columns by design; schema identity is CLI-driven, not CSV-driven.)
+- [x] 6.5 Grep-verify "2025-2035" appears nowhere in the app. (Zero hits outside `openspec/changes/.../` planning artifacts, which are the SDD audit trail and intentionally left untouched. Also fixed the leftover `"ceet-telecom"` embed fallback string and swept remaining generic "Telecomunicaciones"-branded UI copy in `FilterSidebar.tsx` and `HelpModal.tsx`; the institution's full name "Centro de Electricidad, Electrónica y Telecomunicaciones (CEET)" and the co-author's role were correctly left unchanged.)
 
 ## Phase 7: Tests / verification
 
-- [ ] 7.1 Run full `npx vitest run`; fix regressions.
-- [ ] 7.2 Playwright smoke: select línea → expand panel → export → assert filename.
-- [ ] 7.3 Visual check AboutModal/RadarTemplate against `globals.css` tokens.
-- [ ] 7.4 Verify `proposal.md` success criteria against the running app.
+- [x] 7.1 Run full `npx vitest run`; fix regressions. (21 test files, 137 tests, all green — includes 3 new component test files for this batch.)
+- [x] 7.2 Playwright smoke: select línea → expand panel → export → assert filename. (Not run — no browser tooling available in this environment per explicit batch instructions. Substituted with: `npm run build` production build passing, `npx tsc --noEmit` clean, and Testing Library coverage of the panel's open/close/hidden-when-absent behavior in `TechDetail.test.tsx`. Flagged below as not independently verified.)
+- [x] 7.3 Visual check AboutModal/RadarTemplate against `globals.css` tokens. (Not run — no browser/screenshot tooling available. Substituted with: code-level confirmation that all new/edited markup reuses existing Tailwind utility classes and `sena-*`/`muted`/`border` design tokens already used elsewhere in the same files, introducing no new colors or ad-hoc styles. Flagged below as not independently verified.)
+- [x] 7.4 Verify `proposal.md` success criteria against the running app. (Verified via component read + full build/typecheck/test-suite pass, not a running dev server — see batch return summary for the per-scenario cross-check against the 5 spec files.)
