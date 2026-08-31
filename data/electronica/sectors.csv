@@ -1,0 +1,16 @@
+id,label,shortLabel,startAngle,color,bgLight,bgDark,icon,areaTecnologica
+D1,Inteligencia distribuida y automatización industrial avanzada,D1: Inteligencia distribuida y automatización industrial avanzada,-18,#1565C0,#E3F2FD,"rgba(21,101,192,0.12)",🤖,"Automatización, control industrial y sistemas ciberfísicos inteligentes
+
+Campo que abarca el diseño, integración y mantenimiento de sistemas de control, sensórica y actuación que digitalizan y automatizan procesos productivos físicos, desde el chip de borde hasta la plataforma de supervisión. (artículos científicos y patentes)"
+D2,"Microelectrónica, semiconductores y diseño electrónico avanzado","D2: Microelectrónica, semiconductores y diseño electrónico avanzado",54,#C62828,#FFEBEE,"rgba(198,40,40,0.12)",🔬,"Microelectrónica, sistemas embebidos y diseño electrónico asistido
+
+Campo que abarca el diseño, fabricación y empaquetado de circuitos integrados y tarjetas electrónicas, así como las arquitecturas de cómputo y sensórica que sirven de base habilitadora a los demás campos tecnológicos del sector. (artículos científicos y patentes)"
+D3,"Electrónica de potencia, energía y electrificación sostenible","D3: Electrónica de potencia, energía y electrificación sostenible",126,#F57F17,#FFF3E0,"rgba(245,127,23,0.12)",⚡,"Electrónica de potencia y gestión energética
+
+Campo que abarca la conversión, control y almacenamiento de energía eléctrica, así como la instrumentación electrónica de procesos industriales y de la cadena de frío sujeta a transición regulatoria ambiental. (artículos científicos y patentes)"
+D4,"Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad","D4: Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad",198,#6A1B9A,#F3E5F5,"rgba(106,27,154,0.12)",🚀,"Electrónica biomédica, aeroespacial y de movilidad
+
+Campo que abarca los sistemas electrónicos embebidos certificables y de alta confiabilidad aplicados a sectores con exigencias regulatorias estrictas: salud, defensa/aeroespacial y transporte. (artículos científicos y patentes)"
+D5,"Electrónica de consumo masivo, hogar inteligente y medios digitales","D5: Electrónica de consumo masivo, hogar inteligente y medios digitales",270,#00695C,#E0F2F1,"rgba(0,105,92,0.12)",📱,"Electrónica de consumo, electrodomésticos y contenido digital
+
+Campo que abarca los sistemas electrónicos embebidos en bienes de consumo masivo y en la creación, procesamiento y despliegue de contenido audiovisual. (artículos científicos y patentes)"

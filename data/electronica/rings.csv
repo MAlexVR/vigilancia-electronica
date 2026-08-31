@@ -1,0 +1,5 @@
+id,label,order,innerRadius,outerRadius,color,fillColor,borderColor,labelColor,description,recommendedAction,maturityHint
+adopt,ADOPTAR,0,0,110,#2E7D32,#C8E6C9,#81C784,#2E7D32,Implementación inmediata,"Implementación inmediata: actualización curricular, adquisición de equipos y capacitación a instructores prioritaria.",TRL 7-9
+trial,PROBAR,1,110,210,#558B2F,#E1F0C4,#AED581,#688C36,Pilotos y capacitación,"Programa piloto: desarrollar laboratorios de práctica, incluir en certificaciones y formar instructores.",TRL 5-7
+assess,EVALUAR,2,210,305,#F9A825,#FFF3CD,#FFD54F,#B48C14,Investigación / formación,"Fase de investigación: incorporar en contenidos teóricos, monitorear evolución y establecer alianzas académicas.",TRL 3-5
+monitor,MONITOREAR,3,305,400,#E64A19,#FFE0D2,#FFAB91,#BE643C,Seguimiento largo plazo,"Vigilancia activa: seguimiento semestral, participar en eventos y documentar avances del ecosistema.",TRL 1-3
