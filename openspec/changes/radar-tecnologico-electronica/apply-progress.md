@@ -480,3 +480,167 @@ npm run data:validate                                                # ✅ Schem
 37/37 tasks complete (Phases 1-7 of 7 — ALL PHASES DONE). `npm run build`, `npx tsc --noEmit`, and
 the full `npx vitest run` suite (137 tests) are all green. This was the final `sdd-apply` batch.
 Ready for `sdd-verify`.
+
+---
+
+## Batch 4 (Corrective — fixes sdd-verify blocker) — COMPLETE
+
+**Not part of the original 37 tasks** (all 37 remain `[x]` and untouched in `tasks.md`, exactly as
+Batch 3 left them). This batch responds to `sdd-verify`'s FAIL verdict
+(`openspec/changes/radar-tecnologico-electronica/verify-report.md`, evidence_revision over
+`4eb14a3`), which found CRITICAL-1 (radar-dot label overlap breaking click interactivity,
+independently reproduced via `npx playwright test --project=chromium`) and CRITICAL-2
+(tech-detail-expansion's "does not navigate away" scenario had zero covering test).
+
+**Mode**: Standard (`openspec/config.yaml testing.strict_tdd: false`; design.md D7 scopes this
+change to standard verification, consistent with all 3 prior apply batches and with verify-report's
+own "Mode: Standard" framing). Focused Vitest unit tests were written for the new/changed logic
+(`generateNameLines` word-wrap, TechDetail navigation-safety) and run before being declared green.
+
+### Root cause (confirmed, not re-investigated — see verify-report.md's Correctness table)
+
+14/25 items (56%) landed in the innermost "ADOPTAR" ring (vs. telecom reference's 4/24, 17%), and
+Electronics item names average 77 chars (max 125) vs. telecom's 39.8 (max 56). The rubric's R1 rule
+(`TRL\s*n` regex) mechanically matched the *first* TRL-shaped substring in each línea's narrative
+regardless of whether it described the línea's overall maturity or one sub-component/submarket —
+curation-log.md's own Batch 2 "Notes for reviewer" had already flagged 7 such rows (L04, L05, L07,
+L13, L16, L17, L19) as borderline. Combined with the inherited (v5 fork) `generateNameLines`
+helper's fixed 2-line split, this produced severe label bounding-box overlap in the crowded adopt
+ring, which broke click interactivity — reproduced by Playwright's "los puntos del radar son
+interactivos" test failing consistently (not flaky) across repeated runs before this fix.
+
+### Fix Part A — root-cause data correction (curation rubric applied more precisely)
+
+Re-read each of the 7 flagged items' `narrative/L0N.md` and re-derived TRL/ring/horizon from the
+línea's OVERALL governing narrative language (via R2-R5's literal precedence, falling back to a
+logged manual nearest-fit call using the same evidentiary method as the existing L02/L11 manual
+rows) instead of the buried sub-component TRL figure R1's regex mechanically latched onto. Every
+correction is logged transparently in `curation-log.md`'s Override column with its specific
+reasoning, per design.md's "override only with a logged reason" mechanism.
+
+| Item | Was (R1) | Now | Rule | Reasoning (short) |
+|---|---|---|---|---|
+| L04 | TRL9/adopt | TRL5/assess | R4 nearest-fit | "EMERGENTE con escalamiento comercial" governs the whole línea; "ya en TRL 9" describes only the visión artificial submarket |
+| L05 | TRL9/adopt | TRL7/trial | R3 nearest-fit | Bare "ALZA"; "TRL 8-9" describes only robótica/drones, humanoides sit at TRL 4-6; accelerating-unit-growth evidence used for nearest-fit |
+| L07 | TRL9/adopt | TRL7/trial | R3 nearest-fit | Bare "ALZA con componentes emergentes"; "TRL 8-9" covers only EDA/PCB flexible, empaquetado 3DIC sits at TRL 6-8 |
+| L13 | TRL9/adopt | TRL7/trial | R3 nearest-fit | Bare "ALZA"; "TRL 9" is the SMPS-de-silicio ceiling, not GaN (the línea's actual subject); ~42% CAGR used as accelerated-growth signal |
+| L16 | TRL9/adopt | TRL5/assess | R4 nearest-fit | "ALZA en consolidación" (not literal CONSOLIDADA); "TRL 7-9" covers only wearables, bioelectrónica implantable sits at TRL 4-6 |
+| L17 | TRL9/adopt | TRL5/assess | R4 nearest-fit | Bare "ALZA con vectores emergentes"; "TRL 6-9" covers only aviónica modular/COTS, drones/nanosatélites sit at TRL 4-7 |
+| L19 | TRL9/adopt | TRL7/trial | R3 nearest-fit | "ALZA en transformación acelerada" maps directly to R3's "crecimiento acelerado"; "TRL 8-9" covers only ECU/ADAS niveles 1-2 |
+
+Net effect: adopt ring 14/25 (56%) → 7/25 (28%); trial 2→6; assess 2→5; monitor unchanged at 7.
+Regenerated `public/data/ceet-electronica.json` via
+`npm run data:build -- --in-dir data/electronica --out public/data/ceet-electronica.json --id ceet-electronica-2026-2036 --title "Radar Tecnológico — Electrónica CEET 2026-2036"`
+(4 rings / 5 sectors / 25 items, passes `npm run data:validate`). Only the 7 flagged rows were
+touched in `items.csv`/`curation-log.md`; the other 18 líneas are untouched.
+
+### Fix Part B — UI robustness to ring density (defense in depth)
+
+1. **`tools/ingest-xlsx/src/transformer.ts`'s `generateNameLines`** rewritten from a fixed 2-way
+   split to a greedy word-wrap bounded to 3 lines of ≤26 chars, ellipsizing the last visible line
+   when a name still doesn't fit. Exported and covered by a new
+   `tools/ingest-xlsx/__tests__/label-wrap.test.ts` (5 tests). This directly shrinks the per-item
+   label bounding-box width regardless of how long future dataset names are.
+2. **`src/components/organisms/RadarChart.tsx`**: the label `<text>` now has `pointerEvents="none"`
+   so a neighboring item's label can never intercept a click meant for a different item's dot
+   (this was the literal mechanism Playwright's error message named: "a different item's label
+   tspan intercepts pointer events"). Added a native `<title>{tech.name}</title>` tooltip carrying
+   the full untruncated name. Discovered a second-order effect while testing: once labels stopped
+   intercepting clicks, Playwright's bbox-center click for 3-line-wrapped items could land on
+   background (the ring fill circle) instead of the item itself, since the `<g>`'s natural bounding
+   box extends well past the tiny dot to cover the wrapped label beneath it — fixed with an
+   invisible, sized-to-content hit-`<rect>` (dot top through wrapped-label bottom) with
+   `pointerEvents="all"`, so a click anywhere in the visually-associated region always resolves to
+   the correct item.
+
+### Fix Part C — closed CRITICAL-2 test gap
+
+Added one test to `src/components/organisms/TechDetail.test.tsx`: asserts
+`window.location.pathname` and `window.history.length` are unchanged before/after expanding and
+collapsing the sublíneas/tendencias panel — closing the previously-untested
+"Expansion does not navigate away" spec scenario.
+
+### Work Unit Evidence
+
+| Evidence | Value |
+|---|---|
+| Focused test command and exact result | `npx vitest run tools/ingest-xlsx/__tests__/label-wrap.test.ts` → 5/5 passed; `npx vitest run src/components/organisms/TechDetail.test.tsx` → 5/5 passed (4 pre-existing + 1 new) |
+| Broader regression check | `npx vitest run` → 22 test files, 143 tests, all passed (137 pre-existing + 6 new: 5 label-wrap + 1 navigation-safety) |
+| Runtime harness command/scenario and exact result | `npx tsc --noEmit -p tsconfig.json` → zero errors; `npm run build` → compiles/typechecks/generates all 3 static routes with zero errors; `npm run data:validate` → "✅ Schema validation passed"; `npx playwright test --project=chromium` → 5/5 passed, re-run 4 additional times (5 total runs) to rule out flakiness — "los puntos del radar son interactivos" passed every run |
+| Rollback boundary | Each of the 5 commits below is independently revertable: (1) curation correction (`data/electronica/items.csv`, `curation-log.md`) reverts to the pre-Batch-4 R1-mechanical values; (2) `generateNameLines` reverts to the fixed 2-line split (`transformer.ts` + delete `label-wrap.test.ts`); (3) `RadarChart.tsx`'s pointerEvents/title/hit-rect changes revert independently of the data changes; (4) the regenerated `ceet-electronica.json` reverts to the prior committed JSON; (5) the new `TechDetail.test.tsx` navigation test can be deleted independently without affecting any other test |
+
+### Exact Commands Run
+
+```
+npm run data:build -- --in-dir data/electronica --out public/data/ceet-electronica.json \
+  --id ceet-electronica-2026-2036 --title "Radar Tecnológico — Electrónica CEET 2026-2036"
+npx vitest run tools/ingest-xlsx/__tests__/label-wrap.test.ts   # 5/5 green
+npx tsc --noEmit -p tsconfig.json                                # zero errors
+npm run build                                                     # succeeds
+npx vitest run                                                    # 22 files / 143 tests, all green
+npx playwright test --project=chromium                           # 5/5 passed (run 5 times total)
+npm run data:validate                                             # ✅ Schema validation passed
+git add data/electronica/curation-log.md data/electronica/items.csv && git commit -m "fix(data): ..."
+git add tools/ingest-xlsx/src/transformer.ts tools/ingest-xlsx/__tests__/label-wrap.test.ts \
+  && git commit -m "fix(ingest): ..."
+git add src/components/organisms/RadarChart.tsx && git commit -m "fix(radar-chart): ..."
+git add public/data/ceet-electronica.json && git commit -m "chore(data): ..."
+git add src/components/organisms/TechDetail.test.tsx && git commit -m "test(tech-detail): ..."
+```
+
+### Resulting Git Commits
+
+- `a27321b` — `fix(data): correct 7 R1-hit curation rows misapplying rubric to sub-component TRLs`
+- `b729a65` — `fix(ingest): word-wrap long item/sector labels instead of a fixed 2-line split`
+- `349f232` — `fix(radar-chart): make labels click-transparent and add a resilient dot hit-area`
+- `92e7449` — `chore(data): regenerate electronics dataset from corrected curation + label wrap`
+- `b87a97d` — `test(tech-detail): assert panel expansion never navigates away`
+
+Branch: `master`. No remote configured.
+
+### Deviations / Judgment Calls (flagged transparently)
+
+1. **The 7 corrected TRL/ring values are manual nearest-fit judgment calls**, not a purely
+   mechanical rubric re-run (`rubric.ts`'s `deriveRubric()` was not modified — it still applies R1
+   literally by design; a full R1-scoping fix, e.g. only matching a TRL figure near the start of the
+   narrative or excluding parenthetical sub-clauses, was judged out of scope and riskier than a
+   transparent manual override with logged reasoning, consistent with how L02/L11's original manual
+   calls were already handled). Each is independently reviewable/reversible via `curation-log.md`'s
+   Override column, per design's own override mechanism.
+2. **`generateNameLines`'s new 26-char/3-line thresholds also affect sector labels** (same helper,
+   `transformSectors`'s `labelLines`), not just item names — sector labels are already longer than
+   26 chars in this dataset, so they now wrap into narrower/more lines instead of the old
+   midpoint 2-way split. This was verified visually-safe via the full Playwright suite (sector
+   labels render in open space near the radar's periphery, not the crowded item-label area) but
+   was not explicitly requested by the fix prompt; flagged here as an in-scope side effect of
+   reusing the shared helper rather than forking a separate item-only wrap function.
+3. **The invisible hit-`<rect>` in `RadarChart.tsx` was not part of the original fix instructions**
+   (which asked for truncation+tooltip and/or dynamic angular spacing). It was added after
+   discovering, via the actual Playwright run, that `pointerEvents="none"` on labels alone
+   surfaced a second-order click-miss failure (bbox-center landing on background for tall
+   multi-line labels). Documented in Fix Part B above; verified to fully resolve the failure across
+   5 repeated Playwright runs.
+4. **Dynamic per-ring angular spacing (`angleOff`) was not implemented.** `angleOff` is fixed by
+   sector position (5 items per 72° sector, not by ring), and the Part A data correction already
+   reduced ring-0 density from 14→7 items; the label-wrap + pointer-events + hit-rect combination
+   was sufficient to reliably pass Playwright without this additional geometry change. Noted as a
+   smaller-scope choice, not a gap — the instructions asked for "the smallest change that reliably
+   prevents bounding-box overlap for the actual (corrected) dataset," which this satisfies.
+
+### Untouched (not this batch's scope)
+
+- `tasks.md` — all 37 original checkboxes remain `[x]`, unmodified (this is a verify-driven
+  correction, not new task completion, per the batch's explicit instruction).
+- The other 18 curated líneas in `items.csv`/`curation-log.md` — untouched.
+- `openspec/changes/.../state.yaml` — left as found (already modified before this batch started,
+  outside this agent's edit scope).
+- WARNING-level verify findings (README "Direccionadores" table, README version badge, export
+  filename runtime test) — out of scope; verify-report.md marked these WARNING, not CRITICAL/
+  blocking, and the batch prompt scoped this pass to CRITICAL-1/CRITICAL-2 only.
+
+### Status
+
+37/37 original tasks remain complete; this corrective batch additionally resolves both CRITICAL
+findings from `verify-report.md`. `npx tsc --noEmit`, `npm run build`, `npx vitest run` (143/143),
+and `npx playwright test --project=chromium` (5/5, confirmed non-flaky across 5 runs) are all green.
+Ready for `sdd-verify`.
