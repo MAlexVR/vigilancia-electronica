@@ -1,6 +1,9 @@
 export interface IngestOptions {
-  input: string;  // path to xlsx
-  output: string; // path to json
+  input?: string;   // path to xlsx (mutually exclusive with inDir)
+  inDir?: string;    // path to a directory holding rings.csv/sectors.csv/items.csv + narrative/*.md
+  output: string;    // path to json
+  id?: string;        // CLI-driven schema id override
+  title?: string;      // CLI-driven schema title override
   verbose?: boolean;
 }
 

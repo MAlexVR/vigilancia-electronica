@@ -34,6 +34,20 @@ npx tsx tools/ingest-xlsx/src/index.ts --in data.xlsx --out public/data/output.j
 npm run data:build -- --in data.xlsx --out public/data/output.json
 ```
 
+### Text intermediate source (`--in-dir`)
+
+`--in` and `--in-dir` are mutually exclusive. `--in-dir` reads `rings.csv` /
+`sectors.csv` / `items.csv` plus a `narrative/{code}.md` per item (short
+summary + 3 sublines + full tendencias, merged by the item's `code` column)
+from a directory instead of a single xlsx workbook:
+
+```bash
+npx tsx tools/ingest-xlsx/src/index.ts --in-dir data/electronica --out public/data/output.json --id my-radar --title "My Radar"
+```
+
+See `docs/data-template.md` for the full column/section reference, and
+`--id`/`--title` to override the generated schema's identity from the CLI.
+
 ## Expected XLSX Structure
 
 The workbook must contain exactly **3 sheets** with these names (case-sensitive):
