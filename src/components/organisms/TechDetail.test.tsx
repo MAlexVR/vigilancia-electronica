@@ -71,4 +71,18 @@ describe("TechDetail — sublíneas/tendencias expansion", () => {
 
     expect(screen.queryByText("Sublíneas y tendencias")).not.toBeInTheDocument();
   });
+
+  it("does not navigate away when expanding or collapsing the panel (no new route/screen)", () => {
+    render(<TechDetail tech={TECH_WITH_METADATA} />);
+
+    const pathnameBefore = window.location.pathname;
+    const historyLengthBefore = window.history.length;
+
+    const summary = screen.getByText("Sublíneas y tendencias");
+    fireEvent.click(summary); // expand
+    fireEvent.click(summary); // collapse
+
+    expect(window.location.pathname).toBe(pathnameBefore);
+    expect(window.history.length).toBe(historyLengthBefore);
+  });
 });
