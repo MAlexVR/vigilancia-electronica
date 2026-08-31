@@ -12,6 +12,7 @@ import { NomenclatureTable } from "@/components/organisms/NomenclatureTable";
 import { RadarLegend } from "@/components/organisms/RadarLegend";
 import type { Technology, ActiveFilters } from "@/types/radar";
 import { MobileFilters } from "@/components/molecules/MobileFilters";
+import { TrajectoryMapCard } from "@/components/molecules/TrajectoryMapCard";
 
 interface MobileLayoutProps {
   filteredTechs: Technology[];
@@ -79,7 +80,7 @@ export function MobileLayout({
         <TabsContent value="radar">
           <div className="mb-3 bg-sena-gray-light/50 border border-sena-gray-light rounded-lg p-3 text-xs text-sena-gray-dark shadow-sm">
             <p className="mb-2 leading-relaxed text-sena-blue font-medium text-[11px]">
-              Vigilancia científico-tecnológica — Telecomunicaciones CEET 2025-2035
+              Vigilancia científico-tecnológica — Electrónica CEET 2026-2036
             </p>
             <Separator className="my-2 opacity-50" />
             <p className="font-semibold text-sena-blue mb-1">Guía Rápida</p>
@@ -180,6 +181,11 @@ export function MobileLayout({
 
         <TabsContent value="legend">
           <RadarLegend />
+          <Card className="mt-3">
+            <CardContent className="p-0">
+              <TrajectoryMapCard />
+            </CardContent>
+          </Card>
         </TabsContent>
       </Tabs>
     </main>

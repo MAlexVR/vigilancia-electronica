@@ -13,7 +13,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Target, Gauge, Lightbulb } from "lucide-react";
+import { Target, Gauge, Lightbulb, ChevronDown, ListTree } from "lucide-react";
 import { RadarStoreContext } from "@/core/store";
 import { useRadarSelection } from "@/core/hooks";
 import type { RadarRing, RadarSector, RadarItem } from "@/core";
@@ -70,6 +70,8 @@ function convertItem(
     desc: (item.description as string) ?? "",
     impact: (item.metadata?.impact as string) ?? "",
     horizon: (item.metadata?.horizon as string) ?? "",
+    sublines: item.metadata?.sublines as string[] | undefined,
+    tendencias: item.metadata?.tendencias as string | undefined,
   };
 }
 
@@ -194,6 +196,38 @@ function TechDetailRender({ tech, rings, sectors, technologies }: TechDetailRend
           {tech.desc}
         </p>
       </div>
+
+      {/* Sublíneas / tendencias — collapsed by default */}
+      {(tech.sublines?.length || tech.tendencias) && (
+        <details className="group">
+          <summary className="flex items-center gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
+            <ListTree className="w-3.5 h-3.5 text-sena-green" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+              Sublíneas y tendencias
+            </span>
+            <ChevronDown className="w-3.5 h-3.5 text-muted-foreground transition-transform ml-auto details-chevron" />
+          </summary>
+          <div className="mt-2 space-y-3">
+            {tech.sublines && tech.sublines.length > 0 && (
+              <ul className="list-disc list-inside space-y-1.5">
+                {tech.sublines.map((subline, i) => (
+                  <li
+                    key={i}
+                    className="text-[11px] text-muted-foreground leading-relaxed"
+                  >
+                    {subline}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {tech.tendencias && (
+              <p className="text-[11px] text-muted-foreground leading-relaxed max-h-[320px] overflow-y-auto pr-1">
+                {tech.tendencias}
+              </p>
+            )}
+          </div>
+        </details>
+      )}
 
       {/* Metadata grid */}
       <div className="grid grid-cols-2 gap-2">

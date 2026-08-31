@@ -15,6 +15,8 @@ export interface Technology {
   impact: string;
   horizon: string;
   nameLines?: string[];
+  sublines?: string[];
+  tendencias?: string;
 }
 
 export interface Ring {

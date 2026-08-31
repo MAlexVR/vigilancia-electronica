@@ -11,6 +11,7 @@ import { NomenclatureTable } from "@/components/organisms/NomenclatureTable";
 import { RadarLegend } from "@/components/organisms/RadarLegend";
 import { FilterSidebar } from "@/components/molecules/FilterSidebar";
 import { ZoomControls } from "@/components/molecules/ZoomControls";
+import { TrajectoryMapCard } from "@/components/molecules/TrajectoryMapCard";
 import { MobileLayout } from "./MobileLayout";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +24,7 @@ import { useZoomPan } from "@/hooks/useZoomPan";
 async function downloadPNG(svgEl: SVGSVGElement) {
   const canvas = await svgToCanvas(svgEl, 3);
   const link = document.createElement("a");
-  link.download = "Radar_Tecnologico_CEET_2025-2035.png";
+  link.download = "Radar_Tecnologico_CEET_Electronica_2026-2036.png";
   link.href = canvas.toDataURL("image/png");
   link.click();
 }
@@ -52,7 +53,7 @@ async function downloadPDF(svgEl: SVGSVGElement) {
   const yOff = (pageH - imgH) / 2;
 
   pdf.addImage(imgData, "PNG", xOff, yOff, imgW, imgH);
-  pdf.save("Radar_Tecnologico_CEET_2025-2035.pdf");
+  pdf.save("Radar_Tecnologico_CEET_Electronica_2026-2036.pdf");
 }
 
 /* ─── Main Component ─────────────────────────────────────────── */
@@ -260,6 +261,8 @@ export function RadarTemplate() {
                 />
               </div>
             </details>
+            <Separator />
+            <TrajectoryMapCard />
           </div>
         </aside>
       </main>
