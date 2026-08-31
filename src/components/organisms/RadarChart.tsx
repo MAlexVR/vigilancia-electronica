@@ -245,6 +245,23 @@ export const RadarChart = forwardRef<SVGSVGElement, RadarChartProps>(
             selectedTech?.id === tech.id || hoveredTech?.id === tech.id;
           const isFocused = focusedIndex === index;
           const r = isActive || isFocused ? 8 : 6;
+          const fontSize = isActive ? 11 : 9.5;
+          const labelDy = tech.labelDy ?? (isActive ? 19 : 16);
+          const lineCount = tech.nameLines?.length ?? 1;
+          const longestLine = tech.nameLines
+            ? Math.max(...tech.nameLines.map((line) => line.length))
+            : tech.name.length;
+          // Invisible hit-area sizing: the visible label sits *below* the dot
+          // (labelDy) and, for long/wrapped names, spans several lines — so
+          // the <g>'s natural bounding box (used by pointer/tap "click
+          // center" targeting) extends well past the tiny dot itself. Size
+          // an invisible rect to cover dot + full wrapped-label extent so a
+          // click anywhere in that visually-associated region always
+          // resolves to this item, never a background ring fill or (via the
+          // pointerEvents="none" label above) an inert neighboring label.
+          const hitWidth = Math.min(150, Math.max(28, longestLine * fontSize * 0.62));
+          const hitTop = pos.y - r - 4;
+          const hitBottom = pos.y + labelDy + lineCount * fontSize * 1.3 + 4;
 
           return (
             <g
@@ -264,6 +281,18 @@ export const RadarChart = forwardRef<SVGSVGElement, RadarChartProps>(
               onFocus={() => setFocusedIndex(index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
             >
+              {/* Native tooltip with the full (untruncated) name — the inline
+                  label below may be wrapped/ellipsized for dense rings. */}
+              <title>{tech.name}</title>
+              {/* Invisible hit-area — see sizing comment above. */}
+              <rect
+                x={pos.x - hitWidth / 2}
+                y={hitTop}
+                width={hitWidth}
+                height={Math.max(hitBottom - hitTop, r * 2 + 8)}
+                fill="transparent"
+                pointerEvents="all"
+              />
               {/* Focus ring — visible only when keyboard-focused */}
               {isFocused && (
                 <circle
@@ -297,7 +326,11 @@ export const RadarChart = forwardRef<SVGSVGElement, RadarChartProps>(
                 strokeWidth={isActive ? 2.5 : 1.5}
                 opacity={isActive ? 1 : 0.85}
               />
-              {/* Label */}
+              {/* Label — pointerEvents="none" is a defense-in-depth fix for
+                  dense/long-label datasets: a neighboring item's label text
+                  must never intercept a click/tap meant for a different
+                  item's dot, regardless of how much the wrapped lines end up
+                  visually overlapping (see CRITICAL-1, verify-report.md). */}
               <text
                 x={pos.x}
                 y={pos.y + (tech.labelDy ?? (isActive ? 19 : 16))}
@@ -305,6 +338,7 @@ export const RadarChart = forwardRef<SVGSVGElement, RadarChartProps>(
                 fill={isActive ? "#1a1a2e" : "#3a3a5c"}
                 fontSize={isActive ? 11 : 9.5}
                 fontWeight={isActive ? 700 : 500}
+                pointerEvents="none"
               >
                 {tech.nameLines
                   ? tech.nameLines.map((line: string, i: number) => (
