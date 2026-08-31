@@ -1,6 +1,6 @@
 # Radar Tecnológico — Electrónica CEET 2026-2036
 
-![Version](https://img.shields.io/badge/version-2.1.0-39A900?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.0-39A900?style=flat-square)
 ![SENA](https://img.shields.io/badge/SENA-CEET-00324D?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
@@ -52,20 +52,20 @@ Consulta `docs/architectural-blueprint-v5.md` para el plan completo de 6 fases.
 
 ## Contenido del Radar
 
-- **24 tecnologías** organizadas en **5 direccionadores del desarrollo (D1-D5)**
+- **25 tecnologías** organizadas en **5 direccionadores del desarrollo (D1-D5)**
 - **4 anillos de adopción**: ADOPTAR, PROBAR, EVALUAR, MONITOREAR
 - **Indicador de madurez** basado en niveles TRL (1-9)
 - **Tabla de nomenclaturas** completa con códigos L01-L25
 
 ### Direccionadores
 
-| ID  | Direccionador                                   | Tecnologías |
-| --- | ----------------------------------------------- | ----------- |
-| D1  | Inteligencia Nativa y Redes Autónomas           | 5           |
-| D2  | Conectividad Extrema y Convergente              | 5           |
-| D3  | Arquitectura de Red Desagregada y Plataformas   | 5           |
-| D4  | Monetización de Capacidades de Red              | 4           |
-| D5  | Seguridad, Resiliencia y Sostenibilidad         | 5           |
+| ID  | Direccionador                                                                 | Tecnologías |
+| --- | ------------------------------------------------------------------------------ | ----------- |
+| D1  | Inteligencia distribuida y automatización industrial avanzada                  | 5           |
+| D2  | Microelectrónica, semiconductores y diseño electrónico avanzado                | 5           |
+| D3  | Electrónica de potencia, energía y electrificación sostenible                  | 5           |
+| D4  | Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad  | 5           |
+| D5  | Electrónica de consumo masivo, hogar inteligente y medios digitales            | 5           |
 
 ## Características
 
