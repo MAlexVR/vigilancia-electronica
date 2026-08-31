@@ -24,6 +24,23 @@ function parseOptionalString(val: unknown): string | undefined {
   return str.length > 0 ? str : undefined;
 }
 
+// D5: sublines arrive either as a string[] (--in-dir narrative merge) or as a
+// "|"-delimited string (inline xlsx column authored by the institutional team).
+function parseSublines(val: unknown): string[] | undefined {
+  if (Array.isArray(val)) {
+    const arr = val.map((v) => String(v).trim()).filter((v) => v.length > 0);
+    return arr.length > 0 ? arr : undefined;
+  }
+  if (typeof val === "string" && val.trim().length > 0) {
+    const arr = val
+      .split("|")
+      .map((v) => v.trim())
+      .filter((v) => v.length > 0);
+    return arr.length > 0 ? arr : undefined;
+  }
+  return undefined;
+}
+
 function generateNameLines(name: string): string[] | undefined {
   if (!name) return undefined;
   // Simple heuristic: split on " / " or " para " to match existing data pattern
@@ -113,9 +130,13 @@ function transformItems(raw: Record<string, unknown>[], errors: IngestError[]): 
       const trlValue = parseNumber(row.trlValue, 0);
       const impact = parseOptionalString(row.impact);
       const horizon = parseOptionalString(row.horizon);
+      const sublines = parseSublines(row.sublines);
+      const tendencias = parseOptionalString(row.tendencias);
       const metadata: Record<string, unknown> = {};
       if (impact) metadata.impact = impact;
       if (horizon) metadata.horizon = horizon;
+      if (sublines) metadata.sublines = sublines;
+      if (tendencias) metadata.tendencias = tendencias;
 
       return {
         id,
@@ -160,13 +181,32 @@ export interface TransformResult {
   warnings: IngestWarning[];
 }
 
-export function transform(parsed: ParsedRows): TransformResult {
+export interface TransformOptions {
+  id?: string;
+  title?: string;
+}
+
+// D4: Áreas Tecnológicas Folding — the `areaTecnologica` optional sector
+// column (one per direccionador) is folded into schema.metadata.sectorAreas,
+// keyed by sector id. `RadarSector` itself gains no new field.
+function buildSectorAreas(rawSectors: Record<string, unknown>[]): Record<string, string> {
+  const sectorAreas: Record<string, string> = {};
+  rawSectors.forEach((row) => {
+    const id = parseOptionalString(row.id);
+    const area = parseOptionalString(row.areaTecnologica);
+    if (id && area) sectorAreas[id] = area;
+  });
+  return sectorAreas;
+}
+
+export function transform(parsed: ParsedRows, options: TransformOptions = {}): TransformResult {
   const errors: IngestError[] = [...parsed.errors];
   const warnings: IngestWarning[] = [...parsed.warnings];
 
   const rings = transformRings(parsed.rings, errors);
   const sectors = transformSectors(parsed.sectors, errors);
   const items = transformItems(parsed.items, errors);
+  const sectorAreas = buildSectorAreas(parsed.sectors);
 
   // Validation cross-references
   const ringIds = new Set(rings.map((r) => r.id));
@@ -191,8 +231,8 @@ export function transform(parsed: ParsedRows): TransformResult {
 
   const schema: RadarSchema = {
     $schemaVersion: "1.0.0",
-    id: "generated-radar",
-    title: "Radar Tecnológico",
+    id: options.id || "generated-radar",
+    title: options.title || "Radar Tecnológico",
     rings,
     sectors,
     items,
@@ -204,6 +244,7 @@ export function transform(parsed: ParsedRows): TransformResult {
       centerY: 520,
       outerRadius: 400,
     },
+    ...(Object.keys(sectorAreas).length > 0 ? { metadata: { sectorAreas } } : {}),
   };
 
   return { schema, errors, warnings };
