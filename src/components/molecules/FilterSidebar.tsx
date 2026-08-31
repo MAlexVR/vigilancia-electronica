@@ -31,7 +31,7 @@ export function FilterSidebar({
     <aside className="w-[220px] flex-shrink-0 border-r bg-card/50 p-3 space-y-4 overflow-y-auto">
       <div className="text-[10px] text-muted-foreground leading-relaxed italic">
         Aplicación web interactiva de vigilancia científico-tecnológica para
-        el área de telecomunicaciones del Centro de Electricidad,
+        el área de electrónica del Centro de Electricidad,
         Electrónica y Telecomunicaciones (CEET) — SENA.
       </div>
 

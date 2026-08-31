@@ -17,15 +17,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Radar Tecnológico — Telecomunicaciones CEET | SENA",
+  title: "Radar Tecnológico — Electrónica CEET | SENA",
   description:
-    "Radar interactivo de vigilancia científico-tecnológica del área de telecomunicaciones del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA 2025-2035.",
+    "Radar interactivo de vigilancia científico-tecnológica del área de electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA 2026-2036.",
   keywords: [
     "radar tecnológico",
-    "telecomunicaciones",
+    "electrónica",
     "vigilancia tecnológica",
-    "5G",
-    "6G",
+    "IIoT",
+    "microelectrónica",
     "IA",
     "SENA",
     "CEET",

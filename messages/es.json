@@ -1,6 +1,6 @@
 {
   "radar": {
-    "title": "Radar Tecnológico — Telecomunicaciones CEET 2025-2035",
+    "title": "Radar Tecnológico — Electrónica CEET 2026-2036",
     "source": "Fuente: Elaboración propia basada en ejercicio VCyT CEET-GICS (2025). Metodología tipo Gartner Technology Radar.",
     "selectTech": "Selecciona una tecnología",
     "selectTechHint": "Haz clic en un punto del radar o en la tabla de nomenclaturas para ver detalles, madurez (TRL) y recomendaciones.",
@@ -40,7 +40,7 @@
     "tabLegend": "Leyenda",
     "exportPNGShort": "Exportar PNG",
     "exportPDFShort": "Exportar PDF",
-    "appDescription": "Aplicación web interactiva de vigilancia científico-tecnológica para el área de telecomunicaciones del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA.",
+    "appDescription": "Aplicación web interactiva de vigilancia científico-tecnológica para el área de electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA.",
     "notMapped": "No Graficadas / Excluidas",
     "ringsTitle": "Anillos (fase de adopción CEET)",
     "sectorsTitle": "Sectores (Direccionadores)"
@@ -49,7 +49,7 @@
     "title": "Acerca de",
     "description": "Información del sistema",
     "appTitle": "Radar Tecnológico",
-    "version": "Versión 2.1.0",
+    "version": "Versión 1.0.0",
     "entity": "Entidad",
     "entityValue": "SENA",
     "center": "Centro",
@@ -59,17 +59,20 @@
     "regionValue": "Bogotá D.C.",
     "researchGroup": "Grupo I+D",
     "researchGroupValue": "GICS",
-    "aboutText": "Herramienta web de vigilancia científico-tecnológica y prospectiva del área de telecomunicaciones. Visualiza la madurez y adopción de tecnologías clave para el horizonte 2025-2035, organizadas por nivel TRL y direccionadores estratégicos.",
-    "author": "Autor:",
-    "authorName": "Ing. Mauricio Alexander Vargas Rodríguez, MSc., MBA Esp. PM.",
-    "authorRole": "Instructor G14 — Área de Telecomunicaciones",
+    "aboutText": "Herramienta web de vigilancia científico-tecnológica y prospectiva del área de electrónica. Visualiza la madurez y adopción de tecnologías clave para el horizonte 2026-2036, organizadas por nivel TRL y direccionadores estratégicos.",
+    "authors": "Autores:",
+    "authorsNames": "Ing. Óscar Andrés Pulido Casallas / Ing. Diana Cristina Limas Ramirez",
+    "authorsRole": "Instructores — Área de Electrónica",
+    "coauthor": "Coautor:",
+    "coauthorName": "Ing. Mauricio Alexander Vargas Rodríguez, MSc., MBA Esp. PM.",
+    "coauthorRole": "Instructor G14 — Área de Telecomunicaciones",
     "copyright": "SENA — Servicio Nacional de Aprendizaje.",
     "allRightsReserved": "Todos los derechos reservados.",
     "close": "Cerrar"
   },
   "help": {
     "title": "Guía de Referencia",
-    "description": "Conceptos clave del Radar Tecnológico de Telecomunicaciones",
+    "description": "Conceptos clave del Radar Tecnológico de Electrónica",
     "trlTitle": "Niveles de Madurez Tecnológica",
     "trlIntro": "El Technology Readiness Level (TRL) es una escala estandarizada que mide el grado de madurez de una tecnología, desde su concepción hasta su despliegue operativo.",
     "trlBasicResearch": "Investigación Básica",
@@ -86,7 +89,7 @@
   },
   "header": {
     "title": "Radar Tecnológico",
-    "subtitle": "Telecomunicaciones CEET · SENA · 2025-2035",
+    "subtitle": "Electrónica CEET · SENA · 2026-2036",
     "help": "Ayuda",
     "about": "Acerca de",
     "menu": "Menú"
