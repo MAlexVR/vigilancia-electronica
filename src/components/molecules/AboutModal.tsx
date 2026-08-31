@@ -71,17 +71,27 @@ export function AboutModal({ open, onOpenChange }: AboutModalProps) {
 
           <p className="text-[11px] text-sena-gray-dark leading-relaxed bg-sena-gray-light/20 px-3 py-3 rounded-xl border border-sena-gray-light/50">
             Herramienta web de vigilancia científico-tecnológica y prospectiva
-            del área de telecomunicaciones. Visualiza la madurez y adopción de
-            tecnologías clave para el horizonte 2025-2035, organizadas por nivel
+            del área de electrónica. Visualiza la madurez y adopción de
+            tecnologías clave para el horizonte 2026-2036, organizadas por nivel
             TRL y direccionadores estratégicos.
           </p>
 
-          <div className="bg-sena-green/10 rounded-xl p-3 border border-sena-green/20 mt-2 text-left">
-            <p className="text-xs font-semibold text-sena-green mb-1">Autor:</p>
-            <p className="text-[11px] text-sena-gray-dark leading-tight">
-              Ing. Mauricio Alexander Vargas Rodríguez, MSc., MBA Esp. PM. <br />
-              Instructor G14 — Área de Telecomunicaciones
-            </p>
+          <div className="bg-sena-green/10 rounded-xl p-3 border border-sena-green/20 mt-2 text-left space-y-2">
+            <div>
+              <p className="text-xs font-semibold text-sena-green mb-1">Autores:</p>
+              <p className="text-[11px] text-sena-gray-dark leading-tight">
+                Ing. Óscar Andrés Pulido Casallas <br />
+                Ing. Diana Cristina Limas Ramirez <br />
+                Instructores — Área de Electrónica
+              </p>
+            </div>
+            <div className="border-t border-sena-green/20 pt-2">
+              <p className="text-xs font-semibold text-sena-green mb-1">Coautor:</p>
+              <p className="text-[11px] text-sena-gray-dark leading-tight">
+                Ing. Mauricio Alexander Vargas Rodríguez, MSc., MBA Esp. PM. <br />
+                Instructor G14 — Área de Telecomunicaciones
+              </p>
+            </div>
           </div>
 
           <div className="flex justify-center flex-col items-center gap-1 pt-3 pb-2 border-t border-sena-gray-light/50">
