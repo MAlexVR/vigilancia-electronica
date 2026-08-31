@@ -67,7 +67,8 @@
       "shortLabel": "D1: Inteligencia distribuida y automatización industrial avanzada",
       "labelLines": [
         "Inteligencia distribuida y",
-        "automatización industrial avanzada"
+        "automatización industrial",
+        "avanzada"
       ],
       "startAngle": -18,
       "color": "#1565C0",
@@ -81,7 +82,8 @@
       "shortLabel": "D2: Microelectrónica, semiconductores y diseño electrónico avanzado",
       "labelLines": [
         "Microelectrónica,",
-        "semiconductores y diseño electrónico avanzado"
+        "semiconductores y diseño",
+        "electrónico avanzado"
       ],
       "startAngle": 54,
       "color": "#C62828",
@@ -95,7 +97,8 @@
       "shortLabel": "D3: Electrónica de potencia, energía y electrificación sostenible",
       "labelLines": [
         "Electrónica de potencia,",
-        "energía y electrificación sostenible"
+        "energía y electrificación",
+        "sostenible"
       ],
       "startAngle": 126,
       "color": "#F57F17",
@@ -108,8 +111,9 @@
       "label": "Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad",
       "shortLabel": "D4: Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad",
       "labelLines": [
-        "Electrónica aplicada a sectores",
-        "estratégicos: salud, aeroespacial y movilidad"
+        "Electrónica aplicada a",
+        "sectores estratégicos:",
+        "salud, aeroespacial y…"
       ],
       "startAngle": 198,
       "color": "#6A1B9A",
@@ -122,8 +126,9 @@
       "label": "Electrónica de consumo masivo, hogar inteligente y medios digitales",
       "shortLabel": "D5: Electrónica de consumo masivo, hogar inteligente y medios digitales",
       "labelLines": [
-        "Electrónica de consumo masivo,",
-        "hogar inteligente y medios digitales"
+        "Electrónica de consumo",
+        "masivo, hogar inteligente",
+        "y medios digitales"
       ],
       "startAngle": 270,
       "color": "#00695C",
@@ -137,8 +142,8 @@
       "id": "T01",
       "name": "IIoT, Industria 4.0/5.0 y modernización de SCADA",
       "nameLines": [
-        "IIoT, Industria 4.0/5.0",
-        "y modernización de SCADA"
+        "IIoT, Industria 4.0/5.0 y",
+        "modernización de SCADA"
       ],
       "code": "L01",
       "sectorId": "D1",
@@ -164,8 +169,9 @@
       "id": "T02",
       "name": "Mantenimiento predictivo con inteligencia artificial y aprendizaje automático",
       "nameLines": [
-        "Mantenimiento predictivo con",
-        "inteligencia artificial y aprendizaje automático"
+        "Mantenimiento predictivo",
+        "con inteligencia",
+        "artificial y aprendizaje…"
       ],
       "code": "L02",
       "sectorId": "D1",
@@ -191,8 +197,9 @@
       "id": "T03",
       "name": "Automatización con PLC y comisionamiento de Sistemas Instrumentados de Seguridad (SIS)",
       "nameLines": [
-        "Automatización con PLC y comisionamiento de Sistemas Instrumentados de Seguridad",
-        "(SIS)"
+        "Automatización con PLC y",
+        "comisionamiento de",
+        "Sistemas Instrumentados d…"
       ],
       "code": "L03",
       "sectorId": "D1",
@@ -219,20 +226,21 @@
       "name": "Edge AI, sistemas en chip (SoC), sensórica MEMS/NEMS y visión artificial industrial",
       "nameLines": [
         "Edge AI, sistemas en chip",
-        "(SoC), sensórica MEMS/NEMS y visión artificial industrial"
+        "(SoC), sensórica MEMS/NEMS",
+        "y visión artificial…"
       ],
       "code": "L04",
       "sectorId": "D1",
-      "ringId": "adopt",
+      "ringId": "assess",
       "angleOff": 13,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 5
       },
       "description": "Edge AI en SoC (incl. TinyML), sensórica MEMS/NEMS multisensor y visión artificial de inspección de calidad, con escalamiento comercial creciente en manufactura y consumo.",
       "metadata": {
         "impact": "Medio",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Medio (3-5 años)",
         "sublines": [
           "Ejecución de modelos de IA en dispositivos de borde mediante SoC especializados de baja latencia, incluyendo técnicas de aprendizaje profundo ultra-comprimido (TinyML) sobre microcontroladores",
           "Sensores y actuadores microelectromecánicos y nanoelectromecánicos (MEMS/NEMS) multisensor",
@@ -245,21 +253,22 @@
       "id": "T05",
       "name": "Robótica industrial, drones autónomos y robots humanoides emergentes",
       "nameLines": [
-        "Robótica industrial, drones",
-        "autónomos y robots humanoides emergentes"
+        "Robótica industrial,",
+        "drones autónomos y robots",
+        "humanoides emergentes"
       ],
       "code": "L05",
       "sectorId": "D1",
-      "ringId": "adopt",
+      "ringId": "trial",
       "angleOff": 26,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 7
       },
       "description": "Robótica industrial y drones ya maduros conviven con robots humanoides emergentes (IA visión-lenguaje-acción), en expansión acelerada de unidades instaladas y comercializadas.",
       "metadata": {
         "impact": "Medio",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Corto (1-3 años)",
         "sublines": [
           "Manipuladores industriales y robots colaborativos en líneas de manufactura y empaque",
           "Vehículos aéreos no tripulados (UAV) para inspección, agricultura de precisión y logística de última milla",
@@ -272,8 +281,9 @@
       "id": "T06",
       "name": "Semiconductores avanzados: arquitecturas abiertas (RISC-V) y empaquetado avanzado",
       "nameLines": [
-        "Semiconductores avanzados: arquitecturas abiertas",
-        "(RISC-V) y empaquetado avanzado"
+        "Semiconductores avanzados:",
+        "arquitecturas abiertas",
+        "(RISC-V) y empaquetado…"
       ],
       "code": "L06",
       "sectorId": "D2",
@@ -299,21 +309,22 @@
       "id": "T07",
       "name": "Fabricación avanzada de PCB, diseño electrónico asistido (EDA) y empaquetado de semiconductores",
       "nameLines": [
-        "Fabricación avanzada de PCB, diseño electrónico asistido",
-        "(EDA) y empaquetado de semiconductores"
+        "Fabricación avanzada de",
+        "PCB, diseño electrónico",
+        "asistido (EDA) y…"
       ],
       "code": "L07",
       "sectorId": "D2",
-      "ringId": "adopt",
+      "ringId": "trial",
       "angleOff": -13,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 7
       },
       "description": "Diseño electrónico asistido (EDA) con IA, PCB flexibles/HDI y empaquetado avanzado 3DIC; formación consolidada en PCB, con oportunidad de actualización hacia EDA basado en IA.",
       "metadata": {
         "impact": "Medio",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Corto (1-3 años)",
         "sublines": [
           "Herramientas EDA/CAD para circuitos impresos con ruteo asistido por IA y colaboración en la nube",
           "Fabricación de PCB flexibles y de alta densidad de interconexión (HDI)",
@@ -326,8 +337,9 @@
       "id": "T08",
       "name": "Computación neuromórfica y arquitecturas de ultra-bajo consumo para IA de borde",
       "nameLines": [
-        "Computación neuromórfica y arquitecturas de ultra-bajo consumo",
-        "para IA de borde"
+        "Computación neuromórfica y",
+        "arquitecturas de",
+        "ultra-bajo consumo para I…"
       ],
       "code": "L08",
       "sectorId": "D2",
@@ -354,7 +366,8 @@
       "name": "Empaquetado post-silicio: sustratos de vidrio y fotónica de silicio",
       "nameLines": [
         "Empaquetado post-silicio:",
-        "sustratos de vidrio y fotónica de silicio"
+        "sustratos de vidrio y",
+        "fotónica de silicio"
       ],
       "code": "L09",
       "sectorId": "D2",
@@ -380,8 +393,9 @@
       "id": "T10",
       "name": "Sensórica cuántica aplicada a IoT agroindustrial, de salud y ambiental",
       "nameLines": [
-        "Sensórica cuántica aplicada a IoT",
-        "agroindustrial, de salud y ambiental"
+        "Sensórica cuántica",
+        "aplicada a IoT",
+        "agroindustrial, de salud…"
       ],
       "code": "L10",
       "sectorId": "D2",
@@ -407,8 +421,9 @@
       "id": "T11",
       "name": "Redes inteligentes, sistemas de gestión de batería (BMS) y electromovilidad",
       "nameLines": [
-        "Redes inteligentes, sistemas de gestión de batería",
-        "(BMS) y electromovilidad"
+        "Redes inteligentes,",
+        "sistemas de gestión de",
+        "batería (BMS) y…"
       ],
       "code": "L11",
       "sectorId": "D3",
@@ -434,8 +449,9 @@
       "id": "T12",
       "name": "Instrumentación electrónica de control de procesos industriales y cadena de frío",
       "nameLines": [
-        "Instrumentación electrónica de control",
-        "de procesos industriales y cadena de frío"
+        "Instrumentación",
+        "electrónica de control de",
+        "procesos industriales y…"
       ],
       "code": "L12",
       "sectorId": "D3",
@@ -461,21 +477,22 @@
       "id": "T13",
       "name": "Semiconductores de potencia de banda ancha prohibida (GaN y SiC)",
       "nameLines": [
-        "Semiconductores de potencia de banda ancha prohibida",
-        "(GaN y SiC)"
+        "Semiconductores de",
+        "potencia de banda ancha",
+        "prohibida (GaN y SiC)"
       ],
       "code": "L13",
       "sectorId": "D3",
-      "ringId": "adopt",
+      "ringId": "trial",
       "angleOff": 0,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 7
       },
       "description": "Semiconductores de potencia de banda ancha prohibida GaN/SiC: mercado GaN creciendo ~42% anual; tecnología transversal a potencia industrial, electromovilidad y consumo.",
       "metadata": {
         "impact": "Alto",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Corto (1-3 años)",
         "sublines": [
           "Transistores de nitruro de galio (GaN) para conversión de potencia de alta eficiencia",
           "Semiconductores de carburo de silicio (SiC) para aplicaciones de alta tensión (electromovilidad, redes)",
@@ -488,8 +505,9 @@
       "id": "T14",
       "name": "Baterías de estado sólido y almacenamiento energético de próxima generación",
       "nameLines": [
-        "Baterías de estado sólido y",
-        "almacenamiento energético de próxima generación"
+        "Baterías de estado sólido",
+        "y almacenamiento",
+        "energético de próxima…"
       ],
       "code": "L14",
       "sectorId": "D3",
@@ -515,8 +533,9 @@
       "id": "T15",
       "name": "Refrigerantes de próxima generación y calendario regulatorio ambiental",
       "nameLines": [
-        "Refrigerantes de próxima generación",
-        "y calendario regulatorio ambiental"
+        "Refrigerantes de próxima",
+        "generación y calendario",
+        "regulatorio ambiental"
       ],
       "code": "L15",
       "sectorId": "D3",
@@ -543,20 +562,21 @@
       "name": "Electrónica biomédica y monitoreo wearable de salud",
       "nameLines": [
         "Electrónica biomédica y",
-        "monitoreo wearable de salud"
+        "monitoreo wearable de",
+        "salud"
       ],
       "code": "L16",
       "sectorId": "D4",
-      "ringId": "adopt",
+      "ringId": "assess",
       "angleOff": -26,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 5
       },
       "description": "Electrónica biomédica y wearables de salud: monitoreo fisiológico continuo, telemedicina y mantenimiento predictivo de equipo biomédico crítico.",
       "metadata": {
         "impact": "Medio",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Medio (3-5 años)",
         "sublines": [
           "Dispositivos portátiles e implantables de monitoreo fisiológico continuo con fusión multisensor",
           "Sistemas de telemedicina con hardware remoto y entrega autónoma de insumos médicos",
@@ -570,20 +590,21 @@
       "name": "Aviónica embebida, radar y sistemas aeroespaciales/no tripulados",
       "nameLines": [
         "Aviónica embebida, radar y",
-        "sistemas aeroespaciales/no tripulados"
+        "sistemas aeroespaciales/no",
+        "tripulados"
       ],
       "code": "L17",
       "sectorId": "D4",
-      "ringId": "adopt",
+      "ringId": "assess",
       "angleOff": -13,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 5
       },
       "description": "Aviónica embebida y radar aeroespacial: aviónica modular integrada y COTS ya operacionales; nichos emergentes en enjambres de drones y nanosatélites.",
       "metadata": {
         "impact": "Medio",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Medio (3-5 años)",
         "sublines": [
           "Aviónica modular integrada (IMA) y componentes comerciales de bajo costo (COTS) endurecidos",
           "Radar de apertura sintética y arreglos en fase para vigilancia y control de tráfico aéreo",
@@ -596,8 +617,9 @@
       "id": "T18",
       "name": "Sistemas de radar distribuido y enjambres de drones ante obsolescencia del radar centralizado",
       "nameLines": [
-        "Sistemas de radar distribuido y enjambres de",
-        "drones ante obsolescencia del radar centralizado"
+        "Sistemas de radar",
+        "distribuido y enjambres de",
+        "drones ante obsolescencia…"
       ],
       "code": "L18",
       "sectorId": "D4",
@@ -623,21 +645,22 @@
       "id": "T19",
       "name": "Electrónica automotriz avanzada: arquitecturas centralizadas/zonales, ADAS y navegación",
       "nameLines": [
-        "Electrónica automotriz avanzada:",
-        "arquitecturas centralizadas/zonales, ADAS y navegación"
+        "Electrónica automotriz",
+        "avanzada: arquitecturas",
+        "centralizadas/zonales,…"
       ],
       "code": "L19",
       "sectorId": "D4",
-      "ringId": "adopt",
+      "ringId": "trial",
       "angleOff": 13,
       "maturity": {
         "scaleId": "trl",
-        "value": 9
+        "value": 7
       },
       "description": "Electrónica automotriz avanzada: migración hacia arquitecturas zonales de vehículo definido por software y ADAS con fusión de sensores; transformación acelerada del sector.",
       "metadata": {
         "impact": "Disruptivo",
-        "horizon": "Corto (1-2 años)",
+        "horizon": "Corto (1-3 años)",
         "sublines": [
           "Migración de arquitecturas ECU distribuidas hacia arquitecturas centralizadas/zonales de vehículo definido por software",
           "Sistemas ADAS con fusión de sensores radar/LiDAR/cámara/ultrasonido (niveles SAE J3016)",
@@ -651,7 +674,8 @@
       "name": "Radar automotriz de terahercios de próxima generación",
       "nameLines": [
         "Radar automotriz de",
-        "terahercios de próxima generación"
+        "terahercios de próxima",
+        "generación"
       ],
       "code": "L20",
       "sectorId": "D4",
@@ -677,8 +701,9 @@
       "id": "T21",
       "name": "Electrónica de consumo conectada: fuentes de alimentación eficientes, conectividad integrada y electrodomésticos inteligentes",
       "nameLines": [
-        "Electrónica de consumo conectada: fuentes de alimentación",
-        "eficientes, conectividad integrada y electrodomésticos inteligentes"
+        "Electrónica de consumo",
+        "conectada: fuentes de",
+        "alimentación eficientes,…"
       ],
       "code": "L21",
       "sectorId": "D5",
@@ -704,8 +729,9 @@
       "id": "T22",
       "name": "Electrónica de entretenimiento y contenido digital: GPUs y pantallas de próxima generación",
       "nameLines": [
-        "Electrónica de entretenimiento y contenido",
-        "digital: GPUs y pantallas de próxima generación"
+        "Electrónica de",
+        "entretenimiento y",
+        "contenido digital: GPUs y…"
       ],
       "code": "L22",
       "sectorId": "D5",
@@ -731,8 +757,9 @@
       "id": "T23",
       "name": "Renderizado gráfico neuronal e IA generativa aplicada a gráficos",
       "nameLines": [
-        "Renderizado gráfico neuronal e",
-        "IA generativa aplicada a gráficos"
+        "Renderizado gráfico",
+        "neuronal e IA generativa",
+        "aplicada a gráficos"
       ],
       "code": "L23",
       "sectorId": "D5",
@@ -758,8 +785,9 @@
       "id": "T24",
       "name": "Ciberseguridad por diseño y actualización remota (OTA) de dispositivos de consumo conectados",
       "nameLines": [
-        "Ciberseguridad por diseño y actualización remota",
-        "(OTA) de dispositivos de consumo conectados"
+        "Ciberseguridad por diseño",
+        "y actualización remota",
+        "(OTA) de dispositivos de…"
       ],
       "code": "L24",
       "sectorId": "D5",
@@ -785,8 +813,9 @@
       "id": "T25",
       "name": "Sostenibilidad y economía circular en electrónica de consumo (ecodiseño y reparabilidad)",
       "nameLines": [
-        "Sostenibilidad y economía circular en electrónica de consumo",
-        "(ecodiseño y reparabilidad)"
+        "Sostenibilidad y economía",
+        "circular en electrónica de",
+        "consumo (ecodiseño y…"
       ],
       "code": "L25",
       "sectorId": "D5",
