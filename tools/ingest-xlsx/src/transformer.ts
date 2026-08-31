@@ -41,31 +41,48 @@ function parseSublines(val: unknown): string[] | undefined {
   return undefined;
 }
 
-function generateNameLines(name: string): string[] | undefined {
+// SVG label robustness (Batch 4 / CRITICAL-1 fix): word-wrap into a bounded
+// number of narrow lines instead of a single fixed 2-way split, so labels
+// stay legible and don't blow up the on-radar bounding box regardless of how
+// long the source dataset's item/sector names are (telecom avg 39.8/max 56
+// chars vs. electronics avg 77/max 125 chars — a fixed 2-line split leaves
+// electronics labels roughly twice as wide as telecom's, which is what
+// caused reproducible label-overlap/click-interception in RadarChart).
+const MAX_LABEL_LINE_CHARS = 26;
+const MAX_LABEL_LINES = 3;
+
+export function generateNameLines(name: string): string[] | undefined {
   if (!name) return undefined;
-  // Simple heuristic: split on " / " or " para " to match existing data pattern
-  if (name.includes(" / ")) {
-    const parts = name.split(" / ");
-    if (parts.length === 2) {
-      return [parts[0] + " /", parts[1]];
+  if (name.length <= MAX_LABEL_LINE_CHARS) return undefined;
+
+  const words = name.split(/\s+/);
+  const allLines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+    if (candidate.length > MAX_LABEL_LINE_CHARS && current) {
+      allLines.push(current);
+      current = word;
+    } else {
+      current = candidate;
     }
   }
-  if (name.includes(" para ")) {
-    const idx = name.indexOf(" para ");
-    return [name.slice(0, idx).trim(), "para " + name.slice(idx + 6).trim()];
+  if (current) allLines.push(current);
+
+  if (allLines.length <= MAX_LABEL_LINES) return allLines;
+
+  // Too many lines even at the narrow width — truncate and ellipsize the
+  // last visible line. The full, untruncated name remains available via
+  // `tech.name` (TechDetail's full-name display) and the SVG `<title>`
+  // tooltip; only the inline chart label is shortened.
+  const visible = allLines.slice(0, MAX_LABEL_LINES);
+  const lastIdx = visible.length - 1;
+  let lastLine = visible[lastIdx];
+  if (lastLine.length > MAX_LABEL_LINE_CHARS - 1) {
+    lastLine = lastLine.slice(0, MAX_LABEL_LINE_CHARS - 1).trimEnd();
   }
-  if (name.includes(" (")) {
-    const idx = name.indexOf(" (");
-    return [name.slice(0, idx).trim(), name.slice(idx + 1).trim()];
-  }
-  if (name.length > 40) {
-    const mid = Math.floor(name.length / 2);
-    const spaceIdx = name.lastIndexOf(" ", mid);
-    if (spaceIdx > 0) {
-      return [name.slice(0, spaceIdx).trim(), name.slice(spaceIdx + 1).trim()];
-    }
-  }
-  return undefined;
+  visible[lastIdx] = `${lastLine}…`;
+  return visible;
 }
 
 function transformRings(raw: Record<string, unknown>[], errors: IngestError[]): RadarRing[] {
