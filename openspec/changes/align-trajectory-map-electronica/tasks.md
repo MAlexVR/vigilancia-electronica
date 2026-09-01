@@ -39,11 +39,11 @@ PR2 exceeds the budget even chained; flag for maintainer `size:exception` approv
 
 ## Phase 2: Engine + UI Port (PR2, verbatim)
 
-- [ ] 2.1 RED: copy `src/lib/trajectory/{config,layout}.test.ts` verbatim; confirm failing (missing source).
-- [ ] 2.2 GREEN: copy `src/lib/trajectory/{types,config,layout,index}.ts` verbatim; tests pass unchanged.
-- [ ] 2.3 Copy `arch.test.ts`, then swap forbidden token `"ceet-telecom"` → `"ceet-electronica"` (+ doc comment) — the one deliberate non-verbatim edit; run, confirm it passes against electronica's dataset guard.
-- [ ] 2.4 RED: copy `TrajectoryMap.test.tsx`, `TrajectoryNode.test.tsx` verbatim; confirm failing (missing components).
-- [ ] 2.5 GREEN: copy `src/components/trajectory/{TrajectoryProvider,TrajectoryMap,TrajectoryLane,TrajectoryNode,TrajectoryDetail,TrajectoryLegend,index}.tsx` + `*.stories.tsx` verbatim.
+- [x] 2.1 RED: copy `src/lib/trajectory/{config,layout}.test.ts` verbatim; confirm failing (missing source).
+- [x] 2.2 GREEN: copy `src/lib/trajectory/{types,config,layout,index}.ts` verbatim; tests pass unchanged.
+- [x] 2.3 Copy `arch.test.ts`, then swap forbidden token `"ceet-telecom"` → `"ceet-electronica"` (+ doc comment) — the one deliberate non-verbatim edit; run, confirm it passes against electronica's dataset guard.
+- [x] 2.4 RED: copy `TrajectoryMap.test.tsx`, `TrajectoryNode.test.tsx` verbatim; confirm failing (missing components).
+- [x] 2.5 GREEN: copy `src/components/trajectory/{TrajectoryProvider,TrajectoryMap,TrajectoryLane,TrajectoryNode,TrajectoryDetail,TrajectoryLegend,index}.tsx` + `*.stories.tsx` verbatim.
 
 ## Phase 3: Domain Adapter (PR3, TDD, new code)
 
