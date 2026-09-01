@@ -55,15 +55,15 @@ PR2 exceeds the budget even chained; flag for maintainer `size:exception` approv
 
 ## Phase 4: Integration (PR4)
 
-- [ ] 4.1 Create `src/components/molecules/TrajectoryModal.tsx` from telecom's, swap import to `electronicaConfig`/`buildElectronicaTrajectory`; keep sources footer verbatim.
-- [ ] 4.2 RED then GREEN: Header test asserting "Mapa de Trayectoria Tecnológica" button exists desktop+mobile and opens the modal; then wire `Header.tsx` (import, state, buttons, mount `TrajectoryModal`).
-- [ ] 4.3 Delete `TrajectoryMapCard.tsx` + its test.
-- [ ] 4.4 Verify RadarTemplate.tsx `<Separator/>` (~L264): remove only if it exclusively divided the removed card; else keep. Remove card import/usage from `RadarTemplate.tsx` and `MobileLayout.tsx` (drop wrapping `<Card>` only if it wrapped just the card).
-- [ ] 4.5 Regression: confirm existing `RadarTemplate`/`MobileLayout` tests pass with no `TrajectoryMapCard` reference.
-- [ ] 4.6 Insert trajectory education section into `HelpModal.tsx` (before content-closing `</div>` near L149), adapted intro to Electrónica + its horizon; no apology/pending language.
-- [ ] 4.7 Add `header.trajectory` + `trajectory` namespace to `messages/es.json`; copy `sourcesTitle`/`exportPDF`/`exportingPDF`/`close`/`emptyState` verbatim; adapt `description`/`introTitle`/`introText` to Electrónica.
-- [ ] 4.8 Set `trajectory.exportError` to `"Error al exportar. Intente de nuevo."` — do NOT copy telecom's `"Intenta de nuevo."` verbatim.
-- [ ] 4.9 If PR4's diff exceeds ~400 lines, split into 4a (Modal+Header+card removal) and 4b (HelpModal+i18n) as separate stacked PRs.
+- [x] 4.1 Create `src/components/molecules/TrajectoryModal.tsx` from telecom's, swap import to `electronicaConfig`/`buildElectronicaTrajectory`; keep sources footer verbatim.
+- [x] 4.2 RED then GREEN: Header test asserting "Mapa de Trayectoria Tecnológica" button exists desktop+mobile and opens the modal; then wire `Header.tsx` (import, state, buttons, mount `TrajectoryModal`).
+- [x] 4.3 Delete `TrajectoryMapCard.tsx` + its test.
+- [x] 4.4 Verify RadarTemplate.tsx `<Separator/>` (~L264): remove only if it exclusively divided the removed card; else keep. Remove card import/usage from `RadarTemplate.tsx` and `MobileLayout.tsx` (drop wrapping `<Card>` only if it wrapped just the card). — Confirmed: the `<Separator/>` at L264 sat directly between the Nomenclaturas `<details>` and `<TrajectoryMapCard/>` with nothing after it; removed. MobileLayout's `<Card>` wrapped only the card; removed.
+- [x] 4.5 Regression: confirm existing `RadarTemplate`/`MobileLayout` tests pass with no `TrajectoryMapCard` reference. — No dedicated test files existed for these templates before this change; verified via `npx tsc --noEmit` (clean), `npm run build` (clean), and `grep -r TrajectoryMapCard src` (no matches) instead.
+- [x] 4.6 Insert trajectory education section into `HelpModal.tsx` (before content-closing `</div>` near L149), adapted intro to Electrónica + its horizon; no apology/pending language. — RED/GREEN via new `HelpModal.test.tsx`. Deviation: omitted the "gap-color indicators" sub-section telecom has, since electronica's L1 data assigns no `gap` value in this delivery (design's own D5/Interfaces decision) — a gap legend would describe UI state that never occurs, which conflicts with the change's own honesty principle (D1).
+- [x] 4.7 Add `header.trajectory` + `trajectory` namespace to `messages/es.json`; copy `sourcesTitle`/`exportPDF`/`exportingPDF`/`close`/`emptyState` verbatim; adapt `description`/`introTitle`/`introText` to Electrónica.
+- [x] 4.8 Set `trajectory.exportError` to `"Error al exportar. Intente de nuevo."` — do NOT copy telecom's `"Intenta de nuevo."` verbatim.
+- [x] 4.9 PR4's diff came to ~564 changed lines (>400), so it was split at the commit level on `feat/trajectory-map-pr4-integration` into two logical, independently reviewable commits mirroring 4a/4b: commit `9ae1973` (Modal+Header+card removal+i18n, 378+/83-, 461 changed lines — `header.trajectory`/`trajectory` i18n keys moved into 4a instead of 4b because `TrajectoryModal`/`Header` functionally require them at render time, unlike `HelpModal` which uses no i18n keys) and commit `f0cc551` (HelpModal education section, 103+/0-). Flagging for the orchestrator: 4a alone is still ~461 lines, slightly over the 400-line guard even after the split — mostly the near-verbatim `TrajectoryModal.tsx` port (251 ln, same "verbatim mechanical copy" rationale as PR2) plus its new test file; recommend either accepting as `size:exception` on the 4a slice or the orchestrator further splitting card-removal into its own PR if strict budget adherence is required.
 
 ## Phase 5: Guardrail Verification (gate before archive)
 
