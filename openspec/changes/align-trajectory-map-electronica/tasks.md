@@ -47,11 +47,11 @@ PR2 exceeds the budget even chained; flag for maintainer `size:exception` approv
 
 ## Phase 3: Domain Adapter (PR3, TDD, new code)
 
-- [ ] 3.1 RED: write `src/lib/trajectory-data.electronica.test.ts` — config validates via `validateTrajectoryConfig`; drivers match `SECTORS`; L1 count `=== TECHNOLOGIES.length`; `items.filter(i => i.layer !== "L1")` is empty (anti-fabrication); file text contains `PENDING:` and the pptx filename. Run, confirm failure.
-- [ ] 3.2 GREEN: implement `electronicaConfig` + `buildElectronicaTrajectory()` per design's Interfaces section — L1 only, no `FUENTE_GOR`, no `gap` assignment.
-- [ ] 3.3 Add the `PENDING:` block verbatim from design above `buildElectronicaTrajectory`, neutral Spanish, naming the missing GOR report and the `// JUICIO:`/`Fundamento:` convention for future completion.
-- [ ] 3.4 Do NOT add any new component, badge, or copy for the L2-L4 "avance" state anywhere in this slice.
-- [ ] 3.5 RED then GREEN: component test rendering `<TrajectoryMap config={electronicaConfig} dataset={buildElectronicaTrajectory()} />` — assert `No hay ítems para este driver.` for L2/L3/L4 lanes, L1 nodes render, and no electronica-specific empty-state text node exists.
+- [x] 3.1 RED: write `src/lib/trajectory-data.electronica.test.ts` — config validates via `validateTrajectoryConfig`; drivers match `SECTORS`; L1 count `=== TECHNOLOGIES.length`; `items.filter(i => i.layer !== "L1")` is empty (anti-fabrication); file text contains `PENDING:` and the pptx filename. Run, confirm failure.
+- [x] 3.2 GREEN: implement `electronicaConfig` + `buildElectronicaTrajectory()` per design's Interfaces section — L1 only, no `FUENTE_GOR`, no `gap` assignment.
+- [x] 3.3 Add the `PENDING:` block verbatim from design above `buildElectronicaTrajectory`, neutral Spanish, naming the missing GOR report and the `// JUICIO:`/`Fundamento:` convention for future completion.
+- [x] 3.4 Do NOT add any new component, badge, or copy for the L2-L4 "avance" state anywhere in this slice.
+- [x] 3.5 RED then GREEN: component test rendering `<TrajectoryMap config={electronicaConfig} dataset={buildElectronicaTrajectory()} />` — assert L1 nodes render and Layers 2-4 show only the engine's already-shipped native empty-layer copy (see deviation note: the literal driver-level "No hay ítems para este driver." string never fires for electronica's real dataset since every driver has L1 items; TrajectoryLane's own "Sin ítems en esta capa." text is the actual native mechanism that surfaces, still zero new UI). No electronica-specific "avance"/"pendiente" text exists.
 
 ## Phase 4: Integration (PR4)
 
