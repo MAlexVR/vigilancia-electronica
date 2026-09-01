@@ -12,7 +12,6 @@ import { NomenclatureTable } from "@/components/organisms/NomenclatureTable";
 import { RadarLegend } from "@/components/organisms/RadarLegend";
 import type { Technology, ActiveFilters } from "@/types/radar";
 import { MobileFilters } from "@/components/molecules/MobileFilters";
-import { TrajectoryMapCard } from "@/components/molecules/TrajectoryMapCard";
 
 interface MobileLayoutProps {
   filteredTechs: Technology[];
@@ -181,11 +180,6 @@ export function MobileLayout({
 
         <TabsContent value="legend">
           <RadarLegend />
-          <Card className="mt-3">
-            <CardContent className="p-0">
-              <TrajectoryMapCard />
-            </CardContent>
-          </Card>
         </TabsContent>
       </Tabs>
     </main>
