@@ -401,8 +401,8 @@ Grupo de Investigación, Innovación y Producción Académica — GICS
 
 ## Fuente
 
-Elaboración propia basada en ejercicio de Vigilancia Científico-Tecnológica CEET-GICS (2026).
-Metodología tipo Gartner Technology Radar para el Radar; metodología TRM (Industry Canada) + T-Plan (Cambridge) + ATRA (MIT, de Weck) para el Mapa de Trayectoria.
+Elaboración propia basada en ejercicio de Vigilancia Científico-Tecnológica CEET-GICS (2025).
+Metodología tipo Gartner Technology Radar.
 
 ## Licencia
 
