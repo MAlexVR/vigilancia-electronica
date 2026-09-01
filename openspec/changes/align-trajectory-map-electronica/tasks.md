@@ -67,10 +67,10 @@ PR2 exceeds the budget even chained; flag for maintainer `size:exception` approv
 
 ## Phase 5: Guardrail Verification (gate before archive)
 
-- [ ] 5.1 Diff-check `src/components/molecules/AboutModal.tsx` against pre-change HEAD across all slices — MUST be empty. No task in Phases 1-4 may open this file for writing.
-- [ ] 5.2 Confirm no new component/badge/text exists for L2-L4 beyond the engine's native empty state (grep rendered DOM/test output for stray "avance"/"pendiente" strings outside the engine element).
-- [ ] 5.3 Scan every new/changed Spanish string (UI, comments, `messages/es.json`, README, commit messages) for voseo forms (`vos`, `tenés`, `podés`, `sos`); none present.
-- [ ] 5.4 Confirm `trajectory-data.electronica.ts` contains the `PENDING:` comment and no `PENDING:` marker on the L1 section.
+- [x] 5.1 Diff-check `src/components/molecules/AboutModal.tsx` against pre-change HEAD across all slices — MUST be empty. No task in Phases 1-4 may open this file for writing. — Confirmed empty (`git diff master..feat/trajectory-map-pr4-integration -- AboutModal.tsx`).
+- [x] 5.2 Confirm no new component/badge/text exists for L2-L4 beyond the engine's native empty state (grep rendered DOM/test output for stray "avance"/"pendiente" strings outside the engine element). — Only matches are negative test assertions (`queryByText(/pendiente/i)).not.toBeInTheDocument()`), confirming the guardrail is actively tested, not violated.
+- [x] 5.3 Scan every new/changed Spanish string (UI, comments, `messages/es.json`, README, commit messages) for voseo forms (`vos`, `tenés`, `podés`, `sos`); none present. — Confirmed across full PR1-4 stack diff.
+- [x] 5.4 Confirm `trajectory-data.electronica.ts` contains the `PENDING:` comment and no `PENDING:` marker on the L1 section. — Confirmed: `PENDING:` block documents L2-L4 only; the L1 build loop carries no such marker.
 
 ## Phase 6: Docs & Repo Presentation (PR5, independent, parallel-safe)
 
