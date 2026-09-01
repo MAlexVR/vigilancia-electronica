@@ -11,7 +11,6 @@ import { NomenclatureTable } from "@/components/organisms/NomenclatureTable";
 import { RadarLegend } from "@/components/organisms/RadarLegend";
 import { FilterSidebar } from "@/components/molecules/FilterSidebar";
 import { ZoomControls } from "@/components/molecules/ZoomControls";
-import { TrajectoryMapCard } from "@/components/molecules/TrajectoryMapCard";
 import { MobileLayout } from "./MobileLayout";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
@@ -261,8 +260,6 @@ export function RadarTemplate() {
                 />
               </div>
             </details>
-            <Separator />
-            <TrajectoryMapCard />
           </div>
         </aside>
       </main>
