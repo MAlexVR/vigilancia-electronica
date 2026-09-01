@@ -8,40 +8,53 @@ fabricated trajectory data ships before the source report is delivered.
 
 ## Requirements
 
-### Requirement: Visible Pending-Content Placeholder
+### Requirement: Trajectory Map Entry Point
 
-The application MUST include a visible "Mapa de trayectoria tecnológica"
-section or entry point. The system MUST NOT hide, omit, or disable this
-section without explanation.
+The application MUST include a visible "Trayectoria" entry point in the
+Header, reachable on both desktop and mobile layouts, that opens the
+Trajectory Map modal. The system MUST NOT hide, omit, or disable this entry
+point without explanation.
 
-#### Scenario: User finds the trajectory map section
+#### Scenario: User opens the trajectory map from the Header (desktop)
 
-- GIVEN a user browsing the Electronics radar app
-- WHEN they look for the "Mapa de trayectoria tecnológica" section
-- THEN a visible section or entry point with that label exists and is reachable
+- GIVEN a user browsing the Electronics radar app on a desktop viewport
+- WHEN they open the Header and select the "Trayectoria" action
+- THEN the Trajectory Map modal opens
 
-### Requirement: Honest Pending-Content Message
+#### Scenario: User opens the trajectory map from the Header (mobile)
 
-The trajectory map section MUST display Spanish copy explicitly stating that
-the corresponding source report has not been delivered yet. The system MUST
-NOT render any fabricated, placeholder-generated, or estimated trajectory
-data in its place.
+- GIVEN a user browsing the Electronics radar app on a mobile viewport
+- WHEN they open the Header mobile menu and select the "Trayectoria" action
+- THEN the Trajectory Map modal opens
 
-#### Scenario: User opens the section and sees the pending message
+#### Scenario: Inline placeholder card no longer exists
 
-- GIVEN a user opens the "Mapa de trayectoria tecnológica" section
-- WHEN the section content renders
-- THEN it displays Spanish text stating the source report has not been delivered yet, and no trajectory chart, timeline, or fabricated data is shown
+- GIVEN the RadarTemplate desktop sidebar and MobileLayout mobile tabs
+- WHEN the templates render
+- THEN no inline `TrajectoryMapCard` element is present in either template
 
 ### Requirement: Code Comment Marking Future Completion
 
-The source code implementing the placeholder MUST include a code comment
-identifying it as pending and referencing what unblocks it (the missing
-source report / pptx agenda item), so a future contributor can find and
-complete it.
+The source file providing Layer 2–4 trajectory data
+(`src/lib/trajectory-data.electronica.ts`) MUST include a `PENDING:` (or
+equivalent) code comment identifying which layers remain unpopulated and
+naming the missing Electrónica GOR source report that unblocks them, so a
+future contributor or AI agent can find and complete it. Layer 1
+(Tecnologías) is exempt from this marker because it is fully populated from
+real data.
 
-#### Scenario: Developer finds the pending marker in source
+#### Scenario: Developer finds the pending marker in the data adapter
 
-- GIVEN a developer reads the trajectory-map placeholder's source file
-- WHEN they inspect the placeholder implementation
-- THEN a `PENDING:` (or equivalent) code comment is present, naming the missing source report as the blocker for completion
+- GIVEN a developer reads `src/lib/trajectory-data.electronica.ts`
+- WHEN they inspect the file for Layers 2–4 (Infraestructura, Talento e
+  I+D+i, Alianzas)
+- THEN a `PENDING:` (or equivalent) code comment is present, naming the
+  missing Electrónica GOR source report as the blocker and stating where
+  Layer 2–4 items should be added once it is delivered
+
+#### Scenario: Layer 1 has no pending marker
+
+- GIVEN a developer reads `src/lib/trajectory-data.electronica.ts`
+- WHEN they inspect the Layer 1 (Tecnologías) section
+- THEN no `PENDING:` marker is attached to it, since Layer 1 is populated
+  from real `TECHNOLOGIES` data
