@@ -74,7 +74,7 @@ PR2 exceeds the budget even chained; flag for maintainer `size:exception` approv
 
 ## Phase 6: Docs & Repo Presentation (PR5, independent, parallel-safe)
 
-- [ ] 6.1 Verify whether electronica has an XLSX→JSON pipeline script (check `scripts/`); only add README's `## Pipeline de Datos` section if one exists — do not fabricate.
-- [ ] 6.2 Restructure `README.md` to telecom's section order (H1, Arquitectura, Radar Tecnológico, Mapa de Trayectoria Tecnológica, Paleta/Stack/Instalación/Testing/Storybook/Estructura/Changelog), preserving electronica's `## Autores`/`### Coautor`/`## Fuente` content unchanged; add new Changelog entry.
-- [ ] 6.3 Capture the current GitHub repo description via `gh repo view MAlexVR/vigilancia-electronica` for rollback.
-- [ ] 6.4 Run `gh repo edit --description "Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) del SENA, Bogotá D.C." MAlexVR/vigilancia-electronica`. Do not touch the homepage field.
+- [x] 6.1 Verify whether electronica has an XLSX→JSON pipeline script (check `scripts/`); only add README's `## Pipeline de Datos` section if one exists — do not fabricate. — Confirmed: `tools/ingest-xlsx/` exists (parser/transformer/CLI) plus `package.json` scripts `data:build`/`data:validate`, matching telecom's. Section added.
+- [x] 6.2 Restructure `README.md` to telecom's section order (H1, Arquitectura, Radar Tecnológico, Mapa de Trayectoria Tecnológica, Paleta/Stack/Instalación/Testing/Storybook/Pipeline de Datos/Estructura/Changelog/Autores/Fuente/Licencia), preserving electronica's `## Autores`/`### Coautor`/`## Fuente` content unchanged; added new Changelog entry (v1.1.0) and bumped `package.json`/badge version 1.0.0 → 1.1.0 to match. Mapa de Trayectoria section states its avance status honestly (L1 only, L2-L4 pending source report), no fabricated content.
+- [x] 6.3 Capture the current GitHub repo description via `gh repo view MAlexVR/vigilancia-electronica` for rollback. — Prior value: "Radar Tecnológico de Vigilancia Científico-Tecnológica del área de Electrónica — CEET, SENA. Prospectiva 2026-2036."
+- [x] 6.4 Run `gh repo edit --description "..." MAlexVR/vigilancia-electronica`. Homepage field untouched (unrelated, already correct). — Done and verified via `gh repo view`.
