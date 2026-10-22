@@ -26,4 +26,11 @@ describe("HelpModal — Trajectory Map education section", () => {
     expect(screen.queryByText(/pendiente/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/avance/i)).not.toBeInTheDocument();
   });
+
+  it("clarifies that layers L1-L4 are not the L01-L24 technology line codes", () => {
+    render(<HelpModal open onOpenChange={() => {}} />);
+
+    expect(screen.getByText(/no deben confundirse con los códigos de línea/)).toBeInTheDocument();
+    expect(screen.getByText(/\(L01–L24\)/)).toBeInTheDocument();
+  });
 });

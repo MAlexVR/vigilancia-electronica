@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { AboutModal } from "./AboutModal";
+import { SECTORS, TECHNOLOGIES } from "@/lib/radar-data";
 
 describe("AboutModal", () => {
   it("lists both autores verbatim, labeled as Instructores — Área de Electrónica", () => {
@@ -49,5 +50,15 @@ describe("AboutModal", () => {
 
     expect(screen.getByText(/del área de electrónica/)).toBeInTheDocument();
     expect(screen.getByText(/horizonte 2026-2036/)).toBeInTheDocument();
+  });
+
+  it("shows the dataset counts from the radar data and the update date", () => {
+    render(<AboutModal open onOpenChange={() => {}} />);
+
+    expect(screen.getByText("Datos")).toBeInTheDocument();
+    expect(
+      screen.getByText(`${TECHNOLOGIES.length} tecnologías · ${SECTORS.length} direccionadores`),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Octubre 2026")).toBeInTheDocument();
   });
 });

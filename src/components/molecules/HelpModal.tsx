@@ -185,6 +185,11 @@ export function HelpModal({ open, onOpenChange }: HelpModalProps) {
               ))}
             </div>
 
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Las capas L1–L4 no deben confundirse con los códigos de línea
+              tecnológica (L01–L24) del radar: cada nodo de la capa Tecnologías
+              corresponde a una línea.
+            </p>
             {/* Cómo usarlo */}
             <div className="space-y-1.5 text-sm text-muted-foreground">
               <p className="font-semibold text-sena-gray-dark text-xs">Cómo usarlo</p>

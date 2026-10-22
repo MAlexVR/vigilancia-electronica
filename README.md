@@ -1,12 +1,12 @@
 # Vigilancia Tecnológica CEET — Radar y Mapa de Trayectoria | Electrónica 2026-2036
 
-![Version](https://img.shields.io/badge/version-1.1.0-39A900?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.2.0-39A900?style=flat-square)
 ![SENA](https://img.shields.io/badge/SENA-CEET-00324D?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss)
-![Tests](https://img.shields.io/badge/tests-259%20passing-brightgreen?style=flat-square)
+![Tests](https://img.shields.io/badge/tests-229%20passing-brightgreen?style=flat-square)
 
 Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA, Bogotá D.C. Integra dos herramientas complementarias: el **Radar Tecnológico** (madurez y adopción de 24 tecnologías en un horizonte 2026-2036) y el **Mapa de Trayectoria Tecnológica** (evolución de capacidades del área en el tiempo, por direccionador estratégico).
 
@@ -370,10 +370,19 @@ messages/
 
 ## Changelog
 
+### v1.2.0 — Actualización con el Mapa TT FINAL (octubre de 2026)
+
+- **Datos alineados al Excel FINAL** (`Mapa_TT_Electronica_Plantilla_FINAL_2026.xlsx`): direccionadores reordenados (D1 Microelectrónica, D2 Potencia y energía, D3 Automatización industrial, D4 y D5 sin cambio) y líneas renumeradas L01-L24 (D1 = L01-L05 … D5 = L21-L24).
+- **24 tecnologías**: se retira «Renderizado gráfico neuronal e IA generativa» del Excel; D5 queda con 4 líneas.
+- **Nuevas sublíneas**: SL02d (circularidad y e-waste de PCB, validada por el vigía), SL16d/e (regulación y neurotecnología) y SL21e/f (climatización residencial y gasodomésticos).
+- **Metodología intacta**: anillo derivado del TRL con la rúbrica R1-R5; la revisión queda trazada en `data/electronica/curation-log.md`.
+- **Modales**: «Acerca de» muestra la fecha de actualización y los conteos reales; la Ayuda aclara la diferencia entre capas (L1-L4) y códigos de línea (L01-L24) y el estado pendiente de las capas L2-L4.
+- **Tests**: 229 tests unitarios; se fija el mapeo código → direccionador.
+
 ### v1.1.0 — Mapa de Trayectoria Tecnológica, en avance (2026)
 
 - **Motor de trayectoria portado**: `src/lib/trajectory/` y `src/components/trajectory/`, idénticos a los de la plataforma hermana de Telecomunicaciones, sin cambios en el contrato del motor.
-- **Adaptador de dominio Electrónica**: `src/lib/trajectory-data.electronica.ts` — capa L1 (Tecnologías) poblada desde las 24 tecnologías reales del radar; capas L2-L4 (Infraestructura, Talento e I+D+i, Alianzas) sin ítems, en espera del informe fuente del área. Sin banner ni texto de relleno: el motor renderiza su estado vacío nativo para esas capas. Marcador `PENDING:` en el código documenta qué hacer cuando el informe llegue.
+- **Adaptador de dominio Electrónica**: `src/lib/trajectory-data.electronica.ts` — capa L1 (Tecnologías) poblada desde las 25 tecnologías reales del radar; capas L2-L4 (Infraestructura, Talento e I+D+i, Alianzas) sin ítems, en espera del informe fuente del área. Sin banner ni texto de relleno: el motor renderiza su estado vacío nativo para esas capas. Marcador `PENDING:` en el código documenta qué hacer cuando el informe llegue.
 - **Modal con export PDF**: `TrajectoryModal.tsx` — integra el motor con el dataset de Electrónica; export vía `downloadElementAsPDF` (html-to-image + jsPDF, A4 landscape, 3× resolución) desde `src/core/export.ts`.
 - **Punto de entrada en el encabezado**: botón "Mapa de Trayectoria Tecnológica" en el Header (desktop y móvil), igual que en Telecomunicaciones. Se retira el placeholder anterior (`TrajectoryMapCard.tsx`).
 - **Ayuda**: nueva sección educativa sobre el Mapa de Trayectoria en `HelpModal.tsx`.
@@ -381,7 +390,7 @@ messages/
 
 ### v1.0.0 — Versión inicial (2026)
 
-- Radar SVG interactivo con 24 tecnologías
+- Radar SVG interactivo con 25 tecnologías
 - Zoom, pan, filtros y exportación PNG/PDF
 
 ---

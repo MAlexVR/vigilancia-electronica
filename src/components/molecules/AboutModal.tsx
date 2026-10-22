@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { APP_VERSION } from "@/lib/version";
+import { SECTORS, TECHNOLOGIES } from "@/lib/radar-data";
 
 interface AboutModalProps {
   open: boolean;
@@ -63,9 +64,19 @@ export function AboutModal({ open, onOpenChange }: AboutModalProps) {
               <span className="font-semibold text-sena-blue">Regional</span>
               <span className="text-right text-xs">Bogotá D.C.</span>
             </p>
-            <p className="flex justify-between items-center pb-0.5 pt-1">
+            <p className="flex justify-between items-center border-b border-sena-gray-light pb-1.5">
               <span className="font-semibold text-sena-blue">Grupo I+D</span>
               <span className="text-right text-xs">GICS</span>
+            </p>
+            <p className="flex justify-between items-center border-b border-sena-gray-light pb-1.5">
+              <span className="font-semibold text-sena-blue">Datos</span>
+              <span className="text-right text-xs">
+                {TECHNOLOGIES.length} tecnologías · {SECTORS.length} direccionadores
+              </span>
+            </p>
+            <p className="flex justify-between items-center pb-0.5 pt-1">
+              <span className="font-semibold text-sena-blue">Actualización</span>
+              <span className="text-right text-xs">Octubre 2026</span>
             </p>
           </div>
 
