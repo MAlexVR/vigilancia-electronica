@@ -33,6 +33,20 @@ describe("data/electronica --in-dir integration", () => {
     expect(codes).toEqual(Array.from({ length: 25 }, (_, i) => `L${String(i + 1).padStart(2, "0")}`));
   });
 
+  it("maps L01-L05 to D1 ... L21-L25 to D5 and keeps narrative cross-references on the renumbered codes", () => {
+    const parsed = readInDir(DATA_DIR);
+    const { schema } = transform(parsed, { id: "t", title: "t" });
+    schema.items.forEach((item) => {
+      const n = Number((item.code as string).slice(1));
+      expect(item.sectorId).toBe(`D${Math.ceil(n / 5)}`);
+    });
+    const byCode = new Map(schema.items.map((i) => [i.code as string, i]));
+    expect(byCode.get("L03")?.metadata?.tendencias).toContain("relacionado con L14");
+    expect(byCode.get("L04")?.metadata?.tendencias).toContain("relacionado con L02");
+    expect(byCode.get("L14")?.name).toMatch(/Edge AI/);
+    expect(byCode.get("L02")?.name).toMatch(/PCB/);
+  });
+
   it("assigns every item to one of the 4 institutional rings, with no unknown references", () => {
     const parsed = readInDir(DATA_DIR);
     const { schema, warnings } = transform(parsed, { id: "t", title: "t" });
