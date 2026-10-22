@@ -74,7 +74,7 @@
       "color": "#1565C0",
       "bgLight": "#E3F2FD",
       "bgDark": "rgba(21,101,192,0.12)",
-      "icon": "🤖"
+      "icon": "🔬"
     },
     {
       "id": "D2",
@@ -89,7 +89,7 @@
       "color": "#C62828",
       "bgLight": "#FFEBEE",
       "bgDark": "rgba(198,40,40,0.12)",
-      "icon": "🔬"
+      "icon": "⚡"
     },
     {
       "id": "D3",
@@ -104,7 +104,7 @@
       "color": "#F57F17",
       "bgLight": "#FFF3E0",
       "bgDark": "rgba(245,127,23,0.12)",
-      "icon": "⚡"
+      "icon": "🤖"
     },
     {
       "id": "D4",

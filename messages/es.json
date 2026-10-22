@@ -1,7 +1,7 @@
 {
   "radar": {
     "title": "Radar Tecnológico — Electrónica CEET 2026-2036",
-    "source": "Fuente: Elaboración propia basada en ejercicio VCyT CEET-GICS (2025). Metodología tipo Gartner Technology Radar.",
+    "source": "Fuente: Elaboración propia basada en ejercicio VCyT CEET-GICS (2026). Metodología tipo Gartner Technology Radar.",
     "selectTech": "Selecciona una tecnología",
     "selectTechHint": "Haz clic en un punto del radar o en la tabla de nomenclaturas para ver detalles, madurez (TRL) y recomendaciones.",
     "trlLevel": "Nivel de TRL",
