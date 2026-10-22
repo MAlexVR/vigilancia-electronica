@@ -7,7 +7,7 @@ test.describe("Radar Tecnológico — Página principal", () => {
 
   test("carga la página con el título del radar", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { name: "Radar Tecnológico" })
+      page.getByRole("heading", { name: "Vigilancia Tecnológica CEET" })
     ).toBeVisible();
   });
 

@@ -3,7 +3,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NextIntlClientProvider } from "next-intl";
 import { Header } from "./Header";
-import { TECHNOLOGIES } from "@/lib/radar-data";
+import { TECHNOLOGIES, techShortLabel } from "@/lib/radar-data";
 import messages from "../../../messages/es.json";
 
 function renderHeader() {
@@ -27,7 +27,7 @@ describe("Header — Trajectory Map entry point", () => {
     const dialog = screen.getByRole("dialog");
     // Real electronica data renders inside the modal — not a placeholder.
     expect(
-      within(dialog).getAllByText((TECHNOLOGIES[0].nameLines?.join(" ") ?? TECHNOLOGIES[0].name)).length,
+      within(dialog).getAllByText(techShortLabel(TECHNOLOGIES[0])).length,
     ).toBeGreaterThan(0);
   });
 
@@ -45,7 +45,7 @@ describe("Header — Trajectory Map entry point", () => {
 
     const dialog = screen.getByRole("dialog");
     expect(
-      within(dialog).getAllByText((TECHNOLOGIES[0].nameLines?.join(" ") ?? TECHNOLOGIES[0].name)).length,
+      within(dialog).getAllByText(techShortLabel(TECHNOLOGIES[0])).length,
     ).toBeGreaterThan(0);
   });
 });

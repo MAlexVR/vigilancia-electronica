@@ -20,7 +20,7 @@ import {
   buildElectronicaTrajectory,
 } from "./trajectory-data.electronica";
 import { validateTrajectoryConfig } from "./trajectory";
-import { TECHNOLOGIES, SECTORS } from "./radar-data";
+import { TECHNOLOGIES, SECTORS, techShortLabel } from "./radar-data";
 
 // ── Valid sets derived from config ────────────────────────────────────────────
 
@@ -132,7 +132,7 @@ describe("buildElectronicaTrajectory()", () => {
       const code = item.meta?.Código;
       const tech = TECHNOLOGIES.find((t) => t.code === code);
       expect(tech, `Expected a TECHNOLOGIES entry for code ${code}`).toBeDefined();
-      expect(item.title).toBe(tech!.nameLines?.join(" ") ?? tech!.name);
+      expect(item.title).toBe(techShortLabel(tech!));
       expect(item.meta?.Línea).toBe(tech!.name);
       expect(item.detail).toBe(tech!.desc);
       expect(item.metric?.value).toBe(tech!.trl);

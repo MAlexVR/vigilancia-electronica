@@ -15,7 +15,7 @@
  * y L4 (Alianzas) — ver el bloque PENDING más abajo.
  */
 
-import { TECHNOLOGIES, SECTORS } from "@/lib/radar-data";
+import { TECHNOLOGIES, SECTORS, techShortLabel } from "@/lib/radar-data";
 import { normalizeHorizon } from "@/lib/trajectory";
 import type {
   TrajectoryConfig,
@@ -134,7 +134,7 @@ export function buildElectronicaTrajectory(): TrajectoryDataset {
       horizon: normalizeHorizon(tech.horizon),
       // Título corto curado (el mismo del radar); el nombre completo de la
       // línea se conserva en meta para el panel de detalle.
-      title: tech.nameLines?.join(" ") ?? tech.name,
+      title: techShortLabel(tech),
       detail: tech.desc,
       metric: { label: "TRL", value: tech.trl },
       relatedIds: [],

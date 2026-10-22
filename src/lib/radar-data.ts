@@ -64,6 +64,11 @@ export const TECHNOLOGIES: Technology[] = schema.items.map((item) => {
   };
 });
 
+/** Short curated label drawn on the radar (falls back to the full name). */
+export function techShortLabel(tech: Pick<Technology, "name" | "nameLines">): string {
+  return tech.nameLines?.join(" ") ?? tech.name;
+}
+
 export const SECTOR_ANGLE = 72;
 
 export const RADAR_LAYOUT = {

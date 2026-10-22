@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NextIntlClientProvider } from "next-intl";
 import { TrajectoryModal } from "./TrajectoryModal";
-import { TECHNOLOGIES } from "@/lib/radar-data";
+import { TECHNOLOGIES, techShortLabel } from "@/lib/radar-data";
 import messages from "../../../messages/es.json";
 
 const { downloadElementAsPDF } = vi.hoisted(() => ({
@@ -27,7 +27,7 @@ describe("TrajectoryModal", () => {
     renderModal();
 
     expect(
-      screen.getAllByText((TECHNOLOGIES[0].nameLines?.join(" ") ?? TECHNOLOGIES[0].name)).length,
+      screen.getAllByText(techShortLabel(TECHNOLOGIES[0])).length,
     ).toBeGreaterThan(0);
   });
 
