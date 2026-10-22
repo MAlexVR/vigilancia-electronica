@@ -57,9 +57,9 @@ Consulta `docs/architectural-blueprint-v5.md` para el plan completo de fases.
 
 | ID  | Direccionador                                                                 | Tecnologías |
 | --- | ------------------------------------------------------------------------------ | ----------- |
-| D1  | Inteligencia distribuida y automatización industrial avanzada                  | 5           |
-| D2  | Microelectrónica, semiconductores y diseño electrónico avanzado                | 5           |
-| D3  | Electrónica de potencia, energía y electrificación sostenible                  | 5           |
+| D1  | Microelectrónica, semiconductores y diseño electrónico avanzado                | 5           |
+| D2  | Electrónica de potencia, energía y electrificación sostenible                  | 5           |
+| D3  | Inteligencia distribuida y automatización industrial avanzada                  | 5           |
 | D4  | Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad  | 5           |
 | D5  | Electrónica de consumo masivo, hogar inteligente y medios digitales            | 5           |
 

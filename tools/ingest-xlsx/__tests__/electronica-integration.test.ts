@@ -44,12 +44,12 @@ describe("data/electronica --in-dir integration", () => {
     });
   });
 
-  it("gives every item exactly 3 sublines and a non-empty full tendencias narrative", () => {
+  it("gives every item at least 3 sublines (the FINAL xlsx lists up to 6) and a non-empty full tendencias narrative", () => {
     const parsed = readInDir(DATA_DIR);
     const { schema } = transform(parsed, { id: "t", title: "t" });
     schema.items.forEach((item) => {
       const sublines = item.metadata?.sublines as string[] | undefined;
-      expect(sublines).toHaveLength(3);
+      expect(sublines?.length).toBeGreaterThanOrEqual(3);
       expect(typeof item.metadata?.tendencias).toBe("string");
       expect((item.metadata?.tendencias as string).length).toBeGreaterThan(0);
     });

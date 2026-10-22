@@ -63,12 +63,12 @@
   "sectors": [
     {
       "id": "D1",
-      "label": "Inteligencia distribuida y automatización industrial avanzada",
-      "shortLabel": "D1: Inteligencia distribuida y automatización industrial avanzada",
+      "label": "Microelectrónica, semiconductores y diseño electrónico avanzado",
+      "shortLabel": "D1: Microelectrónica, semiconductores y diseño electrónico avanzado",
       "labelLines": [
-        "Inteligencia distribuida y",
-        "automatización industrial",
-        "avanzada"
+        "Microelectrónica,",
+        "semiconductores y diseño",
+        "electrónico avanzado"
       ],
       "startAngle": -18,
       "color": "#1565C0",
@@ -78,12 +78,12 @@
     },
     {
       "id": "D2",
-      "label": "Microelectrónica, semiconductores y diseño electrónico avanzado",
-      "shortLabel": "D2: Microelectrónica, semiconductores y diseño electrónico avanzado",
+      "label": "Electrónica de potencia, energía y electrificación sostenible",
+      "shortLabel": "D2: Electrónica de potencia, energía y electrificación sostenible",
       "labelLines": [
-        "Microelectrónica,",
-        "semiconductores y diseño",
-        "electrónico avanzado"
+        "Electrónica de potencia,",
+        "energía y electrificación",
+        "sostenible"
       ],
       "startAngle": 54,
       "color": "#C62828",
@@ -93,12 +93,12 @@
     },
     {
       "id": "D3",
-      "label": "Electrónica de potencia, energía y electrificación sostenible",
-      "shortLabel": "D3: Electrónica de potencia, energía y electrificación sostenible",
+      "label": "Inteligencia distribuida y automatización industrial avanzada",
+      "shortLabel": "D3: Inteligencia distribuida y automatización industrial avanzada",
       "labelLines": [
-        "Electrónica de potencia,",
-        "energía y electrificación",
-        "sostenible"
+        "Inteligencia distribuida y",
+        "automatización industrial",
+        "avanzada"
       ],
       "startAngle": 126,
       "color": "#F57F17",
@@ -140,153 +140,14 @@
   "items": [
     {
       "id": "T01",
-      "name": "IIoT, Industria 4.0/5.0 y modernización de SCADA",
-      "nameLines": [
-        "IIoT, Industria 4.0/5.0 y",
-        "modernización de SCADA"
-      ],
-      "code": "L01",
-      "sectorId": "D1",
-      "ringId": "trial",
-      "angleOff": -26,
-      "maturity": {
-        "scaleId": "trl",
-        "value": 7
-      },
-      "description": "Digitalización de IIoT e Industria 4.0/5.0: sensórica conectada en tiempo real, modernización de SCADA hacia la nube/el borde y gemelos digitales ciberfísicos orientados a la Industria 5.0.",
-      "metadata": {
-        "impact": "Medio",
-        "horizon": "Corto (1-3 años)",
-        "sublines": [
-          "Sensórica y actuación conectada sobre redes 5G/TSN/OPC-UA y Ethernet-APL (capa física avanzada) para captura de datos en tiempo real",
-          "Modernización de sistemas SCADA heredados hacia arquitecturas en la nube y el borde, sobre vocabularios normalizados de IoT y gemelo digital (ISO/IEC 20924:2024) y casos de uso de manufactura inteligente (IEC TR 63283-2)",
-          "Gemelos digitales y cadenas de valor ciberfísicas orientadas a la Industria 5.0 (centralidad humana, resiliencia, sostenibilidad)"
-        ],
-        "tendencias": "ALZA FUERTE (TRL: corto plazo <3 años en grandes industrias; medio plazo 3-7 años para adopción generalizada en PYME). El estudio de Rockwell Automation (2025) reporta que el 95% de los fabricantes encuestados ya invierte o planea invertir en IA/ML en los próximos cinco años, con control de calidad como caso de uso líder. El mercado de seguridad de tecnología operativa (OT) que protege sistemas SCADA/ICS durante su modernización se proyecta en USD 58.940 millones para 2031. Se consolida además una capa de estandarización internacional conjunta (ISO/IEC/ITU-T, mapa normativo de IA/ML de agosto de 2024) sobre la que se apoya la interoperabilidad IIoT. Principal barrera: interoperabilidad de protocolos legados y coexistencia insegura entre redes OT e IT. IMPLICACIÓN CEET: Brecha ALTA. Se requiere fortalecer formación en integración IIoT-SCADA, protocolos industriales abiertos (incl. Ethernet-APL) y fundamentos de ciberseguridad OT/IT. [Nota de triangulación: línea verificada y enriquecida a partir de un ejercicio de contraste independiente entre tres borradores de vigilancia asistidos por IA, con auditoría fuente por fuente; se identificó además el tema de superficies inteligentes reconfigurables (RIS) para conectividad 6G/ISAC como señal a vigilar, pendiente de respaldo bibliográfico verificable independiente.]"
-      }
-    },
-    {
-      "id": "T02",
-      "name": "Mantenimiento predictivo con inteligencia artificial y aprendizaje automático",
-      "nameLines": [
-        "Mantenimiento predictivo",
-        "con inteligencia",
-        "artificial y aprendizaje…"
-      ],
-      "code": "L02",
-      "sectorId": "D1",
-      "ringId": "assess",
-      "angleOff": -13,
-      "maturity": {
-        "scaleId": "trl",
-        "value": 5
-      },
-      "description": "Mantenimiento predictivo con IA/ML: análisis de vibración, temperatura y corriente para predecir fallas y diagnosticar de forma remota equipo crítico industrial y biomédico.",
-      "metadata": {
-        "impact": "Medio",
-        "horizon": "Medio (3-5 años)",
-        "sublines": [
-          "Análisis de señales de vibración, temperatura, corriente y acústica mediante modelos de aprendizaje automático y profundo (XGBoost, LSTM, detección de anomalías)",
-          "Predicción de fallas en motores, bombas, compresores y líneas de envasado",
-          "Diagnóstico remoto de equipo crítico (biomédico, refrigeración industrial) mediante sensores IoT"
-        ],
-        "tendencias": "ALZA (TRL corto a medio plazo, 1-5 años según instrumentación disponible). El campo transita de la novedad a la consolidación comercial: el análisis de patentamiento muestra una meseta tras un pico de solicitudes en 2022. Aplicable directamente a manufactura, cadena de frío (compresores, sistemas de refrigeración) y mantenimiento de equipo biomédico crítico. Principal barrera: calidad y disponibilidad de datos históricos etiquetados y costo de instrumentación retrofit en plantas antiguas. IMPLICACIÓN CEET: Brecha MODERADA. Formación ya parcialmente cubierta por automatización industrial; requiere reforzar competencias específicas de ciencia de datos aplicada a series temporales de sensores."
-      }
-    },
-    {
-      "id": "T03",
-      "name": "Automatización con PLC y comisionamiento de Sistemas Instrumentados de Seguridad (SIS)",
-      "nameLines": [
-        "Automatización con PLC y",
-        "comisionamiento de",
-        "Sistemas Instrumentados d…"
-      ],
-      "code": "L03",
-      "sectorId": "D1",
-      "ringId": "adopt",
-      "angleOff": 0,
-      "maturity": {
-        "scaleId": "trl",
-        "value": 9
-      },
-      "description": "Automatización con PLC bajo IEC 61131-3 y Sistemas Instrumentados de Seguridad (SIL, IEC 61511/61508), en evolución hacia comisionamiento virtual, IIoT y ciberseguridad OT.",
-      "metadata": {
-        "impact": "Medio",
-        "horizon": "Corto (1-2 años)",
-        "sublines": [
-          "Programación normalizada IEC 61131-3 (ladder, SFC, ST, FBD) de controladores lógicos programables",
-          "Determinación de Nivel de Integridad de Seguridad (SIL) y ciclo de vida de seguridad funcional IEC 61511/IEC 61508",
-          "Comisionamiento virtual mediante gemelo digital e integración con IIoT"
-        ],
-        "tendencias": "ESTABLE-MADURA (TRL 9, en evolución continua). Tecnología consolidada que avanza hacia su integración con IIoT, comisionamiento virtual y ciberseguridad de tecnología operativa (IEC 62443). Horizonte de actualización corto (<3 años). Principal barrera: escasez de personal certificado en seguridad funcional y coexistencia de plataformas propietarias (Siemens, Rockwell, Schneider Electric, ABB) que dificulta la portabilidad de competencias entre fabricantes. IMPLICACIÓN CEET: Brecha BAJA-MODERADA. Formación técnica consolidada; oportunidad de actualización en comisionamiento virtual y ciberseguridad OT."
-      }
-    },
-    {
-      "id": "T04",
-      "name": "Edge AI, sistemas en chip (SoC), sensórica MEMS/NEMS y visión artificial industrial",
-      "nameLines": [
-        "Edge AI, sistemas en chip",
-        "(SoC), sensórica MEMS/NEMS",
-        "y visión artificial…"
-      ],
-      "code": "L04",
-      "sectorId": "D1",
-      "ringId": "assess",
-      "angleOff": 13,
-      "maturity": {
-        "scaleId": "trl",
-        "value": 5
-      },
-      "description": "Edge AI en SoC (incl. TinyML), sensórica MEMS/NEMS multisensor y visión artificial de inspección de calidad, con escalamiento comercial creciente en manufactura y consumo.",
-      "metadata": {
-        "impact": "Medio",
-        "horizon": "Medio (3-5 años)",
-        "sublines": [
-          "Ejecución de modelos de IA en dispositivos de borde mediante SoC especializados de baja latencia, incluyendo técnicas de aprendizaje profundo ultra-comprimido (TinyML) sobre microcontroladores",
-          "Sensores y actuadores microelectromecánicos y nanoelectromecánicos (MEMS/NEMS) multisensor",
-          "Visión artificial basada en aprendizaje profundo para inspección de calidad automatizada"
-        ],
-        "tendencias": "EMERGENTE con escalamiento comercial (TRL medio plazo 3-7 años; ya comercial en automotriz, manufactura y electrónica de consumo). El mercado MEMS crece cerca de 4% anual (Bosch como líder, ~USD 2.000 millones en ingresos MEMS en 2024); el mercado de visión artificial (ya en TRL 9) se proyecta en USD 61.000 millones para 2033, con inspección y control de calidad como segmento líder. El panorama de patentes de IA generativa de la WIPO (2024) confirma una aceleración del patentamiento de hardware especializado para IA de borde, y la colección científica de MDPI Sensors sobre sensórica inteligente en Industria 5.0 (2025) documenta la convergencia activa entre MEMS/NEMS y modelos de IA embebidos. Principal barrera: restricciones de potencia y disipación térmica en el borde, y fragmentación de herramientas de despliegue de modelos. IMPLICACIÓN CEET: Brecha ALTA. Se requiere formación en despliegue de modelos de IA en microcontroladores/SoC (incl. TinyML) y en integración de sensórica MEMS con visión artificial. [Nota de triangulación: se descartó incorporar como hallazgo un tema de sensórica MEMS de alta temperatura para implantes biomédicos aportado por uno de los borradores de contraste, al no superar la verificación independiente de su fuente citada; queda como señal a vigilar, no como hallazgo consolidado.]"
-      }
-    },
-    {
-      "id": "T05",
-      "name": "Robótica industrial, drones autónomos y robots humanoides emergentes",
-      "nameLines": [
-        "Robótica industrial,",
-        "drones autónomos y robots",
-        "humanoides emergentes"
-      ],
-      "code": "L05",
-      "sectorId": "D1",
-      "ringId": "trial",
-      "angleOff": 26,
-      "maturity": {
-        "scaleId": "trl",
-        "value": 7
-      },
-      "description": "Robótica industrial y drones ya maduros conviven con robots humanoides emergentes (IA visión-lenguaje-acción), en expansión acelerada de unidades instaladas y comercializadas.",
-      "metadata": {
-        "impact": "Medio",
-        "horizon": "Corto (1-3 años)",
-        "sublines": [
-          "Manipuladores industriales y robots colaborativos en líneas de manufactura y empaque",
-          "Vehículos aéreos no tripulados (UAV) para inspección, agricultura de precisión y logística de última milla",
-          "Robots humanoides impulsados por modelos de IA visión-lenguaje-acción (señal débil, TRL 4-6)"
-        ],
-        "tendencias": "ALZA (TRL 8-9 en robótica y drones comerciales, ya maduros; TRL 4-6 en robots humanoides, en fase temprana de escalamiento). La capacidad instalada de robots industriales superará 5,5 millones de unidades en 2026 y se proyectan 15.000 robots humanoides comercializados ese mismo año, con precios entre USD 14.000 y 18.000 por unidad y caída acelerada. Principal barrera: calidad de datos de entrenamiento y requisitos de seguridad laboral en entornos compartidos humano-robot. IMPLICACIÓN CEET: Brecha ALTA. Formación en robótica colaborativa ya presente; se requiere anticipar competencias en IA visión-lenguaje-acción para la próxima generación de robots humanoides."
-      }
-    },
-    {
-      "id": "T06",
       "name": "Semiconductores avanzados: arquitecturas abiertas (RISC-V) y empaquetado avanzado",
       "nameLines": [
         "Semiconductores avanzados:",
         "arquitecturas abiertas",
         "(RISC-V) y empaquetado…"
       ],
-      "code": "L06",
-      "sectorId": "D2",
+      "code": "L01",
+      "sectorId": "D1",
       "ringId": "monitor",
       "angleOff": -26,
       "maturity": {
@@ -302,19 +163,19 @@
           "Empaquetado avanzado: chiplets, interposers y empaquetado a nivel de panel, sobre el estándar abierto de interconexión de chiplets Universal Chiplet Interconnect Express (UCIe)",
           "Diseño de silicio personalizado (ASIC) para aplicaciones de IA de borde e industriales"
         ],
-        "tendencias": "EMERGENTE con impulso pesado (TRL medio a largo plazo, 5-10 años, para consolidación de RISC-V; empaquetado avanzado ya en escalamiento comercial de corto a medio plazo). RISC-V International sumó 17 nuevos miembros institucionales en 2025; ABI Research proyecta 129 millones de chips RISC-V embarcados en dispositivos de IA de borde para 2030. La OCDE (2025) documenta una concentración geográfica muy alta de la capacidad de fabricación de semiconductores, y la actualización 2023 de la hoja de ruta internacional de dispositivos y sistemas (IRDS, IEEE) confirma la trayectoria de escalamiento tecnológico del sector. Principal barrera: madurez limitada del ecosistema de software para RISC-V y altos costos de fabricación en nodos avanzados. IMPLICACIÓN CEET: Brecha CRÍTICA. Tecnología habilitadora de base con escasa oferta formativa actual en diseño de silicio abierto, interconexión de chiplets (UCIe) y empaquetado avanzado. [Nota de triangulación: línea contrastada y enriquecida frente a dos borradores de vigilancia independientes tras verificación individual de sus fuentes; se descartó incorporar un tema de óptica co-empaquetada (CPO) aportado por uno de ellos, al no superar la verificación, y queda registrado como señal a vigilar en la línea L09.]"
+        "tendencias": "EMERGENTE con impulso pesado (TRL medio a largo plazo, 5-10 años, para consolidación de RISC-V; empaquetado avanzado ya en escalamiento comercial de corto a medio plazo). RISC-V International sumó 17 nuevos miembros institucionales en 2025; ABI Research proyecta 129 millones de chips RISC-V embarcados en dispositivos de IA de borde para 2030. La OCDE (2025) documenta una concentración geográfica muy alta de la capacidad de fabricación de semiconductores, y la actualización 2023 de la hoja de ruta internacional de dispositivos y sistemas (IRDS, IEEE) confirma la trayectoria de escalamiento tecnológico del sector. Principal barrera: madurez limitada del ecosistema de software para RISC-V y altos costos de fabricación en nodos avanzados. IMPLICACIÓN CEET: Brecha CRÍTICA. Tecnología habilitadora de base con escasa oferta formativa actual en diseño de silicio abierto, interconexión de chiplets (UCIe) y empaquetado avanzado."
       }
     },
     {
-      "id": "T07",
+      "id": "T02",
       "name": "Fabricación avanzada de PCB, diseño electrónico asistido (EDA) y empaquetado de semiconductores",
       "nameLines": [
         "Fabricación avanzada de",
         "PCB, diseño electrónico",
         "asistido (EDA) y…"
       ],
-      "code": "L07",
-      "sectorId": "D2",
+      "code": "L02",
+      "sectorId": "D1",
       "ringId": "trial",
       "angleOff": -13,
       "maturity": {
@@ -328,21 +189,22 @@
         "sublines": [
           "Herramientas EDA/CAD para circuitos impresos con ruteo asistido por IA y colaboración en la nube",
           "Fabricación de PCB flexibles y de alta densidad de interconexión (HDI)",
-          "Empaquetado 3DIC y Fan-Out Panel Level Packaging para módulos de IA y alto desempeño"
+          "Empaquetado 3DIC y Fan-Out Panel Level Packaging para módulos de IA y alto desempeño",
+          "Desensamblaje mecánico/robótico, minería urbana y manejo de fin de vida (e-waste) de PCB: sustratos biodegradables y reciclables (vitrímeros, nanocelulosa), fabricación aditiva de bajo residuo e impacto del crecimiento de e-waste asociado al cómputo de IA"
         ],
-        "tendencias": "ALZA con componentes emergentes (TRL 8-9 en herramientas EDA comerciales y PCB flexibles, mercado ya valorado en USD 23.800 millones en 2024; TRL 6-8 en empaquetado avanzado 3DIC, con escalamiento proyectado hacia 2028: 1,4 millones de obleas procesadas por mes). Principal barrera: descontinuación de herramientas heredadas (Autodesk Eagle se retira en 2026) y límites físicos del escalado de un solo chip que obligan a migrar hacia integración heterogénea. IMPLICACIÓN CEET: Brecha MODERADA. Formación en diseño de PCB ya consolidada; se requiere actualización hacia herramientas EDA basadas en IA y nociones de empaquetado avanzado."
+        "tendencias": "ALZA con componentes emergentes (TRL 8-9 en herramientas EDA comerciales y PCB flexibles, mercado ya valorado en USD 23.800 millones en 2024; TRL 6-8 en empaquetado avanzado 3DIC, con escalamiento proyectado hacia 2028: 1,4 millones de obleas procesadas por mes). Principal barrera: descontinuación de herramientas heredadas (Autodesk Eagle se retira en 2026) y límites físicos del escalado de un solo chip que obligan a migrar hacia integración heterogénea. IMPLICACIÓN CEET: Brecha MODERADA. Formación en diseño de PCB ya consolidada; se requiere actualización hacia herramientas EDA basadas en IA y nociones de empaquetado avanzado. [Sublínea SL02d validada como contenido definitivo por el vigía tecnológico del CEET (octubre de 2026)]: evidencia convergente en el eje de Artículos D1 (8 de 52 artículos, Área 4: manufactura aditiva, PCB biodegradables, vitrímeros reciclables, desensamblaje mecánico/robótico, modelado de e-waste por IA generativa), en Documentos Sectoriales (OMS 2021 - e-waste y salud infantil; EPO/IEA 2026 - circularidad de baterías) y en Patentes (categoría 5, ensamblaje/empaquetado)."
       }
     },
     {
-      "id": "T08",
+      "id": "T03",
       "name": "Computación neuromórfica y arquitecturas de ultra-bajo consumo para IA de borde",
       "nameLines": [
         "Computación neuromórfica y",
         "arquitecturas de",
         "ultra-bajo consumo para I…"
       ],
-      "code": "L08",
-      "sectorId": "D2",
+      "code": "L03",
+      "sectorId": "D1",
       "ringId": "monitor",
       "angleOff": 0,
       "maturity": {
@@ -362,15 +224,15 @@
       }
     },
     {
-      "id": "T09",
+      "id": "T04",
       "name": "Empaquetado post-silicio: sustratos de vidrio y fotónica de silicio",
       "nameLines": [
         "Empaquetado post-silicio:",
         "sustratos de vidrio y",
         "fotónica de silicio"
       ],
-      "code": "L09",
-      "sectorId": "D2",
+      "code": "L04",
+      "sectorId": "D1",
       "ringId": "monitor",
       "angleOff": 13,
       "maturity": {
@@ -386,19 +248,19 @@
           "Fotónica de silicio para interconexión óptica de alta velocidad entre chiplets",
           "Integración híbrida electrónica-fotónica para módulos de cómputo de alto desempeño, incluida la óptica co-empaquetada (Co-Packaged Optics, CPO) como posible alternativa a la interconexión eléctrica de cobre en módulos de IA de alto desempeño"
         ],
-        "tendencias": "SEÑAL DÉBIL EMERGENTE (TRL temprano). Alternativas de empaquetado más allá del silicio tradicional, impulsadas por los límites físicos y térmicos del escalado de un solo chip (relacionado con L07). Principal barrera: costos de fabricación aún no competitivos frente al empaquetado convencional y escasa estandarización. IMPLICACIÓN CEET: Brecha BAJA (monitoreo). Horizonte de maduración largo (>7 años); no prioritario para formación inmediata. [Nota de triangulación: la óptica co-empaquetada (CPO) fue señalada como tema de interés por uno de los borradores de contraste, pero la fuente aportada para sustentarla no superó la verificación independiente; se incorpora aquí únicamente como señal a vigilar con fuente propia pendiente, no como hallazgo consolidado.]"
+        "tendencias": "SEÑAL DÉBIL EMERGENTE (TRL temprano). Alternativas de empaquetado más allá del silicio tradicional, impulsadas por los límites físicos y térmicos del escalado de un solo chip (relacionado con L07). Principal barrera: costos de fabricación aún no competitivos frente al empaquetado convencional y escasa estandarización. IMPLICACIÓN CEET: Brecha BAJA (monitoreo). Horizonte de maduración largo (>7 años); no prioritario para formación inmediata."
       }
     },
     {
-      "id": "T10",
+      "id": "T05",
       "name": "Sensórica cuántica aplicada a IoT agroindustrial, de salud y ambiental",
       "nameLines": [
         "Sensórica cuántica",
         "aplicada a IoT",
         "agroindustrial, de salud…"
       ],
-      "code": "L10",
-      "sectorId": "D2",
+      "code": "L05",
+      "sectorId": "D1",
       "ringId": "monitor",
       "angleOff": 26,
       "maturity": {
@@ -418,15 +280,15 @@
       }
     },
     {
-      "id": "T11",
+      "id": "T06",
       "name": "Redes inteligentes, sistemas de gestión de batería (BMS) y electromovilidad",
       "nameLines": [
         "Redes inteligentes,",
         "sistemas de gestión de",
         "batería (BMS) y…"
       ],
-      "code": "L11",
-      "sectorId": "D3",
+      "code": "L06",
+      "sectorId": "D2",
       "ringId": "trial",
       "angleOff": -26,
       "maturity": {
@@ -446,15 +308,15 @@
       }
     },
     {
-      "id": "T12",
+      "id": "T07",
       "name": "Instrumentación electrónica de control de procesos industriales y cadena de frío",
       "nameLines": [
         "Instrumentación",
         "electrónica de control de",
         "procesos industriales y…"
       ],
-      "code": "L12",
-      "sectorId": "D3",
+      "code": "L07",
+      "sectorId": "D2",
       "ringId": "adopt",
       "angleOff": -13,
       "maturity": {
@@ -474,15 +336,15 @@
       }
     },
     {
-      "id": "T13",
+      "id": "T08",
       "name": "Semiconductores de potencia de banda ancha prohibida (GaN y SiC)",
       "nameLines": [
         "Semiconductores de",
         "potencia de banda ancha",
         "prohibida (GaN y SiC)"
       ],
-      "code": "L13",
-      "sectorId": "D3",
+      "code": "L08",
+      "sectorId": "D2",
       "ringId": "trial",
       "angleOff": 0,
       "maturity": {
@@ -502,15 +364,15 @@
       }
     },
     {
-      "id": "T14",
+      "id": "T09",
       "name": "Baterías de estado sólido y almacenamiento energético de próxima generación",
       "nameLines": [
         "Baterías de estado sólido",
         "y almacenamiento",
         "energético de próxima…"
       ],
-      "code": "L14",
-      "sectorId": "D3",
+      "code": "L09",
+      "sectorId": "D2",
       "ringId": "assess",
       "angleOff": 13,
       "maturity": {
@@ -530,15 +392,15 @@
       }
     },
     {
-      "id": "T15",
+      "id": "T10",
       "name": "Refrigerantes de próxima generación y calendario regulatorio ambiental",
       "nameLines": [
         "Refrigerantes de próxima",
         "generación y calendario",
         "regulatorio ambiental"
       ],
-      "code": "L15",
-      "sectorId": "D3",
+      "code": "L10",
+      "sectorId": "D2",
       "ringId": "adopt",
       "angleOff": 26,
       "maturity": {
@@ -555,6 +417,145 @@
           "Instrumentación de seguridad y detección de fugas para refrigerantes inflamables o tóxicos"
         ],
         "tendencias": "ALZA de origen regulatorio (TRL 7-9 según refrigerante, en fase de estandarización en mercados en desarrollo). El Protocolo de Montreal y su Enmienda de Kigali (vigente desde el 1 de enero de 2019) imponen una reducción superior al 80% de la producción y consumo de HFC en 30 años; la actualización 2022 de la norma IEC 60335-2-40 elevó el límite de carga de propano de 340 g a 988 g. La adopción de CO2 transcrítico creció 28% en Norteamérica solo en 2025. Principal barrera: necesidad de recalificación técnica en manejo seguro de refrigerantes inflamables o tóxicos. IMPLICACIÓN CEET: Brecha ALTA. Calendario regulatorio ya vigente en Colombia (Resolución 0130 de 2024); formación en manejo seguro de refrigerantes naturales es urgente."
+      }
+    },
+    {
+      "id": "T11",
+      "name": "IIoT, Industria 4.0/5.0 y modernización de SCADA",
+      "nameLines": [
+        "IIoT, Industria 4.0/5.0 y",
+        "modernización de SCADA"
+      ],
+      "code": "L11",
+      "sectorId": "D3",
+      "ringId": "trial",
+      "angleOff": -26,
+      "maturity": {
+        "scaleId": "trl",
+        "value": 7
+      },
+      "description": "Digitalización de IIoT e Industria 4.0/5.0: sensórica conectada en tiempo real, modernización de SCADA hacia la nube/el borde y gemelos digitales ciberfísicos orientados a la Industria 5.0.",
+      "metadata": {
+        "impact": "Medio",
+        "horizon": "Corto (1-3 años)",
+        "sublines": [
+          "Sensórica y actuación conectada sobre redes 5G/TSN/OPC-UA y Ethernet-APL (capa física avanzada) para captura de datos en tiempo real",
+          "Modernización de sistemas SCADA heredados hacia arquitecturas en la nube y el borde, sobre vocabularios normalizados de IoT y gemelo digital (ISO/IEC 20924:2024) y casos de uso de manufactura inteligente (IEC TR 63283-2)",
+          "Gemelos digitales y cadenas de valor ciberfísicas orientadas a la Industria 5.0 (centralidad humana, resiliencia, sostenibilidad)"
+        ],
+        "tendencias": "ALZA FUERTE (TRL: corto plazo <3 años en grandes industrias; medio plazo 3-7 años para adopción generalizada en PYME). El estudio de Rockwell Automation (2025) reporta que el 95% de los fabricantes encuestados ya invierte o planea invertir en IA/ML en los próximos cinco años, con control de calidad como caso de uso líder. El mercado de seguridad de tecnología operativa (OT) que protege sistemas SCADA/ICS durante su modernización se proyecta en USD 58.940 millones para 2031. Se consolida además una capa de estandarización internacional conjunta (ISO/IEC/ITU-T, mapa normativo de IA/ML de agosto de 2024) sobre la que se apoya la interoperabilidad IIoT. Principal barrera: interoperabilidad de protocolos legados y coexistencia insegura entre redes OT e IT. IMPLICACIÓN CEET: Brecha ALTA. Se requiere fortalecer formación en integración IIoT-SCADA, protocolos industriales abiertos (incl. Ethernet-APL) y fundamentos de ciberseguridad OT/IT."
+      }
+    },
+    {
+      "id": "T12",
+      "name": "Mantenimiento predictivo con inteligencia artificial y aprendizaje automático",
+      "nameLines": [
+        "Mantenimiento predictivo",
+        "con inteligencia",
+        "artificial y aprendizaje…"
+      ],
+      "code": "L12",
+      "sectorId": "D3",
+      "ringId": "assess",
+      "angleOff": -13,
+      "maturity": {
+        "scaleId": "trl",
+        "value": 5
+      },
+      "description": "Mantenimiento predictivo con IA/ML: análisis de vibración, temperatura y corriente para predecir fallas y diagnosticar de forma remota equipo crítico industrial y biomédico.",
+      "metadata": {
+        "impact": "Medio",
+        "horizon": "Medio (3-5 años)",
+        "sublines": [
+          "Análisis de señales de vibración, temperatura, corriente y acústica mediante modelos de aprendizaje automático y profundo (XGBoost, LSTM, detección de anomalías)",
+          "Predicción de fallas en motores, bombas, compresores y líneas de envasado",
+          "Diagnóstico remoto de equipo crítico (biomédico, refrigeración industrial) mediante sensores IoT"
+        ],
+        "tendencias": "ALZA (TRL corto a medio plazo, 1-5 años según instrumentación disponible). El campo transita de la novedad a la consolidación comercial: el análisis de patentamiento muestra una meseta tras un pico de solicitudes en 2022. Aplicable directamente a manufactura, cadena de frío (compresores, sistemas de refrigeración) y mantenimiento de equipo biomédico crítico. Principal barrera: calidad y disponibilidad de datos históricos etiquetados y costo de instrumentación retrofit en plantas antiguas. IMPLICACIÓN CEET: Brecha MODERADA. Formación ya parcialmente cubierta por automatización industrial; requiere reforzar competencias específicas de ciencia de datos aplicada a series temporales de sensores."
+      }
+    },
+    {
+      "id": "T13",
+      "name": "Automatización con PLC y comisionamiento de Sistemas Instrumentados de Seguridad (SIS)",
+      "nameLines": [
+        "Automatización con PLC y",
+        "comisionamiento de",
+        "Sistemas Instrumentados d…"
+      ],
+      "code": "L13",
+      "sectorId": "D3",
+      "ringId": "adopt",
+      "angleOff": 0,
+      "maturity": {
+        "scaleId": "trl",
+        "value": 9
+      },
+      "description": "Automatización con PLC bajo IEC 61131-3 y Sistemas Instrumentados de Seguridad (SIL, IEC 61511/61508), en evolución hacia comisionamiento virtual, IIoT y ciberseguridad OT.",
+      "metadata": {
+        "impact": "Medio",
+        "horizon": "Corto (1-2 años)",
+        "sublines": [
+          "Programación normalizada IEC 61131-3 (ladder, SFC, ST, FBD) de controladores lógicos programables",
+          "Determinación de Nivel de Integridad de Seguridad (SIL) y ciclo de vida de seguridad funcional IEC 61511/IEC 61508",
+          "Comisionamiento virtual mediante gemelo digital e integración con IIoT"
+        ],
+        "tendencias": "ESTABLE-MADURA (TRL 9, en evolución continua). Tecnología consolidada que avanza hacia su integración con IIoT, comisionamiento virtual y ciberseguridad de tecnología operativa (IEC 62443). Horizonte de actualización corto (<3 años). Principal barrera: escasez de personal certificado en seguridad funcional y coexistencia de plataformas propietarias (Siemens, Rockwell, Schneider Electric, ABB) que dificulta la portabilidad de competencias entre fabricantes. IMPLICACIÓN CEET: Brecha BAJA-MODERADA. Formación técnica consolidada; oportunidad de actualización en comisionamiento virtual y ciberseguridad OT."
+      }
+    },
+    {
+      "id": "T14",
+      "name": "Edge AI, sistemas en chip (SoC), sensórica MEMS/NEMS y visión artificial industrial",
+      "nameLines": [
+        "Edge AI, sistemas en chip",
+        "(SoC), sensórica MEMS/NEMS",
+        "y visión artificial…"
+      ],
+      "code": "L14",
+      "sectorId": "D3",
+      "ringId": "assess",
+      "angleOff": 13,
+      "maturity": {
+        "scaleId": "trl",
+        "value": 5
+      },
+      "description": "Edge AI en SoC (incl. TinyML), sensórica MEMS/NEMS multisensor y visión artificial de inspección de calidad, con escalamiento comercial creciente en manufactura y consumo.",
+      "metadata": {
+        "impact": "Medio",
+        "horizon": "Medio (3-5 años)",
+        "sublines": [
+          "Ejecución de modelos de IA en dispositivos de borde mediante SoC especializados de baja latencia, incluyendo técnicas de aprendizaje profundo ultra-comprimido (TinyML) sobre microcontroladores",
+          "Sensores y actuadores microelectromecánicos y nanoelectromecánicos (MEMS/NEMS) multisensor",
+          "Visión artificial basada en aprendizaje profundo para inspección de calidad automatizada"
+        ],
+        "tendencias": "EMERGENTE con escalamiento comercial (TRL medio plazo 3-7 años; ya comercial en automotriz, manufactura y electrónica de consumo). El mercado MEMS crece cerca de 4% anual (Bosch como líder, ~USD 2.000 millones en ingresos MEMS en 2024); el mercado de visión artificial (ya en TRL 9) se proyecta en USD 61.000 millones para 2033, con inspección y control de calidad como segmento líder. El panorama de patentes de IA generativa de la WIPO (2024) confirma una aceleración del patentamiento de hardware especializado para IA de borde, y la colección científica de MDPI Sensors sobre sensórica inteligente en Industria 5.0 (2025) documenta la convergencia activa entre MEMS/NEMS y modelos de IA embebidos. Principal barrera: restricciones de potencia y disipación térmica en el borde, y fragmentación de herramientas de despliegue de modelos. IMPLICACIÓN CEET: Brecha ALTA. Se requiere formación en despliegue de modelos de IA en microcontroladores/SoC (incl. TinyML) y en integración de sensórica MEMS con visión artificial."
+      }
+    },
+    {
+      "id": "T15",
+      "name": "Robótica industrial, drones autónomos y robots humanoides emergentes",
+      "nameLines": [
+        "Robótica industrial,",
+        "drones autónomos y robots",
+        "humanoides emergentes"
+      ],
+      "code": "L15",
+      "sectorId": "D3",
+      "ringId": "trial",
+      "angleOff": 26,
+      "maturity": {
+        "scaleId": "trl",
+        "value": 7
+      },
+      "description": "Robótica industrial y drones ya maduros conviven con robots humanoides emergentes (IA visión-lenguaje-acción), en expansión acelerada de unidades instaladas y comercializadas.",
+      "metadata": {
+        "impact": "Medio",
+        "horizon": "Corto (1-3 años)",
+        "sublines": [
+          "Manipuladores industriales y robots colaborativos en líneas de manufactura y empaque",
+          "Vehículos aéreos no tripulados (UAV) para inspección, agricultura de precisión y logística de última milla",
+          "Robots humanoides impulsados por modelos de IA visión-lenguaje-acción (señal débil, TRL 4-6)"
+        ],
+        "tendencias": "ALZA (TRL 8-9 en robótica y drones comerciales, ya maduros; TRL 4-6 en robots humanoides, en fase temprana de escalamiento). La capacidad instalada de robots industriales superará 5,5 millones de unidades en 2026 y se proyectan 15.000 robots humanoides comercializados ese mismo año, con precios entre USD 14.000 y 18.000 por unidad y caída acelerada. Principal barrera: calidad de datos de entrenamiento y requisitos de seguridad laboral en entornos compartidos humano-robot. IMPLICACIÓN CEET: Brecha ALTA. Formación en robótica colaborativa ya presente; se requiere anticipar competencias en IA visión-lenguaje-acción para la próxima generación de robots humanoides."
       }
     },
     {
@@ -580,9 +581,11 @@
         "sublines": [
           "Dispositivos portátiles e implantables de monitoreo fisiológico continuo con fusión multisensor",
           "Sistemas de telemedicina con hardware remoto y entrega autónoma de insumos médicos",
-          "Mantenimiento predictivo de equipo biomédico crítico (tomógrafos, ventiladores) mediante sensores IoT"
+          "Mantenimiento predictivo de equipo biomédico crítico (tomógrafos, ventiladores) mediante sensores IoT",
+          "Regulación, registro sanitario y tecnovigilancia de dispositivos médicos (marco colombiano e interoperabilidad regional)",
+          "Neurotecnología: interfaces cerebro-computador (BCI) y protección de neurodatos"
         ],
-        "tendencias": "ALZA en consolidación (TRL 7-9 en wearables comerciales; TRL 4-6 en bioelectrónica implantable multimodal con IA integrada, horizonte 3-7 años). El campo de patentamiento en sensores biomédicos wearables está en etapa madura, con más de 1.898 familias de patentes identificadas y un pico de solicitudes en 2021. Principal barrera: vacíos de seguridad por diseño en el manejo de datos fisiológicos y baja interoperabilidad entre fabricantes. IMPLICACIÓN CEET: Brecha MODERADA. Se requiere reforzar formación en mantenimiento predictivo de equipo biomédico y en interoperabilidad de dispositivos conectados de salud. [Nota de triangulación: se descartaron como hallazgo consolidado dos temas de electrónica transitoria/biodegradable y sensores inalámbricos de energía cero para uso implantable, aportados por uno de los borradores de contraste, al no superar la verificación independiente de sus fuentes citadas; se registran como señales a vigilar.]"
+        "tendencias": "ALZA en consolidación (TRL 7-9 en wearables comerciales; TRL 4-6 en bioelectrónica implantable multimodal con IA integrada, horizonte 3-7 años; TRL 3-5 en bioimpresión 3D e ingeniería de tejidos asistida por IA, aún en fase de investigación). El campo de patentamiento en sensores biomédicos wearables está en etapa madura, con más de 1.898 familias de patentes identificadas y un pico de solicitudes en 2021. En Colombia, la Política Nacional de Dispositivos Médicos 2024-2026 (Res. 184/2024) formaliza gobernanza, acceso, I+D+i/producción local, calidad/tecnovigilancia y evaluación de tecnologías sanitarias, sobre el marco ya vigente de registro sanitario (Decreto 4725/2005) y tecnovigilancia poscomercialización (Res. 4816/2008). Principal barrera: vacíos de seguridad por diseño en el manejo de datos fisiológicos y baja interoperabilidad entre fabricantes, confirmada para América Latina por el estudio regional de Minsait (2020). IMPLICACIÓN CEET: Brecha MODERADA-ALTA. Se requiere reforzar formación en mantenimiento predictivo de equipo biomédico, en interoperabilidad de dispositivos conectados de salud y en el marco regulatorio colombiano de tecnovigilancia."
       }
     },
     {
@@ -720,9 +723,12 @@
         "sublines": [
           "Microcontroladores de bajo costo con conectividad Wi-Fi/Bluetooth Low Energy integrada para IoT de consumo",
           "Fuentes de alimentación conmutadas (SMPS) de alta eficiencia y controladores táctiles capacitivos/hápticos",
-          "Protocolos de interoperabilidad de hogar inteligente (Matter/Thread) para resolver la fragmentación de ecosistemas propietarios; vector emergente de electrónica flexible aplicada a superficies e interfaces de consumo (investigación activa, aún en fase temprana de comercialización)"
+          "Protocolos de interoperabilidad de hogar inteligente (Matter/Thread) para resolver la fragmentación de ecosistemas propietarios",
+          "Vector emergente de electrónica flexible aplicada a superficies e interfaces de consumo (investigación activa, aún en fase temprana de comercialización)",
+          "Electrónica de climatización y refrigeración residencial: compresores inverter (variadores de frecuencia) y su extensión a sistemas VRF de escala residencial/comercial ligera",
+          "Gasodomésticos: encendido electrónico, control termostático y de llama, y sensores de detección de fugas de gas"
         ],
-        "tendencias": "ALZA con aceleración por interoperabilidad (TRL 9 en microcontroladores conectados y SMPS de silicio, ya comerciales a gran escala; TRL 6-8 en SMPS basados en GaN y certificación Matter/Thread de nueva generación, horizonte 2027-2030). Matter 1.5 incorporó soporte de cámaras en 2026 y Thread 1.4 es obligatorio para certificación de nuevos border routers desde enero de 2026, con más de 750 productos ya certificados; la colección temática de Nature sobre electrónica flexible en el marco de Industria 5.0 (2024) documenta además un vector emergente de superficies e interfaces de consumo flexibles. Principal barrera: persistencia de ecosistemas propietarios pese a Matter/Thread. IMPLICACIÓN CEET: Brecha MODERADA. Formación en electrónica de consumo ya presente; se requiere actualización en protocolos de interoperabilidad de hogar inteligente."
+        "tendencias": "ALZA con aceleración por interoperabilidad (TRL 9 en microcontroladores conectados y SMPS de silicio, ya comerciales a gran escala; TRL 6-8 en SMPS basados en GaN y certificación Matter/Thread de nueva generación, horizonte 2027-2030). Matter 1.5 incorporó soporte de cámaras en 2026 y Thread 1.4 es obligatorio para certificación de nuevos border routers desde enero de 2026, con más de 750 productos ya certificados; la colección temática de Nature sobre electrónica flexible en el marco de Industria 5.0 (2024) documenta además un vector emergente de superficies e interfaces de consumo flexibles. Principal barrera: persistencia de ecosistemas propietarios pese a Matter/Thread; en climatización residencial, la electrónica inverter comparte base tecnológica (variadores de frecuencia) con la electrónica de potencia industrial de D3, lo que exige coordinar contenidos formativos entre ambos direccionadores; en gasodomésticos, persiste heterogeneidad regulatoria entre mercados sobre certificación de sensores de seguridad de gas. IMPLICACIÓN CEET: Brecha MODERADA-ALTA. Formación en electrónica de consumo ya presente; se requiere actualización en protocolos de interoperabilidad de hogar inteligente, y refuerzo en electrónica de compresores inverter/VRF residencial y en electrónica de seguridad de gasodomésticos."
       }
     },
     {
@@ -881,9 +887,9 @@
   },
   "metadata": {
     "sectorAreas": {
-      "D1": "Automatización, control industrial y sistemas ciberfísicos inteligentes\n\nCampo que abarca el diseño, integración y mantenimiento de sistemas de control, sensórica y actuación que digitalizan y automatizan procesos productivos físicos, desde el chip de borde hasta la plataforma de supervisión. (artículos científicos y patentes)",
-      "D2": "Microelectrónica, sistemas embebidos y diseño electrónico asistido\n\nCampo que abarca el diseño, fabricación y empaquetado de circuitos integrados y tarjetas electrónicas, así como las arquitecturas de cómputo y sensórica que sirven de base habilitadora a los demás campos tecnológicos del sector. (artículos científicos y patentes)",
-      "D3": "Electrónica de potencia y gestión energética\n\nCampo que abarca la conversión, control y almacenamiento de energía eléctrica, así como la instrumentación electrónica de procesos industriales y de la cadena de frío sujeta a transición regulatoria ambiental. (artículos científicos y patentes)",
+      "D1": "Microelectrónica, sistemas embebidos y diseño electrónico asistido\n\nCampo que abarca el diseño, fabricación y empaquetado de circuitos integrados y tarjetas electrónicas, así como las arquitecturas de cómputo y sensórica que sirven de base habilitadora a los demás campos tecnológicos del sector. (artículos científicos y patentes)",
+      "D2": "Electrónica de potencia y gestión energética\n\nCampo que abarca la conversión, control y almacenamiento de energía eléctrica, así como la instrumentación electrónica de procesos industriales y de la cadena de frío sujeta a transición regulatoria ambiental. (artículos científicos y patentes)",
+      "D3": "Automatización, control industrial y sistemas ciberfísicos inteligentes\n\nCampo que abarca el diseño, integración y mantenimiento de sistemas de control, sensórica y actuación que digitalizan y automatizan procesos productivos físicos, desde el chip de borde hasta la plataforma de supervisión. (artículos científicos y patentes)",
       "D4": "Electrónica biomédica, aeroespacial y de movilidad\n\nCampo que abarca los sistemas electrónicos embebidos certificables y de alta confiabilidad aplicados a sectores con exigencias regulatorias estrictas: salud, defensa/aeroespacial y transporte. (artículos científicos y patentes)",
       "D5": "Electrónica de consumo, electrodomésticos y contenido digital\n\nCampo que abarca los sistemas electrónicos embebidos en bienes de consumo masivo y en la creación, procesamiento y despliegue de contenido audiovisual. (artículos científicos y patentes)"
     }
