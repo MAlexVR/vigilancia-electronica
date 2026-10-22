@@ -37,6 +37,9 @@ import {
 
 const dataset = buildElectronicaTrajectory();
 
+/** Support layers whose emptiness the engine reports with its native copy. */
+const SUPPORT_LAYERS = ["L2", "L3", "L4"];
+
 /** Returns all rendered node buttons whose aria-label contains `title`. */
 function findNodeButtons(title: string): HTMLElement[] {
   return screen
@@ -52,8 +55,9 @@ function findNodeButtons(title: string): HTMLElement[] {
 function emptyCopiesPerLayer(): number {
   const l1Only = { items: dataset.items.filter((i) => i.layer === "L1") };
   const { unmount } = render(<TrajectoryMap config={electronicaConfig} dataset={l1Only} />);
-  const copies = screen.queryAllByText("Sin ítems en esta capa.").length / 3;
+  const copies = screen.queryAllByText("Sin ítems en esta capa.").length / SUPPORT_LAYERS.length;
   unmount();
+  expect(Number.isInteger(copies)).toBe(true);
   return copies;
 }
 
@@ -77,7 +81,7 @@ function assertDriverRendering(driverKey: string, copies: number) {
 
   // Layers without items for this driver keep the engine's native empty copy
   // (each lane renders it twice: desktop grid + phone accordion).
-  const emptyLayers = ["L2", "L3", "L4"].filter((l) => layerCount(driverKey, l) === 0).length;
+  const emptyLayers = SUPPORT_LAYERS.filter((l) => layerCount(driverKey, l) === 0).length;
   expect(screen.queryAllByText("Sin ítems en esta capa.")).toHaveLength(emptyLayers * copies);
 
   // The driver-level empty state never fires because every driver has L1 items.

@@ -124,7 +124,8 @@ TENDENCIAS` column), so every value is reproducible from the committed text.
 - **L01, L04, L11, L14**: only the "[Nota de triangulación]" tails were removed
   from the narrative; no rubric signal changed.
 - **Excel, correcciones de forma (second pass, Oct 2026)**: the xlsx now fixes the
-  L02 closing sentence, restores the "(artículos científicos y patentes)" suffix
+  L02 closing sentence (it now opens with "La sublínea SL02d se sustenta en
+  evidencia convergente…", so the evidence sentence explicitly names SL02d), restores the "(artículos científicos y patentes)" suffix
   on every area text and updates the stale cross-references (L03→L14, L04→L02,
   L21 D3→D2). The narratives are therefore verbatim from the xlsx again; no
   rubric signal changed.
