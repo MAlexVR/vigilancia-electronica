@@ -373,7 +373,7 @@ messages/
 ### v1.2.1 — Radar legible y mapas alineados con Telecomunicaciones (octubre de 2026)
 
 - **Radar**: los direccionadores muestran su número (D1 a D5) y las tecnologías usan un nombre corto curado de hasta dos líneas (`shortName`), como en el radar de Telecomunicaciones; el nombre completo sigue en el detalle y en la información emergente.
-- **Sin solapes**: se ajustaron la posición angular (`angleOff`) y el desplazamiento de las etiquetas (`labelDy`, nuevo `labelDx`) de las tecnologías; el pipeline admite las columnas `shortName`, `labelDy`, `labelDx` en `items.csv` y `radarLabel` en `sectors.csv`.
+- **Sin solapes**: se ajustaron la posición angular (`angleOff`) y el desplazamiento de las etiquetas (`labelDy`, nuevo `labelDx`, en unidades del SVG: por defecto 16 y 0) de las tecnologías; el pipeline admite las columnas `shortName`, `labelDy`, `labelDx` en `items.csv` y `radarLabel` en `sectors.csv`.
 - **Mapas de trayectoria**: usan el mismo nombre corto (el nombre completo queda en el detalle como «Línea») y las pestañas de direccionador muestran un nombre abreviado.
 
 ### v1.2.0 — Actualización con el Mapa TT FINAL (octubre de 2026)

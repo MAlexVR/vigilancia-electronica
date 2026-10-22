@@ -57,8 +57,9 @@ export const ITEM_OPTIONAL_HEADERS = [
   // populated by the narrative/*.md merge in csv-source.ts.
   "sublines",
   "tendencias",
-  // Short curated name drawn on the radar, and a manual vertical label offset
-  // used to keep labels of crowded rings from overlapping.
+  // Short curated name drawn on the radar, and manual label offsets in SVG
+  // units (labelDy vertical, default 16; labelDx horizontal, default 0) used to
+  // keep labels of crowded rings from overlapping.
   "shortName",
   "labelDy",
   "labelDx",
