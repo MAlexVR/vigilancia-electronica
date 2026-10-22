@@ -44,11 +44,24 @@ function findNodeButtons(title: string): HTMLElement[] {
     .filter((btn) => btn.getAttribute("aria-label")?.includes(title));
 }
 
+/**
+ * How many times the engine renders its empty-layer copy per empty layer
+ * (desktop grid + phone accordion). Measured on a throwaway map whose L2–L4
+ * are all empty, so the test does not hard-code the engine's layout.
+ */
+function emptyCopiesPerLayer(): number {
+  const l1Only = { items: dataset.items.filter((i) => i.layer === "L1") };
+  const { unmount } = render(<TrajectoryMap config={electronicaConfig} dataset={l1Only} />);
+  const copies = screen.queryAllByText("Sin ítems en esta capa.").length / 3;
+  unmount();
+  return copies;
+}
+
 function layerCount(driverKey: string, layer: string) {
   return dataset.items.filter((i) => i.driver === driverKey && i.layer === layer).length;
 }
 
-function assertDriverRendering(driverKey: string) {
+function assertDriverRendering(driverKey: string, copies: number) {
   const driverL1Items = dataset.items.filter(
     (i) => i.driver === driverKey && i.layer === "L1"
   );
@@ -65,7 +78,7 @@ function assertDriverRendering(driverKey: string) {
   // Layers without items for this driver keep the engine's native empty copy
   // (each lane renders it twice: desktop grid + phone accordion).
   const emptyLayers = ["L2", "L3", "L4"].filter((l) => layerCount(driverKey, l) === 0).length;
-  expect(screen.queryAllByText("Sin ítems en esta capa.")).toHaveLength(emptyLayers * 2);
+  expect(screen.queryAllByText("Sin ítems en esta capa.")).toHaveLength(emptyLayers * copies);
 
   // The driver-level empty state never fires because every driver has L1 items.
   expect(screen.queryByTestId("trajectory-empty-state")).toBeNull();
@@ -77,17 +90,20 @@ function assertDriverRendering(driverKey: string) {
 
 describe("TrajectoryMap + electronicaConfig (layers sourced from the informe)", () => {
   it("renders Layer 1 and the transcribed L2–L4 nodes for the initial driver (D1)", () => {
+    const copies = emptyCopiesPerLayer();
+    expect(copies).toBeGreaterThan(0);
     render(<TrajectoryMap config={electronicaConfig} dataset={dataset} />);
-    assertDriverRendering("D1");
+    assertDriverRendering("D1", copies);
   });
 
   it("keeps the native empty-layer copy where a driver has no items (D3 has no L2)", async () => {
     const user = userEvent.setup();
+    const copies = emptyCopiesPerLayer();
     render(<TrajectoryMap config={electronicaConfig} dataset={dataset} />);
 
     await user.click(screen.getByRole("tab", { name: /^D3/ }));
 
     expect(layerCount("D3", "L2")).toBe(0);
-    assertDriverRendering("D3");
+    assertDriverRendering("D3", copies);
   });
 });

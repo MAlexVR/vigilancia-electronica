@@ -167,6 +167,15 @@ interface SupportSpec {
   meta?: Record<string, unknown>;
 }
 
+// Textos de aliados que la Tabla 10 asigna a más de un direccionador: se
+// transcriben una sola vez para que no diverjan entre copias.
+const MINCIENCIAS_DETAIL =
+  "Cofinanciamiento de proyectos de I+D+i aplicables a las líneas de microelectrónica y potencia (D1/D2). Alianza sugerida: cofinanciación de proyectos SENNOVA / semilleros de investigación.";
+const C4IR_DETAIL =
+  "Nodo colombiano de referencia en IA, IoT y manufactura avanzada aplicable a D1/D3. Alianza sugerida: co-diseño de proyectos piloto de IIoT/Edge AI.";
+const MINAMBIENTE_DETAIL =
+  "Autoridad nacional del Protocolo de Montreal/Enmienda de Kigali; regula la transición de refrigerantes (D2/D5). Alianza sugerida: proyectos de transición de refrigerantes naturales / cumplimiento normativo.";
+
 const SUPPORT_ITEMS: SupportSpec[] = [
   // ═══ L2 — Infraestructura ═════════════════════════════════════════════════
 
@@ -340,8 +349,7 @@ const SUPPORT_ITEMS: SupportSpec[] = [
     driver: "D1",
     link: "L01",
     title: "Minciencias / CIDEI",
-    detail:
-      "Cofinanciamiento de proyectos de I+D+i aplicables a las líneas de microelectrónica y potencia (D1/D2). Alianza sugerida: cofinanciación de proyectos SENNOVA / semilleros de investigación.",
+    detail: MINCIENCIAS_DETAIL,
     fuente: "Tabla 10",
     inheritGap: false,
     meta: { Tipo: "alianza", "Tipo de aliado": "Gobierno / cofinanciador", "País / Origen": "Colombia" },
@@ -352,8 +360,7 @@ const SUPPORT_ITEMS: SupportSpec[] = [
     driver: "D1",
     link: "L03",
     title: "Centro de la Cuarta Revolución Industrial (C4IR) Medellín",
-    detail:
-      "Nodo colombiano de referencia en IA, IoT y manufactura avanzada aplicable a D1/D3. Alianza sugerida: co-diseño de proyectos piloto de IIoT/Edge AI.",
+    detail: C4IR_DETAIL,
     fuente: "Tabla 10",
     inheritGap: false,
     meta: { Tipo: "alianza", "Tipo de aliado": "Centro de innovación", "País / Origen": "Colombia" },
@@ -364,8 +371,7 @@ const SUPPORT_ITEMS: SupportSpec[] = [
     driver: "D2",
     link: "L08",
     title: "Minciencias / CIDEI",
-    detail:
-      "Cofinanciamiento de proyectos de I+D+i aplicables a las líneas de microelectrónica y potencia (D1/D2). Alianza sugerida: cofinanciación de proyectos SENNOVA / semilleros de investigación.",
+    detail: MINCIENCIAS_DETAIL,
     fuente: "Tabla 10",
     inheritGap: false,
     meta: { Tipo: "alianza", "Tipo de aliado": "Gobierno / cofinanciador", "País / Origen": "Colombia" },
@@ -388,8 +394,7 @@ const SUPPORT_ITEMS: SupportSpec[] = [
     driver: "D2",
     link: "L10",
     title: "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente)",
-    detail:
-      "Autoridad nacional del Protocolo de Montreal/Enmienda de Kigali; regula la transición de refrigerantes (D2/D5). Alianza sugerida: proyectos de transición de refrigerantes naturales / cumplimiento normativo.",
+    detail: MINAMBIENTE_DETAIL,
     fuente: "Tabla 10 y Tabla 11 (D2)",
     inheritGap: false,
     meta: { Tipo: "alianza", "Tipo de aliado": "Gobierno", "País / Origen": "Colombia" },
@@ -437,8 +442,7 @@ const SUPPORT_ITEMS: SupportSpec[] = [
     driver: "D3",
     link: "L11",
     title: "Centro de la Cuarta Revolución Industrial (C4IR) Medellín",
-    detail:
-      "Nodo colombiano de referencia en IA, IoT y manufactura avanzada aplicable a D1/D3. Alianza sugerida: co-diseño de proyectos piloto de IIoT/Edge AI.",
+    detail: C4IR_DETAIL,
     fuente: "Tabla 10 y Tabla 11 (D3)",
     inheritGap: false,
     meta: { Tipo: "alianza", "Tipo de aliado": "Centro de innovación", "País / Origen": "Colombia" },
@@ -474,8 +478,7 @@ const SUPPORT_ITEMS: SupportSpec[] = [
     driver: "D5",
     link: "L21",
     title: "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente)",
-    detail:
-      "Autoridad nacional del Protocolo de Montreal/Enmienda de Kigali; regula la transición de refrigerantes (D2/D5). Alianza sugerida: proyectos de transición de refrigerantes naturales / cumplimiento normativo.",
+    detail: MINAMBIENTE_DETAIL,
     fuente: "Tabla 10",
     inheritGap: false,
     meta: { Tipo: "alianza", "Tipo de aliado": "Gobierno", "País / Origen": "Colombia" },

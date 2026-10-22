@@ -1,6 +1,6 @@
 # Vigilancia Tecnológica CEET — Radar y Mapa de Trayectoria | Electrónica 2026-2036
 
-![Version](https://img.shields.io/badge/version-1.3.0-39A900?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.3.1-39A900?style=flat-square)
 ![SENA](https://img.shields.io/badge/SENA-CEET-00324D?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
@@ -369,6 +369,11 @@ messages/
 ---
 
 ## Changelog
+
+### v1.3.1 — Excel corregido y ajustes menores (octubre de 2026)
+
+- **Datos**: se ingiere el Excel con las correcciones de forma (frase final de L02, sufijo de las áreas tecnológicas y referencias cruzadas a las líneas renumeradas).
+- **Código**: los textos de aliados asignados a más de un direccionador se transcriben una sola vez y el test de render mide cuántas veces el motor muestra el texto de capa vacía en lugar de fijarlo en 2.
 
 ### v1.3.0 — Capas L2-L4 del mapa de trayectoria desde el informe (octubre de 2026)
 
