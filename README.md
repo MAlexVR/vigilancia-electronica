@@ -1,12 +1,12 @@
 # Vigilancia Tecnológica CEET — Radar y Mapa de Trayectoria | Electrónica 2026-2036
 
-![Version](https://img.shields.io/badge/version-1.2.1-39A900?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.3.0-39A900?style=flat-square)
 ![SENA](https://img.shields.io/badge/SENA-CEET-00324D?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss)
-![Tests](https://img.shields.io/badge/tests-234%20passing-brightgreen?style=flat-square)
+![Tests](https://img.shields.io/badge/tests-236%20passing-brightgreen?style=flat-square)
 
 Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA, Bogotá D.C. Integra dos herramientas complementarias: el **Radar Tecnológico** (madurez y adopción de 24 tecnologías en un horizonte 2026-2036) y el **Mapa de Trayectoria Tecnológica** (evolución de capacidades del área en el tiempo, por direccionador estratégico).
 
@@ -78,7 +78,7 @@ Consulta `docs/architectural-blueprint-v5.md` para el plan completo de fases.
 
 El Mapa de Trayectoria es la segunda herramienta de la plataforma. Responde la pregunta que el Radar no responde: **¿cómo evolucionan las capacidades del área a lo largo del tiempo para alcanzar la visión tecnológica 2036?**
 
-> **Estado actual: avance.** Solo la capa L1 (Tecnologías) tiene contenido real, derivado del Radar Tecnológico existente. Las capas L2-L4 aún no tienen datos porque el informe fuente de vigilancia científico-tecnológica del área de Electrónica no ha sido entregado. No se muestra ningún dato, cronograma ni proyección estimada en su lugar — el componente renderiza su estado vacío nativo para esas capas. Ver el comentario `PENDING:` en `src/lib/trajectory-data.electronica.ts` para el criterio de completitud.
+> **Estado actual.** La capa L1 (Tecnologías) se deriva del Radar Tecnológico; las capas L2-L4 se transcriben de las Tablas 9, 10 y 11 y del numeral 6.5 del informe GOR-F-012 (V5.1). El horizonte de cada ítem se hereda de la línea tecnológica vinculada y la brecha es la que declara la narrativa de esa línea; la priorización definitiva sigue a cargo del vigía tecnológico y del experto del programa.
 
 ### Qué visualiza
 
@@ -87,9 +87,9 @@ Un grid swimlane × tiempo con **4 capas (filas)** y **5 horizontes (columnas)**
 | Capas (swimlanes) | Descripción |
 |-------------------|-------------|
 | **L1 — Tecnologías** | Las 24 tecnologías del radar, posicionadas en su horizonte de adopción (derivado del campo `horizon` de radar-data). Badge de TRL por nodo. |
-| **L2 — Infraestructura** | Ambientes, laboratorios y equipos a desarrollar o adquirir. Pendiente del informe fuente. |
-| **L3 — Talento & I+D+i** | Capacitación docente, certificaciones y proyectos SENNOVA/semilleros. Pendiente del informe fuente. |
-| **L4 — Alianzas** | Aliados estratégicos con tipo de relación. Pendiente del informe fuente. |
+| **L2 — Infraestructura** | Ambientes, laboratorios y equipos a desarrollar o adquirir (Tabla 11 y capacidad instalada del numeral 6.5). |
+| **L3 — Talento & I+D+i** | Acciones curriculares por programa (Tabla 9), proyectos SENNOVA/semilleros (Tabla 11) y rutas de formación (numeral 6.5). |
+| **L4 — Alianzas** | Aliados estratégicos con tipo de relación (Tabla 10 y aliados potenciales de la Tabla 11). |
 
 | Horizontes (columnas) | Rango |
 |-----------------------|-------|
@@ -136,8 +136,8 @@ radar-data.ts ──► trajectory-data.electronica.ts ──► <TrajectoryMap 
 `src/lib/trajectory-data.electronica.ts` es el adaptador que consume los datos institucionales y los conforma al contrato del motor:
 
 - **5 direccionadores** (D1–D5), derivados de `SECTORS` del radar para coherencia visual
-- **24 ítems en total**: 24 tecnologías (L1), una por cada entrada de `TECHNOLOGIES`. Sin ítems en L2/L3/L4.
-- **Principio anti-fabricación**: ningún dato se inventa; L2-L4 quedan vacías hasta que exista un informe fuente del que transcribir contenido, con la misma disciplina de citas (`// JUICIO:` / `Fundamento:`) que usa el adaptador de Telecomunicaciones para su contenido del GOR
+- **45 ítems en total**: 24 tecnologías (L1), una por cada entrada de `TECHNOLOGIES`, y 21 ítems de apoyo transcritos del informe (4 en L2, 6 en L3 y 11 en L4). Donde un direccionador no tiene ítems en una capa, el motor muestra su estado vacío nativo.
+- **Principio anti-fabricación**: solo se transcriben textos del informe, con la misma disciplina de citas que Telecomunicaciones (`// JUICIO:` / `Fundamento:` y `source` con la tabla de origen). **Criterio de horizonte**: el ítem hereda el horizonte de su línea vinculada y solo se adelanta cuando el informe da una fecha o capacidad ya instalada. **Criterio de brecha**: la que declara la narrativa de la línea («IMPLICACIÓN CEET»); se marcan Crítica y Alta, y las alianzas no llevan brecha.
 - **Fuente única de verdad**: las tecnologías se referencian desde radar-data, no se duplican; el horizonte se deriva con `normalizeHorizon()`
 
 ---
@@ -369,6 +369,12 @@ messages/
 ---
 
 ## Changelog
+
+### v1.3.0 — Capas L2-L4 del mapa de trayectoria desde el informe (octubre de 2026)
+
+- **Infraestructura, Talento e I+D+i y Alianzas**: 21 ítems transcritos de las Tablas 9, 10 y 11 y del numeral 6.5 del informe, siguiendo la metodología de Telecomunicaciones (fuente por ítem, `JUICIO`/`Fundamento`).
+- **Criterios**: horizonte heredado de la línea tecnológica vinculada (solo se adelanta con fecha o capacidad ya instalada en el informe) y brecha tomada de la narrativa de cada línea.
+- **Tecnologías con brecha**: los nodos de la capa L1 muestran la brecha Crítica o Alta que declara su línea.
 
 ### v1.2.1 — Radar legible y mapas alineados con Telecomunicaciones (octubre de 2026)
 

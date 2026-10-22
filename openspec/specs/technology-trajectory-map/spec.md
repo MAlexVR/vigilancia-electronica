@@ -4,10 +4,16 @@
 
 Defines the real Trajectory Map feature for vigilancia-electronica: the
 ported engine/UI (from vigilancia-telecomunicaciones), a domain adapter that
-populates Layer 1 ("Tecnologías") from real `TECHNOLOGIES` data, and honest
-empty states for Layers 2–4 (Infraestructura, Talento e I+D+i, Alianzas)
-until Electrónica's own GOR report exists. No fabricated data is ever
-rendered.
+populates Layer 1 ("Tecnologías") from real `TECHNOLOGIES` data, and
+populates Layers 2–4 (Infraestructura, Talento e I+D+i, Alianzas) only with
+items transcribed from the Electrónica GOR-F-012 report (Tablas 9, 10, 11 and
+numeral 6.5). Where a driver has no item in a layer, the engine's native empty
+state renders. No fabricated data is ever rendered.
+
+Update (v1.3.0): the report was delivered, so Layers 2–4 are no longer empty
+by default. Each item names its source table, links to an existing línea,
+inherits that línea's horizon (advanced only by an explicit date or installed
+capacity in the report) and inherits the gap declared in the línea narrative.
 
 Non-goal: this capability does not modify `AboutModal.tsx` author or
 attribution content — that content is governed by the existing
@@ -36,7 +42,7 @@ or externally sourced item in Layer 1.
 - THEN every field derives from an existing `TECHNOLOGIES` entry, with no
   invented sectors, gaps, or metrics
 
-### Requirement: Honest Empty State for Unsourced Layers
+### Requirement: Honest Empty State for Unsourced Layers (applies per driver and layer that has no item in the report)
 
 The system MUST render Layers 2–4 using only the trajectory engine's
 existing generic per-driver empty state when a driver has zero items. The

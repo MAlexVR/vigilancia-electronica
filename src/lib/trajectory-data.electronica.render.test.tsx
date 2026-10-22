@@ -44,41 +44,50 @@ function findNodeButtons(title: string): HTMLElement[] {
     .filter((btn) => btn.getAttribute("aria-label")?.includes(title));
 }
 
-function assertHonestEmptyLayerPattern(driverKey: string) {
+function layerCount(driverKey: string, layer: string) {
+  return dataset.items.filter((i) => i.driver === driverKey && i.layer === layer).length;
+}
+
+function assertDriverRendering(driverKey: string) {
   const driverL1Items = dataset.items.filter(
     (i) => i.driver === driverKey && i.layer === "L1"
   );
   expect(driverL1Items.length).toBeGreaterThan(0);
 
   // Layer 1 nodes are real, data-derived buttons.
-  const firstTitle = driverL1Items[0].title;
-  expect(findNodeButtons(firstTitle).length).toBeGreaterThan(0);
+  expect(findNodeButtons(driverL1Items[0].title).length).toBeGreaterThan(0);
 
-  // Layers 2–4 have zero items for every driver (see PENDING marker) — the
-  // engine's own already-shipped per-layer empty copy renders instead.
-  expect(screen.getAllByText("Sin ítems en esta capa.")).toHaveLength(6);
+  // Every transcribed L2–L4 item of the driver renders as a node.
+  for (const item of dataset.items.filter((i) => i.driver === driverKey && i.layer !== "L1")) {
+    expect(findNodeButtons(item.title).length, item.id).toBeGreaterThan(0);
+  }
+
+  // Layers without items for this driver keep the engine's native empty copy
+  // (each lane renders it twice: desktop grid + phone accordion).
+  const emptyLayers = ["L2", "L3", "L4"].filter((l) => layerCount(driverKey, l) === 0).length;
+  expect(screen.queryAllByText("Sin ítems en esta capa.")).toHaveLength(emptyLayers * 2);
 
   // The driver-level empty state never fires because every driver has L1 items.
   expect(screen.queryByTestId("trajectory-empty-state")).toBeNull();
 
-  // No electronica-specific "avance"/"pendiente" text exists anywhere in the
-  // rendered map — the anti-fabrication guarantee from the spec.
+  // No electronica-specific "avance"/"pendiente" text in the rendered map.
   expect(screen.queryByText(/avance/i)).toBeNull();
   expect(screen.queryByText(/pendiente/i)).toBeNull();
 }
 
-describe("TrajectoryMap + electronicaConfig (honest empty-layer contract)", () => {
-  it("renders real Layer 1 nodes for the initial driver (D1) and the native empty-layer copy for L2–L4, with no fabricated text", () => {
+describe("TrajectoryMap + electronicaConfig (layers sourced from the informe)", () => {
+  it("renders Layer 1 and the transcribed L2–L4 nodes for the initial driver (D1)", () => {
     render(<TrajectoryMap config={electronicaConfig} dataset={dataset} />);
-    assertHonestEmptyLayerPattern("D1");
+    assertDriverRendering("D1");
   });
 
-  it("shows the same honest pattern after switching to a different driver (D3)", async () => {
+  it("keeps the native empty-layer copy where a driver has no items (D3 has no L2)", async () => {
     const user = userEvent.setup();
     render(<TrajectoryMap config={electronicaConfig} dataset={dataset} />);
 
     await user.click(screen.getByRole("tab", { name: /^D3/ }));
 
-    assertHonestEmptyLayerPattern("D3");
+    expect(layerCount("D3", "L2")).toBe(0);
+    assertDriverRendering("D3");
   });
 });

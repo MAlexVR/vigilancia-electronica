@@ -5,11 +5,13 @@
  *   1. electronicaConfig passes validateTrajectoryConfig without throwing.
  *   2. Drivers match SECTORS (D1–D5) from radar-data.
  *   3. 4 layers (L1–L4) and 5 horizon buckets are defined.
- *   4. buildElectronicaTrajectory() returns exactly TECHNOLOGIES.length items,
- *      one per TECHNOLOGIES entry, all assigned to Layer 1.
- *   5. buildElectronicaTrajectory() returns ZERO items for Layers 2, 3, and 4
- *      (the anti-fabrication / honesty guarantee — no invented content).
- *   6. The source file contains the PENDING marker naming the missing report.
+ *   4. buildElectronicaTrajectory() returns one Layer-1 item per TECHNOLOGIES
+ *      entry, traceable to it.
+ *   5. Layers 2, 3 and 4 hold only items transcribed from the informe (each
+ *      names its table in `source`, links to an existing línea and inherits
+ *      that línea's horizon unless the informe gives an explicit date).
+ *   6. The source file documents the horizon/gap criteria and the
+ *      anti-fabrication rule.
  */
 
 import { readFileSync } from "node:fs";
@@ -19,7 +21,7 @@ import {
   electronicaConfig,
   buildElectronicaTrajectory,
 } from "./trajectory-data.electronica";
-import { validateTrajectoryConfig } from "./trajectory";
+import { validateTrajectoryConfig, normalizeHorizon } from "./trajectory";
 import { TECHNOLOGIES, SECTORS, techShortLabel } from "./radar-data";
 
 // ── Valid sets derived from config ────────────────────────────────────────────
@@ -96,20 +98,45 @@ describe("electronicaConfig", () => {
 describe("buildElectronicaTrajectory()", () => {
   const dataset = buildElectronicaTrajectory();
 
-  it("returns exactly one item per TECHNOLOGIES entry", () => {
-    expect(dataset.items).toHaveLength(TECHNOLOGIES.length);
+  const l1 = dataset.items.filter((i) => i.layer === "L1");
+  const support = dataset.items.filter((i) => i.layer !== "L1");
+
+  it("returns exactly one Layer-1 item per TECHNOLOGIES entry", () => {
+    expect(l1).toHaveLength(TECHNOLOGIES.length);
   });
 
-  it("every returned item belongs to Layer 1 (Tecnologías)", () => {
-    expect(dataset.items.length).toBeGreaterThan(0);
-    for (const item of dataset.items) {
-      expect(item.layer).toBe("L1");
+  it("populates Layers 2, 3 and 4 with items transcribed from the informe", () => {
+    for (const layer of ["L2", "L3", "L4"]) {
+      expect(support.filter((i) => i.layer === layer).length).toBeGreaterThan(0);
+    }
+    for (const item of support) {
+      expect(item.source).toMatch(/Informe GOR-F-012/);
+      expect(item.source).toMatch(/Tabla (9|10|11)|Numeral 6\.5/);
     }
   });
 
-  it("returns ZERO items for Layers 2, 3, and 4 — honesty guarantee, no fabricated content", () => {
-    const nonL1 = dataset.items.filter((i) => i.layer !== "L1");
-    expect(nonL1).toEqual([]);
+  it("every L2–L4 item links to an existing línea and inherits its horizon unless the informe gives an explicit date", () => {
+    for (const item of support) {
+      const linkId = item.relatedIds?.[0];
+      expect(linkId, `relatedIds for ${item.id}`).toBeDefined();
+      const tech = TECHNOLOGIES.find((t) => `tech-${t.code}` === linkId);
+      expect(tech, `línea vinculada de ${item.id}`).toBeDefined();
+      const explicit = String(item.meta?.Fundamento).startsWith("Horizonte explícito");
+      if (!explicit) expect(item.horizon).toBe(normalizeHorizon(tech!.horizon));
+    }
+  });
+
+  it("only two items advance their horizon, both with a dated or already-installed evidence in the informe", () => {
+    const explicit = support.filter((i) => String(i.meta?.Fundamento).startsWith("Horizonte explícito"));
+    expect(explicit.map((i) => i.id).sort()).toEqual(["d2-l2-centros-refrigerantes", "d3-l3-talento-colombia"]);
+    explicit.forEach((i) => expect(i.horizon).toBe("ahora"));
+  });
+
+  it("alliances carry no gap; L1 gaps come from the línea narrative (Brecha CRÍTICA/ALTA)", () => {
+    support.filter((i) => i.layer === "L4").forEach((i) => expect(i.gap).toBeUndefined());
+    const gaps = new Set(l1.map((i) => i.gap).filter(Boolean));
+    expect([...gaps].every((g) => ["Crítica", "Alta"].includes(g as string))).toBe(true);
+    expect(gaps.size).toBeGreaterThan(0);
   });
 
   it("every item has non-empty core fields and a valid horizon/driver", () => {
@@ -127,8 +154,8 @@ describe("buildElectronicaTrajectory()", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it("every field traces back to an existing TECHNOLOGIES entry (no invented data)", () => {
-    for (const item of dataset.items) {
+  it("every Layer-1 field traces back to an existing TECHNOLOGIES entry (no invented data)", () => {
+    for (const item of dataset.items.filter((i) => i.layer === "L1")) {
       const code = item.meta?.Código;
       const tech = TECHNOLOGIES.find((t) => t.code === code);
       expect(tech, `Expected a TECHNOLOGIES entry for code ${code}`).toBeDefined();
@@ -141,19 +168,16 @@ describe("buildElectronicaTrajectory()", () => {
   });
 });
 
-// ── Suite: PENDING marker (source inspection) ────────────────────────────────
+// ── Suite: criteria documented in the source ────────────────────────────────
 
 describe("trajectory-data.electronica.ts source file", () => {
-  it("contains the PENDING marker naming the missing GOR report", () => {
-    const filePath = path.join(
-      process.cwd(),
-      "src/lib/trajectory-data.electronica.ts"
-    );
+  it("documents the horizon and gap criteria and the anti-fabrication rule", () => {
+    const filePath = path.join(process.cwd(), "src/lib/trajectory-data.electronica.ts");
     const source = readFileSync(filePath, "utf-8");
 
-    expect(source).toMatch(/PENDING:/);
-    expect(source).toMatch(
-      /Vigilancia_Cientifico-Tecnologica_Electronica_2026\.pptx/
-    );
+    expect(source).toMatch(/REGLA ANTI-FABRICACIÓN/);
+    expect(source).toMatch(/CRITERIO DE HORIZONTE/);
+    expect(source).toMatch(/CRITERIO DE BRECHA/);
+    expect(source).toMatch(/JUICIO:/);
   });
 });
