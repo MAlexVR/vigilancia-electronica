@@ -132,6 +132,19 @@ describe("buildElectronicaTrajectory()", () => {
     explicit.forEach((i) => expect(i.horizon).toBe("ahora"));
   });
 
+  it("pins the gap of every línea to what its narrative declares, so a changed narrative fails loudly", () => {
+    const expected: Record<string, string | undefined> = {
+      L01: "Crítica",
+      L06: "Alta", L08: "Alta", L10: "Alta", L11: "Alta", L14: "Alta", L15: "Alta",
+      L16: "Alta", L17: "Alta", L19: "Alta", L21: "Alta", L23: "Alta",
+    };
+    for (const tech of TECHNOLOGIES) {
+      expect(tech.tendencias, `narrative of ${tech.code}`).toMatch(/Brecha\s+[A-ZÁÉÍÓÚ]/);
+      const item = l1.find((i) => i.meta?.Código === tech.code);
+      expect(item?.gap, tech.code).toBe(expected[tech.code]);
+    }
+  });
+
   it("alliances carry no gap; L1 gaps come from the línea narrative (Brecha CRÍTICA/ALTA)", () => {
     support.filter((i) => i.layer === "L4").forEach((i) => expect(i.gap).toBeUndefined());
     const gaps = new Set(l1.map((i) => i.gap).filter(Boolean));

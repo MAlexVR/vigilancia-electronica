@@ -6,7 +6,7 @@
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss)
-![Tests](https://img.shields.io/badge/tests-236%20passing-brightgreen?style=flat-square)
+![Tests](https://img.shields.io/badge/tests-237%20passing-brightgreen?style=flat-square)
 
 Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA, Bogotá D.C. Integra dos herramientas complementarias: el **Radar Tecnológico** (madurez y adopción de 24 tecnologías en un horizonte 2026-2036) y el **Mapa de Trayectoria Tecnológica** (evolución de capacidades del área en el tiempo, por direccionador estratégico).
 
