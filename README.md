@@ -8,7 +8,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss)
 ![Tests](https://img.shields.io/badge/tests-259%20passing-brightgreen?style=flat-square)
 
-Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA, Bogotá D.C. Integra dos herramientas complementarias: el **Radar Tecnológico** (madurez y adopción de 25 tecnologías en un horizonte 2026-2036) y el **Mapa de Trayectoria Tecnológica** (evolución de capacidades del área en el tiempo, por direccionador estratégico).
+Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA, Bogotá D.C. Integra dos herramientas complementarias: el **Radar Tecnológico** (madurez y adopción de 24 tecnologías en un horizonte 2026-2036) y el **Mapa de Trayectoria Tecnológica** (evolución de capacidades del área en el tiempo, por direccionador estratégico).
 
 Grupo de Investigación, Innovación y Producción Académica — **GICS**
 
@@ -48,10 +48,10 @@ Consulta `docs/architectural-blueprint-v5.md` para el plan completo de fases.
 
 ### Contenido
 
-- **25 tecnologías** organizadas en **5 direccionadores del desarrollo (D1-D5)**
+- **24 tecnologías** organizadas en **5 direccionadores del desarrollo (D1-D5)**
 - **4 anillos de adopción**: ADOPTAR, PROBAR, EVALUAR, MONITOREAR
 - **Indicador de madurez** basado en niveles TRL (1-9)
-- **Tabla de nomenclaturas** completa con códigos L01-L25
+- **Tabla de nomenclaturas** completa con códigos L01-L24
 
 ### Direccionadores
 
@@ -61,7 +61,7 @@ Consulta `docs/architectural-blueprint-v5.md` para el plan completo de fases.
 | D2  | Electrónica de potencia, energía y electrificación sostenible                  | 5           |
 | D3  | Inteligencia distribuida y automatización industrial avanzada                  | 5           |
 | D4  | Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad  | 5           |
-| D5  | Electrónica de consumo masivo, hogar inteligente y medios digitales            | 5           |
+| D5  | Electrónica de consumo masivo, hogar inteligente y medios digitales            | 4           |
 
 ### Características
 
@@ -86,7 +86,7 @@ Un grid swimlane × tiempo con **4 capas (filas)** y **5 horizontes (columnas)**
 
 | Capas (swimlanes) | Descripción |
 |-------------------|-------------|
-| **L1 — Tecnologías** | Las 25 tecnologías del radar, posicionadas en su horizonte de adopción (derivado del campo `horizon` de radar-data). Badge de TRL por nodo. |
+| **L1 — Tecnologías** | Las 24 tecnologías del radar, posicionadas en su horizonte de adopción (derivado del campo `horizon` de radar-data). Badge de TRL por nodo. |
 | **L2 — Infraestructura** | Ambientes, laboratorios y equipos a desarrollar o adquirir. Pendiente del informe fuente. |
 | **L3 — Talento & I+D+i** | Capacitación docente, certificaciones y proyectos SENNOVA/semilleros. Pendiente del informe fuente. |
 | **L4 — Alianzas** | Aliados estratégicos con tipo de relación. Pendiente del informe fuente. |
@@ -136,7 +136,7 @@ radar-data.ts ──► trajectory-data.electronica.ts ──► <TrajectoryMap 
 `src/lib/trajectory-data.electronica.ts` es el adaptador que consume los datos institucionales y los conforma al contrato del motor:
 
 - **5 direccionadores** (D1–D5), derivados de `SECTORS` del radar para coherencia visual
-- **25 ítems en total**: 25 tecnologías (L1), una por cada entrada de `TECHNOLOGIES`. Sin ítems en L2/L3/L4.
+- **24 ítems en total**: 24 tecnologías (L1), una por cada entrada de `TECHNOLOGIES`. Sin ítems en L2/L3/L4.
 - **Principio anti-fabricación**: ningún dato se inventa; L2-L4 quedan vacías hasta que exista un informe fuente del que transcribir contenido, con la misma disciplina de citas (`// JUICIO:` / `Fundamento:`) que usa el adaptador de Telecomunicaciones para su contenido del GOR
 - **Fuente única de verdad**: las tecnologías se referencian desde radar-data, no se duplican; el horizonte se deriva con `normalizeHorizon()`
 
@@ -373,7 +373,7 @@ messages/
 ### v1.1.0 — Mapa de Trayectoria Tecnológica, en avance (2026)
 
 - **Motor de trayectoria portado**: `src/lib/trajectory/` y `src/components/trajectory/`, idénticos a los de la plataforma hermana de Telecomunicaciones, sin cambios en el contrato del motor.
-- **Adaptador de dominio Electrónica**: `src/lib/trajectory-data.electronica.ts` — capa L1 (Tecnologías) poblada desde las 25 tecnologías reales del radar; capas L2-L4 (Infraestructura, Talento e I+D+i, Alianzas) sin ítems, en espera del informe fuente del área. Sin banner ni texto de relleno: el motor renderiza su estado vacío nativo para esas capas. Marcador `PENDING:` en el código documenta qué hacer cuando el informe llegue.
+- **Adaptador de dominio Electrónica**: `src/lib/trajectory-data.electronica.ts` — capa L1 (Tecnologías) poblada desde las 24 tecnologías reales del radar; capas L2-L4 (Infraestructura, Talento e I+D+i, Alianzas) sin ítems, en espera del informe fuente del área. Sin banner ni texto de relleno: el motor renderiza su estado vacío nativo para esas capas. Marcador `PENDING:` en el código documenta qué hacer cuando el informe llegue.
 - **Modal con export PDF**: `TrajectoryModal.tsx` — integra el motor con el dataset de Electrónica; export vía `downloadElementAsPDF` (html-to-image + jsPDF, A4 landscape, 3× resolución) desde `src/core/export.ts`.
 - **Punto de entrada en el encabezado**: botón "Mapa de Trayectoria Tecnológica" en el Header (desktop y móvil), igual que en Telecomunicaciones. Se retira el placeholder anterior (`TrajectoryMapCard.tsx`).
 - **Ayuda**: nueva sección educativa sobre el Mapa de Trayectoria en `HelpModal.tsx`.
@@ -381,7 +381,7 @@ messages/
 
 ### v1.0.0 — Versión inicial (2026)
 
-- Radar SVG interactivo con 25 tecnologías
+- Radar SVG interactivo con 24 tecnologías
 - Zoom, pan, filtros y exportación PNG/PDF
 
 ---

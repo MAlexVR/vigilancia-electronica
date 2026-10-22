@@ -192,7 +192,7 @@
           "Empaquetado 3DIC y Fan-Out Panel Level Packaging para módulos de IA y alto desempeño",
           "Desensamblaje mecánico/robótico, minería urbana y manejo de fin de vida (e-waste) de PCB: sustratos biodegradables y reciclables (vitrímeros, nanocelulosa), fabricación aditiva de bajo residuo e impacto del crecimiento de e-waste asociado al cómputo de IA"
         ],
-        "tendencias": "ALZA con componentes emergentes (TRL 8-9 en herramientas EDA comerciales y PCB flexibles, mercado ya valorado en USD 23.800 millones en 2024; TRL 6-8 en empaquetado avanzado 3DIC, con escalamiento proyectado hacia 2028: 1,4 millones de obleas procesadas por mes). Principal barrera: descontinuación de herramientas heredadas (Autodesk Eagle se retira en 2026) y límites físicos del escalado de un solo chip que obligan a migrar hacia integración heterogénea. IMPLICACIÓN CEET: Brecha MODERADA. Formación en diseño de PCB ya consolidada; se requiere actualización hacia herramientas EDA basadas en IA y nociones de empaquetado avanzado. [Sublínea SL02d validada como contenido definitivo por el vigía tecnológico del CEET (octubre de 2026)]: evidencia convergente en el eje de Artículos D1 (8 de 52 artículos, Área 4: manufactura aditiva, PCB biodegradables, vitrímeros reciclables, desensamblaje mecánico/robótico, modelado de e-waste por IA generativa), en Documentos Sectoriales (OMS 2021 - e-waste y salud infantil; EPO/IEA 2026 - circularidad de baterías) y en Patentes (categoría 5, ensamblaje/empaquetado)."
+        "tendencias": "ALZA con componentes emergentes (TRL 8-9 en herramientas EDA comerciales y PCB flexibles, mercado ya valorado en USD 23.800 millones en 2024; TRL 6-8 en empaquetado avanzado 3DIC, con escalamiento proyectado hacia 2028: 1,4 millones de obleas procesadas por mes). Principal barrera: descontinuación de herramientas heredadas (Autodesk Eagle se retira en 2026) y límites físicos del escalado de un solo chip que obligan a migrar hacia integración heterogénea. IMPLICACIÓN CEET: Brecha MODERADA. Formación en diseño de PCB ya consolidada; se requiere actualización hacia herramientas EDA basadas en IA y nociones de empaquetado avanzado. A partir de evidencia convergente en el eje del Direccionador 1 (8 de 52 artículos, Área 4: manufactura aditiva, PCB biodegradables, vitrímeros reciclables, desensamblaje mecánico/robótico, modelado de e-waste por IA generativa), en Documentos Sectoriales (OMS 2021 - e-waste y salud infantil; EPO/IEA 2026 - circularidad de baterías) y en Patentes (categoría 5, ensamblaje/empaquetado)."
       }
     },
     {
@@ -711,7 +711,7 @@
       "code": "L21",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": -26,
+      "angleOff": -19.5,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -742,7 +742,7 @@
       "code": "L22",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": -13,
+      "angleOff": -6.5,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -761,44 +761,16 @@
     },
     {
       "id": "T23",
-      "name": "Renderizado gráfico neuronal e IA generativa aplicada a gráficos",
-      "nameLines": [
-        "Renderizado gráfico",
-        "neuronal e IA generativa",
-        "aplicada a gráficos"
-      ],
-      "code": "L23",
-      "sectorId": "D5",
-      "ringId": "monitor",
-      "angleOff": 0,
-      "maturity": {
-        "scaleId": "trl",
-        "value": 2
-      },
-      "description": "Renderizado gráfico neuronal e IA generativa aplicada a gráficos: generación de fotogramas y súper-resolución por IA, como complemento del renderizado poligonal tradicional.",
-      "metadata": {
-        "impact": "Medio",
-        "horizon": "Largo (5-10 años)",
-        "sublines": [
-          "Generación de fotogramas por IA (frame generation) como complemento del renderizado poligonal tradicional",
-          "Súper-resolución y reconstrucción de imagen asistidas por redes neuronales",
-          "Modelos de IA generativa para creación de activos audiovisuales y efectos en tiempo real"
-        ],
-        "tendencias": "SEÑAL DÉBIL EMERGENTE (TRL temprano-medio, horizonte de la próxima década). Posible complemento o sustituto parcial del renderizado poligonal tradicional; línea directamente relacionada con L22. Principal barrera: consumo computacional adicional de los modelos generativos y calidad variable de artefactos visuales en escenas complejas. IMPLICACIÓN CEET: Brecha BAJA (monitoreo). Horizonte de mediano a largo plazo; se recomienda vigilancia vinculada a L22."
-      }
-    },
-    {
-      "id": "T24",
       "name": "Ciberseguridad por diseño y actualización remota (OTA) de dispositivos de consumo conectados",
       "nameLines": [
         "Ciberseguridad por diseño",
         "y actualización remota",
         "(OTA) de dispositivos de…"
       ],
-      "code": "L24",
+      "code": "L23",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": 13,
+      "angleOff": 6.5,
       "maturity": {
         "scaleId": "trl",
         "value": 8
@@ -816,17 +788,17 @@
       }
     },
     {
-      "id": "T25",
+      "id": "T24",
       "name": "Sostenibilidad y economía circular en electrónica de consumo (ecodiseño y reparabilidad)",
       "nameLines": [
         "Sostenibilidad y economía",
         "circular en electrónica de",
         "consumo (ecodiseño y…"
       ],
-      "code": "L25",
+      "code": "L24",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": 26,
+      "angleOff": 19.5,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -887,11 +859,11 @@
   },
   "metadata": {
     "sectorAreas": {
-      "D1": "Microelectrónica, sistemas embebidos y diseño electrónico asistido\n\nCampo que abarca el diseño, fabricación y empaquetado de circuitos integrados y tarjetas electrónicas, así como las arquitecturas de cómputo y sensórica que sirven de base habilitadora a los demás campos tecnológicos del sector. (artículos científicos y patentes)",
+      "D1": "Microelectrónica, sistemas embebidos y diseño electrónico asistido\n\nCampo que abarca el diseño, fabricación y empaquetado de circuitos integrados y tarjetas electrónicas, así como las arquitecturas de cómputo y sensórica que sirven de base habilitadora a los demás campos tecnológicos del sector.",
       "D2": "Electrónica de potencia y gestión energética\n\nCampo que abarca la conversión, control y almacenamiento de energía eléctrica, así como la instrumentación electrónica de procesos industriales y de la cadena de frío sujeta a transición regulatoria ambiental. (artículos científicos y patentes)",
-      "D3": "Automatización, control industrial y sistemas ciberfísicos inteligentes\n\nCampo que abarca el diseño, integración y mantenimiento de sistemas de control, sensórica y actuación que digitalizan y automatizan procesos productivos físicos, desde el chip de borde hasta la plataforma de supervisión. (artículos científicos y patentes)",
-      "D4": "Electrónica biomédica, aeroespacial y de movilidad\n\nCampo que abarca los sistemas electrónicos embebidos certificables y de alta confiabilidad aplicados a sectores con exigencias regulatorias estrictas: salud, defensa/aeroespacial y transporte. (artículos científicos y patentes)",
-      "D5": "Electrónica de consumo, electrodomésticos y contenido digital\n\nCampo que abarca los sistemas electrónicos embebidos en bienes de consumo masivo y en la creación, procesamiento y despliegue de contenido audiovisual. (artículos científicos y patentes)"
+      "D3": "Automatización, control industrial y sistemas ciberfísicos inteligentes\n\nCampo que abarca el diseño, integración y mantenimiento de sistemas de control, sensórica y actuación que digitalizan y automatizan procesos productivos físicos, desde el chip de borde hasta la plataforma de supervisión.",
+      "D4": "Electrónica biomédica, aeroespacial y de movilidad\n\nCampo que abarca los sistemas electrónicos embebidos certificables y de alta confiabilidad aplicados a sectores con exigencias regulatorias estrictas: salud, defensa/aeroespacial y transporte.",
+      "D5": "Electrónica de consumo, electrodomésticos y contenido digital\n\nCampo que abarca los sistemas electrónicos embebidos en bienes de consumo masivo y en la creación, procesamiento y despliegue de contenido audiovisual."
     }
   }
 }

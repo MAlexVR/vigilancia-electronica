@@ -2,12 +2,13 @@
 
 > **Revision Oct 2026** — re-ingested from `docs/Mapa_TT_Electronica_Plantilla_FINAL_2026.xlsx`.
 > Direccionadores renumbered (D1 microelectrónica, D2 potencia/energía, D3 automatización, D4, D5) and
-> líneas renumbered so that D1=L01-L05 … D5=L21-L25. The rubric was re-run over the updated narratives:
+> líneas renumbered so that D1=L01-L05 … D5=L21-L24. The rubric was re-run over the updated narratives:
 > every ring/TRL/impact/horizon value is unchanged except where the signal text changed (none changed a ring).
-> Rows below use the NEW codes. Old→new: L06-L10→L01-L05, L11-L15→L06-L10, L01-L05→L11-L15; L16-L25 unchanged.
+> Rows below use the NEW codes. Old→new: L06-L10→L01-L05, L11-L15→L06-L10, L01-L05→L11-L15; L16-L22 unchanged;
+> old L23 (renderizado gráfico neuronal) was removed from the xlsx; old L24→L23 and old L25→L24.
 > The Word report (V04) Table 8 differs from these values for several líneas; this log follows the rubric, not Table 8.
 
-User review surface for the 25 curated `trlValue`/`ringId`/`impact`/`horizon` values
+User review surface for the 24 curated `trlValue`/`ringId`/`impact`/`horizon` values
 (design.md "Curation Rubric"). Each row quotes the exact source-text signal that
 drove the decision, per the rubric's strict precedence order:
 
@@ -24,9 +25,9 @@ drove the decision, per the rubric's strict precedence order:
 - **Impact** heuristic: disrup*/transform*/paradigma → Disruptivo;
   transversal/cross-sector/alto impacto → Alto; else Medio.
 
-All 25 rows below were computed by running `tools/ingest-xlsx/src/rubric.ts`'s
+All 24 rows below were computed by running `tools/ingest-xlsx/src/rubric.ts`'s
 `deriveRubric()`/`deriveImpact()` against the exact narrative text now stored
-in `narrative/L01.md`..`L25.md` (verbatim copies of the source `PRINCIPALES
+in `narrative/L01.md`..`L24.md` (verbatim copies of the source `PRINCIPALES
 TENDENCIAS` column), so every value is reproducible from the committed text.
 
 | Code | Signal (quoted excerpt) | Rule | TRL | Ring | Impact | Horizon | Override |
@@ -53,9 +54,8 @@ TENDENCIAS` column), so every value is reproducible from the committed text.
 | L20 | "SEÑAL DÉBIL" ("SEÑAL DÉBIL EMERGENTE") | R5 | 2 | monitor | Medio | Largo (5-10 años) | — |
 | L21 | "TRL 9" | R1 | 9 | adopt | Medio | Corto (1-2 años) | — |
 | L22 | "TRL 9" | R1 | 9 | adopt | Medio | Corto (1-2 años) | — |
-| L23 | "SEÑAL DÉBIL" ("SEÑAL DÉBIL EMERGENTE") | R5 | 2 | monitor | Medio | Largo (5-10 años) | — |
-| L24 | "TRL 6-8" + "Requisito transversal emergente sobre toda la línea de consumo conectado" | R1 | 8 | adopt | Alto | Corto (1-2 años) | — |
-| L25 | "TRL 6-9" + "Tema transversal creciente de sostenibilidad de producto electrónico" | R1 | 9 | adopt | Alto | Corto (1-2 años) | — |
+| L23 | "TRL 6-8" + "Requisito transversal emergente sobre toda la línea de consumo conectado" | R1 | 8 | adopt | Alto | Corto (1-2 años) | — |
+| L24 | "TRL 6-9" + "Tema transversal creciente de sostenibilidad de producto electrónico" | R1 | 9 | adopt | Alto | Corto (1-2 años) | — |
 
 ## Notes for reviewer
 
@@ -107,10 +107,13 @@ TENDENCIAS` column), so every value is reproducible from the committed text.
 ## Revision Oct 2026 — content changes carried by the FINAL xlsx
 
 - **L02 (was L07)**: sublínea SL02d (circularidad y gestión de e-waste de PCB) is
-  now part of the línea. The xlsx marks it "[PROPUESTA DE TRIANGULACIÓN]"; the
-  informe V04 (Tabla 8) states it was validated as definitive content by the
-  CEET vigía tecnológico (October 2026), so the marker was replaced accordingly.
-  Rubric signals unchanged, so ring/TRL are unchanged.
+  part of the línea. The latest xlsx (second revision, Oct 2026) no longer marks
+  it as a proposal and records it as validated by the CEET vigía tecnológico, so
+  the narrative now follows the xlsx verbatim. Rubric signals unchanged, so
+  ring/TRL are unchanged.
+- **Old L23 removed**: "Renderizado gráfico neuronal e IA generativa aplicada a
+  gráficos" (monitor, TRL 2) no longer exists in the xlsx. D5 now has 4 líneas
+  (L21-L24); the radar and trajectory maps show 24 tecnologías.
 - **L16**: new sublíneas SL16d (regulación y tecnovigilancia) and SL16e
   (neurotecnología/BCI), a TRL 3-5 clause for bioimpresión, and
   "Brecha MODERADA-ALTA". The first explicit TRL (7-9) still hits R1; the

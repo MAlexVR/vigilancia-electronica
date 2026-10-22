@@ -19,7 +19,7 @@ describe("data/electronica --in-dir integration", () => {
     expect(parsed.warnings).toEqual([]);
   });
 
-  it("produces exactly 5 sectors (D1-D5) and 25 items (L01-L25)", () => {
+  it("produces exactly 5 sectors (D1-D5) and 24 items (L01-L24)", () => {
     const parsed = readInDir(DATA_DIR);
     const { schema, errors } = transform(parsed, {
       id: "ceet-electronica-2026-2036",
@@ -27,13 +27,13 @@ describe("data/electronica --in-dir integration", () => {
     });
     expect(errors).toEqual([]);
     expect(schema.sectors).toHaveLength(5);
-    expect(schema.items).toHaveLength(25);
+    expect(schema.items).toHaveLength(24);
     expect(schema.sectors.map((s) => s.id).sort()).toEqual(["D1", "D2", "D3", "D4", "D5"]);
     const codes = schema.items.map((i) => i.code).sort();
-    expect(codes).toEqual(Array.from({ length: 25 }, (_, i) => `L${String(i + 1).padStart(2, "0")}`));
+    expect(codes).toEqual(Array.from({ length: 24 }, (_, i) => `L${String(i + 1).padStart(2, "0")}`));
   });
 
-  it("maps L01-L05 to D1 ... L21-L25 to D5 and keeps narrative cross-references on the renumbered codes", () => {
+  it("maps L01-L05 to D1 ... L21-L24 to D5 and keeps narrative cross-references on the renumbered codes", () => {
     const parsed = readInDir(DATA_DIR);
     const { schema } = transform(parsed, { id: "t", title: "t" });
     schema.items.forEach((item) => {
