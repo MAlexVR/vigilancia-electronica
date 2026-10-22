@@ -332,7 +332,7 @@ export const RadarChart = forwardRef<SVGSVGElement, RadarChartProps>(
                   item's dot, regardless of how much the wrapped lines end up
                   visually overlapping (see CRITICAL-1, verify-report.md). */}
               <text
-                x={pos.x}
+                x={pos.x + (tech.labelDx ?? 0)}
                 y={pos.y + (tech.labelDy ?? (isActive ? 19 : 16))}
                 textAnchor="middle"
                 fill={isActive ? "#1a1a2e" : "#3a3a5c"}
@@ -342,7 +342,7 @@ export const RadarChart = forwardRef<SVGSVGElement, RadarChartProps>(
               >
                 {tech.nameLines
                   ? tech.nameLines.map((line: string, i: number) => (
-                      <tspan key={i} x={pos.x} dy={i === 0 ? 0 : "1.2em"}>
+                      <tspan key={i} x={pos.x + (tech.labelDx ?? 0)} dy={i === 0 ? 0 : "1.2em"}>
                         {line}
                       </tspan>
                     ))

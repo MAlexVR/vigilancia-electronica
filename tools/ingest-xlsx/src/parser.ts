@@ -39,6 +39,9 @@ export const SECTOR_OPTIONAL_HEADERS = [
   "icon",
   // D4: folded into schema.metadata.sectorAreas, one entry per sector.
   "areaTecnologica",
+  // Short, curated label drawn on the radar (telecom methodology: "Dn: ..." in
+  // at most 2-3 narrow lines); the full `label` stays for filters and detail.
+  "radarLabel",
 ];
 export const SECTOR_HEADERS = [...SECTOR_REQUIRED_HEADERS, ...SECTOR_OPTIONAL_HEADERS];
 
@@ -54,6 +57,11 @@ export const ITEM_OPTIONAL_HEADERS = [
   // populated by the narrative/*.md merge in csv-source.ts.
   "sublines",
   "tendencias",
+  // Short curated name drawn on the radar, and a manual vertical label offset
+  // used to keep labels of crowded rings from overlapping.
+  "shortName",
+  "labelDy",
+  "labelDx",
 ];
 export const ITEM_HEADERS = [...ITEM_REQUIRED_HEADERS, ...ITEM_OPTIONAL_HEADERS];
 

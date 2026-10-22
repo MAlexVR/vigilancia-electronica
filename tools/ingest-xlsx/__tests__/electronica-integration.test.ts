@@ -47,6 +47,33 @@ describe("data/electronica --in-dir integration", () => {
     expect(byCode.get("L02")?.name).toMatch(/PCB/);
   });
 
+  it("draws curated short labels on the radar: numbered sectors and at most 3 narrow lines per item", () => {
+    const parsed = readInDir(DATA_DIR);
+    const { schema } = transform(parsed, { id: "t", title: "t" });
+    schema.sectors.forEach((s) => {
+      const lines = s.labelLines as string[];
+      expect(lines[0]).toMatch(new RegExp(`^${s.id}: `));
+      expect(lines.length).toBeLessThanOrEqual(3);
+    });
+    schema.items.forEach((item) => {
+      const lines = item.nameLines as string[];
+      expect(lines, `nameLines for ${item.code}`).toBeDefined();
+      expect(lines.length).toBeLessThanOrEqual(3);
+      lines.forEach((l) => expect(l.length).toBeLessThanOrEqual(26));
+      expect(lines.join(" ").length).toBeLessThan((item.name as string).length);
+    });
+  });
+
+  it("carries manual label offsets (labelDx/labelDy) for crowded rings as numbers", () => {
+    const parsed = readInDir(DATA_DIR);
+    const { schema } = transform(parsed, { id: "t", title: "t" });
+    schema.items.forEach((item) => {
+      if (item.labelDy !== undefined) expect(typeof item.labelDy).toBe("number");
+      if (item.labelDx !== undefined) expect(typeof item.labelDx).toBe("number");
+    });
+    expect(schema.items.some((i) => i.labelDx !== undefined || i.labelDy !== undefined)).toBe(true);
+  });
+
   it("assigns every item to one of the 4 institutional rings, with no unknown references", () => {
     const parsed = readInDir(DATA_DIR);
     const { schema, warnings } = transform(parsed, { id: "t", title: "t" });

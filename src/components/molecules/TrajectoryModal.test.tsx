@@ -27,7 +27,7 @@ describe("TrajectoryModal", () => {
     renderModal();
 
     expect(
-      screen.getAllByText(TECHNOLOGIES[0].name).length,
+      screen.getAllByText((TECHNOLOGIES[0].nameLines?.join(" ") ?? TECHNOLOGIES[0].name)).length,
     ).toBeGreaterThan(0);
   });
 

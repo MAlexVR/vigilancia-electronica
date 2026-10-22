@@ -59,6 +59,7 @@ const RadarItemSchema = z.object({
   ringId: z.string(),
   angleOff: z.number(),
   labelDy: z.number().optional(),
+  labelDx: z.number().optional(),
   maturity: z
     .object({
       scaleId: z.string(),

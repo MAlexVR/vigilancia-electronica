@@ -132,7 +132,8 @@ describe("buildElectronicaTrajectory()", () => {
       const code = item.meta?.Código;
       const tech = TECHNOLOGIES.find((t) => t.code === code);
       expect(tech, `Expected a TECHNOLOGIES entry for code ${code}`).toBeDefined();
-      expect(item.title).toBe(tech!.name);
+      expect(item.title).toBe(tech!.nameLines?.join(" ") ?? tech!.name);
+      expect(item.meta?.Línea).toBe(tech!.name);
       expect(item.detail).toBe(tech!.desc);
       expect(item.metric?.value).toBe(tech!.trl);
       expect(item.driver).toBe(`D${tech!.sector + 1}`);

@@ -27,7 +27,7 @@ describe("Header — Trajectory Map entry point", () => {
     const dialog = screen.getByRole("dialog");
     // Real electronica data renders inside the modal — not a placeholder.
     expect(
-      within(dialog).getAllByText(TECHNOLOGIES[0].name).length,
+      within(dialog).getAllByText((TECHNOLOGIES[0].nameLines?.join(" ") ?? TECHNOLOGIES[0].name)).length,
     ).toBeGreaterThan(0);
   });
 
@@ -45,7 +45,7 @@ describe("Header — Trajectory Map entry point", () => {
 
     const dialog = screen.getByRole("dialog");
     expect(
-      within(dialog).getAllByText(TECHNOLOGIES[0].name).length,
+      within(dialog).getAllByText((TECHNOLOGIES[0].nameLines?.join(" ") ?? TECHNOLOGIES[0].name)).length,
     ).toBeGreaterThan(0);
   });
 });

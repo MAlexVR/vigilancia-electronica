@@ -10,6 +10,7 @@ export interface Technology {
   ring: number;
   angleOff: number;
   labelDy?: number;
+  labelDx?: number;
   trl: number;
   desc: string;
   impact: string;

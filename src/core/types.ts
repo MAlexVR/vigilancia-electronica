@@ -56,6 +56,7 @@ export interface RadarItem {
   ringId: RingId;
   angleOff: Degrees;
   labelDy?: number;
+  labelDx?: number;
   maturity?: MaturityValue;
   description?: LocalizedString;
   metadata?: Record<string, unknown>;

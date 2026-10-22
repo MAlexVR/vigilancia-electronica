@@ -66,9 +66,8 @@
       "label": "Microelectrónica, semiconductores y diseño electrónico avanzado",
       "shortLabel": "D1: Microelectrónica, semiconductores y diseño electrónico avanzado",
       "labelLines": [
-        "Microelectrónica,",
-        "semiconductores y diseño",
-        "electrónico avanzado"
+        "D1: Microelectrónica y",
+        "Diseño Electrónico"
       ],
       "startAngle": -18,
       "color": "#1565C0",
@@ -81,9 +80,8 @@
       "label": "Electrónica de potencia, energía y electrificación sostenible",
       "shortLabel": "D2: Electrónica de potencia, energía y electrificación sostenible",
       "labelLines": [
-        "Electrónica de potencia,",
-        "energía y electrificación",
-        "sostenible"
+        "D2: Potencia, Energía y",
+        "Electrificación"
       ],
       "startAngle": 54,
       "color": "#C62828",
@@ -96,9 +94,8 @@
       "label": "Inteligencia distribuida y automatización industrial avanzada",
       "shortLabel": "D3: Inteligencia distribuida y automatización industrial avanzada",
       "labelLines": [
-        "Inteligencia distribuida y",
-        "automatización industrial",
-        "avanzada"
+        "D3: Automatización",
+        "Industrial Avanzada"
       ],
       "startAngle": 126,
       "color": "#F57F17",
@@ -111,9 +108,8 @@
       "label": "Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad",
       "shortLabel": "D4: Electrónica aplicada a sectores estratégicos: salud, aeroespacial y movilidad",
       "labelLines": [
-        "Electrónica aplicada a",
-        "sectores estratégicos:",
-        "salud, aeroespacial y…"
+        "D4: Salud, Aeroespacial y",
+        "Movilidad"
       ],
       "startAngle": 198,
       "color": "#6A1B9A",
@@ -126,9 +122,8 @@
       "label": "Electrónica de consumo masivo, hogar inteligente y medios digitales",
       "shortLabel": "D5: Electrónica de consumo masivo, hogar inteligente y medios digitales",
       "labelLines": [
-        "Electrónica de consumo",
-        "masivo, hogar inteligente",
-        "y medios digitales"
+        "D5: Electrónica de Consumo",
+        "Masivo"
       ],
       "startAngle": 270,
       "color": "#00695C",
@@ -142,14 +137,13 @@
       "id": "T01",
       "name": "Semiconductores avanzados: arquitecturas abiertas (RISC-V) y empaquetado avanzado",
       "nameLines": [
-        "Semiconductores avanzados:",
-        "arquitecturas abiertas",
-        "(RISC-V) y empaquetado…"
+        "Semiconductores Abiertos",
+        "(RISC-V)"
       ],
       "code": "L01",
       "sectorId": "D1",
       "ringId": "monitor",
-      "angleOff": -26,
+      "angleOff": 0,
       "maturity": {
         "scaleId": "trl",
         "value": 2
@@ -170,14 +164,13 @@
       "id": "T02",
       "name": "Fabricación avanzada de PCB, diseño electrónico asistido (EDA) y empaquetado de semiconductores",
       "nameLines": [
-        "Fabricación avanzada de",
-        "PCB, diseño electrónico",
-        "asistido (EDA) y…"
+        "PCB, EDA y Empaquetado de",
+        "Semiconductores"
       ],
       "code": "L02",
       "sectorId": "D1",
       "ringId": "trial",
-      "angleOff": -13,
+      "angleOff": -15,
       "maturity": {
         "scaleId": "trl",
         "value": 7
@@ -199,14 +192,13 @@
       "id": "T03",
       "name": "Computación neuromórfica y arquitecturas de ultra-bajo consumo para IA de borde",
       "nameLines": [
-        "Computación neuromórfica y",
-        "arquitecturas de",
-        "ultra-bajo consumo para I…"
+        "Computación Neuromórfica",
+        "de Bajo Consumo"
       ],
       "code": "L03",
       "sectorId": "D1",
       "ringId": "monitor",
-      "angleOff": 0,
+      "angleOff": -7,
       "maturity": {
         "scaleId": "trl",
         "value": 2
@@ -227,14 +219,13 @@
       "id": "T04",
       "name": "Empaquetado post-silicio: sustratos de vidrio y fotónica de silicio",
       "nameLines": [
-        "Empaquetado post-silicio:",
-        "sustratos de vidrio y",
-        "fotónica de silicio"
+        "Empaquetado Post-Silicio",
+        "(Vidrio y Fotónica)"
       ],
       "code": "L04",
       "sectorId": "D1",
       "ringId": "monitor",
-      "angleOff": 13,
+      "angleOff": 16,
       "maturity": {
         "scaleId": "trl",
         "value": 2
@@ -255,14 +246,13 @@
       "id": "T05",
       "name": "Sensórica cuántica aplicada a IoT agroindustrial, de salud y ambiental",
       "nameLines": [
-        "Sensórica cuántica",
-        "aplicada a IoT",
-        "agroindustrial, de salud…"
+        "Sensórica Cuántica",
+        "Aplicada"
       ],
       "code": "L05",
       "sectorId": "D1",
       "ringId": "monitor",
-      "angleOff": 26,
+      "angleOff": 7,
       "maturity": {
         "scaleId": "trl",
         "value": 2
@@ -283,14 +273,13 @@
       "id": "T06",
       "name": "Redes inteligentes, sistemas de gestión de batería (BMS) y electromovilidad",
       "nameLines": [
-        "Redes inteligentes,",
-        "sistemas de gestión de",
-        "batería (BMS) y…"
+        "Redes Inteligentes, BMS y",
+        "Electromovilidad"
       ],
       "code": "L06",
       "sectorId": "D2",
       "ringId": "trial",
-      "angleOff": -26,
+      "angleOff": -22,
       "maturity": {
         "scaleId": "trl",
         "value": 7
@@ -311,14 +300,13 @@
       "id": "T07",
       "name": "Instrumentación electrónica de control de procesos industriales y cadena de frío",
       "nameLines": [
-        "Instrumentación",
-        "electrónica de control de",
-        "procesos industriales y…"
+        "Instrumentación de",
+        "Procesos y Cadena de Frío"
       ],
       "code": "L07",
       "sectorId": "D2",
       "ringId": "adopt",
-      "angleOff": -13,
+      "angleOff": 1,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -340,13 +328,12 @@
       "name": "Semiconductores de potencia de banda ancha prohibida (GaN y SiC)",
       "nameLines": [
         "Semiconductores de",
-        "potencia de banda ancha",
-        "prohibida (GaN y SiC)"
+        "Potencia GaN y SiC"
       ],
       "code": "L08",
       "sectorId": "D2",
       "ringId": "trial",
-      "angleOff": 0,
+      "angleOff": 20,
       "maturity": {
         "scaleId": "trl",
         "value": 7
@@ -367,14 +354,12 @@
       "id": "T09",
       "name": "Baterías de estado sólido y almacenamiento energético de próxima generación",
       "nameLines": [
-        "Baterías de estado sólido",
-        "y almacenamiento",
-        "energético de próxima…"
+        "Baterías de Estado Sólido"
       ],
       "code": "L09",
       "sectorId": "D2",
       "ringId": "assess",
-      "angleOff": 13,
+      "angleOff": 0,
       "maturity": {
         "scaleId": "trl",
         "value": 5
@@ -395,14 +380,15 @@
       "id": "T10",
       "name": "Refrigerantes de próxima generación y calendario regulatorio ambiental",
       "nameLines": [
-        "Refrigerantes de próxima",
-        "generación y calendario",
-        "regulatorio ambiental"
+        "Refrigerantes de Próxima",
+        "Generación"
       ],
       "code": "L10",
       "sectorId": "D2",
       "ringId": "adopt",
-      "angleOff": 26,
+      "angleOff": -15,
+      "labelDy": -8,
+      "labelDx": 60,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -424,12 +410,12 @@
       "name": "IIoT, Industria 4.0/5.0 y modernización de SCADA",
       "nameLines": [
         "IIoT, Industria 4.0/5.0 y",
-        "modernización de SCADA"
+        "SCADA"
       ],
       "code": "L11",
       "sectorId": "D3",
       "ringId": "trial",
-      "angleOff": -26,
+      "angleOff": 21,
       "maturity": {
         "scaleId": "trl",
         "value": 7
@@ -450,14 +436,13 @@
       "id": "T12",
       "name": "Mantenimiento predictivo con inteligencia artificial y aprendizaje automático",
       "nameLines": [
-        "Mantenimiento predictivo",
-        "con inteligencia",
-        "artificial y aprendizaje…"
+        "Mantenimiento Predictivo",
+        "con IA/ML"
       ],
       "code": "L12",
       "sectorId": "D3",
       "ringId": "assess",
-      "angleOff": -13,
+      "angleOff": 0,
       "maturity": {
         "scaleId": "trl",
         "value": 5
@@ -478,9 +463,8 @@
       "id": "T13",
       "name": "Automatización con PLC y comisionamiento de Sistemas Instrumentados de Seguridad (SIS)",
       "nameLines": [
-        "Automatización con PLC y",
-        "comisionamiento de",
-        "Sistemas Instrumentados d…"
+        "PLC y Sistemas",
+        "Instrumentados (SIS)"
       ],
       "code": "L13",
       "sectorId": "D3",
@@ -506,14 +490,13 @@
       "id": "T14",
       "name": "Edge AI, sistemas en chip (SoC), sensórica MEMS/NEMS y visión artificial industrial",
       "nameLines": [
-        "Edge AI, sistemas en chip",
-        "(SoC), sensórica MEMS/NEMS",
-        "y visión artificial…"
+        "Edge AI, SoC, MEMS/NEMS y",
+        "Visión"
       ],
       "code": "L14",
       "sectorId": "D3",
       "ringId": "assess",
-      "angleOff": 13,
+      "angleOff": -10,
       "maturity": {
         "scaleId": "trl",
         "value": 5
@@ -534,14 +517,13 @@
       "id": "T15",
       "name": "Robótica industrial, drones autónomos y robots humanoides emergentes",
       "nameLines": [
-        "Robótica industrial,",
-        "drones autónomos y robots",
-        "humanoides emergentes"
+        "Robótica, Drones y",
+        "Humanoides"
       ],
       "code": "L15",
       "sectorId": "D3",
       "ringId": "trial",
-      "angleOff": 26,
+      "angleOff": 0,
       "maturity": {
         "scaleId": "trl",
         "value": 7
@@ -562,14 +544,13 @@
       "id": "T16",
       "name": "Electrónica biomédica y monitoreo wearable de salud",
       "nameLines": [
-        "Electrónica biomédica y",
-        "monitoreo wearable de",
-        "salud"
+        "Electrónica Biomédica y",
+        "Wearables"
       ],
       "code": "L16",
       "sectorId": "D4",
       "ringId": "assess",
-      "angleOff": -26,
+      "angleOff": 2,
       "maturity": {
         "scaleId": "trl",
         "value": 5
@@ -592,14 +573,13 @@
       "id": "T17",
       "name": "Aviónica embebida, radar y sistemas aeroespaciales/no tripulados",
       "nameLines": [
-        "Aviónica embebida, radar y",
-        "sistemas aeroespaciales/no",
-        "tripulados"
+        "Aviónica, Radar y Sistemas",
+        "No Tripulados"
       ],
       "code": "L17",
       "sectorId": "D4",
       "ringId": "assess",
-      "angleOff": -13,
+      "angleOff": -12,
       "maturity": {
         "scaleId": "trl",
         "value": 5
@@ -620,14 +600,13 @@
       "id": "T18",
       "name": "Sistemas de radar distribuido y enjambres de drones ante obsolescencia del radar centralizado",
       "nameLines": [
-        "Sistemas de radar",
-        "distribuido y enjambres de",
-        "drones ante obsolescencia…"
+        "Radar Distribuido y",
+        "Enjambres de Drones"
       ],
       "code": "L18",
       "sectorId": "D4",
       "ringId": "monitor",
-      "angleOff": 0,
+      "angleOff": -5,
       "maturity": {
         "scaleId": "trl",
         "value": 2
@@ -648,14 +627,13 @@
       "id": "T19",
       "name": "Electrónica automotriz avanzada: arquitecturas centralizadas/zonales, ADAS y navegación",
       "nameLines": [
-        "Electrónica automotriz",
-        "avanzada: arquitecturas",
-        "centralizadas/zonales,…"
+        "Electrónica Automotriz:",
+        "ADAS y Zonal"
       ],
       "code": "L19",
       "sectorId": "D4",
       "ringId": "trial",
-      "angleOff": 13,
+      "angleOff": 0,
       "maturity": {
         "scaleId": "trl",
         "value": 7
@@ -676,14 +654,13 @@
       "id": "T20",
       "name": "Radar automotriz de terahercios de próxima generación",
       "nameLines": [
-        "Radar automotriz de",
-        "terahercios de próxima",
-        "generación"
+        "Radar Automotriz de",
+        "Terahercios"
       ],
       "code": "L20",
       "sectorId": "D4",
       "ringId": "monitor",
-      "angleOff": 26,
+      "angleOff": 7,
       "maturity": {
         "scaleId": "trl",
         "value": 2
@@ -704,14 +681,15 @@
       "id": "T21",
       "name": "Electrónica de consumo conectada: fuentes de alimentación eficientes, conectividad integrada y electrodomésticos inteligentes",
       "nameLines": [
-        "Electrónica de consumo",
-        "conectada: fuentes de",
-        "alimentación eficientes,…"
+        "Electrónica de Consumo",
+        "Conectada"
       ],
       "code": "L21",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": -19.5,
+      "angleOff": -26,
+      "labelDy": -8,
+      "labelDx": -60,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -735,14 +713,14 @@
       "id": "T22",
       "name": "Electrónica de entretenimiento y contenido digital: GPUs y pantallas de próxima generación",
       "nameLines": [
-        "Electrónica de",
-        "entretenimiento y",
-        "contenido digital: GPUs y…"
+        "Entretenimiento: GPUs y",
+        "Pantallas"
       ],
       "code": "L22",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": -6.5,
+      "angleOff": -10,
+      "labelDx": -60,
       "maturity": {
         "scaleId": "trl",
         "value": 9
@@ -763,14 +741,15 @@
       "id": "T23",
       "name": "Ciberseguridad por diseño y actualización remota (OTA) de dispositivos de consumo conectados",
       "nameLines": [
-        "Ciberseguridad por diseño",
-        "y actualización remota",
-        "(OTA) de dispositivos de…"
+        "Ciberseguridad por Diseño",
+        "y OTA"
       ],
       "code": "L23",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": 6.5,
+      "angleOff": 9,
+      "labelDy": -26,
+      "labelDx": 60,
       "maturity": {
         "scaleId": "trl",
         "value": 8
@@ -791,14 +770,13 @@
       "id": "T24",
       "name": "Sostenibilidad y economía circular en electrónica de consumo (ecodiseño y reparabilidad)",
       "nameLines": [
-        "Sostenibilidad y economía",
-        "circular en electrónica de",
-        "consumo (ecodiseño y…"
+        "Sostenibilidad y Economía",
+        "Circular"
       ],
       "code": "L24",
       "sectorId": "D5",
       "ringId": "adopt",
-      "angleOff": 19.5,
+      "angleOff": 28,
       "maturity": {
         "scaleId": "trl",
         "value": 9

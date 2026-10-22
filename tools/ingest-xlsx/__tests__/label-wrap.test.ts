@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { generateNameLines } from "../src/transformer";
+import { curatedLabelLines, generateNameLines } from "../src/transformer";
 
 describe("generateNameLines (Batch 4 — CRITICAL-1 label-overlap robustness fix)", () => {
   it("returns undefined for short names (no wrap needed)", () => {
@@ -48,3 +48,20 @@ describe("generateNameLines (Batch 4 — CRITICAL-1 label-overlap robustness fix
     expect(lines!.length).toBeLessThanOrEqual(3);
   });
 });
+
+describe("curatedLabelLines (telecom-style short radar labels)", () => {
+  it("returns undefined when no curated label is supplied", () => {
+    expect(curatedLabelLines(undefined)).toBeUndefined();
+    expect(curatedLabelLines("")).toBeUndefined();
+  });
+
+  it("keeps a short curated label as a single line instead of falling back to the long name", () => {
+    expect(curatedLabelLines("Baterías de Estado Sólido")).toEqual(["Baterías de Estado Sólido"]);
+  });
+
+  it("wraps a longer curated label into narrow lines", () => {
+    const lines = curatedLabelLines("D1: Microelectrónica y Diseño Electrónico");
+    expect(lines).toEqual(["D1: Microelectrónica y", "Diseño Electrónico"]);
+  });
+});
+

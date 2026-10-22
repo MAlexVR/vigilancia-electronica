@@ -54,6 +54,7 @@ export const TECHNOLOGIES: Technology[] = schema.items.map((item) => {
     ring: ringIndex,
     angleOff: item.angleOff,
     labelDy: item.labelDy,
+    labelDx: item.labelDx,
     trl: item.maturity?.value ?? 0,
     desc: (item.description as string) ?? "",
     impact: (item.metadata?.impact as string) ?? "",

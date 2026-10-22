@@ -1,12 +1,12 @@
 # Vigilancia Tecnológica CEET — Radar y Mapa de Trayectoria | Electrónica 2026-2036
 
-![Version](https://img.shields.io/badge/version-1.2.0-39A900?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.2.1-39A900?style=flat-square)
 ![SENA](https://img.shields.io/badge/SENA-CEET-00324D?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss)
-![Tests](https://img.shields.io/badge/tests-229%20passing-brightgreen?style=flat-square)
+![Tests](https://img.shields.io/badge/tests-234%20passing-brightgreen?style=flat-square)
 
 Aplicación web interactiva para la vigilancia científico-tecnológica y prospectiva del área de Electrónica del Centro de Electricidad, Electrónica y Telecomunicaciones (CEET) — SENA, Bogotá D.C. Integra dos herramientas complementarias: el **Radar Tecnológico** (madurez y adopción de 24 tecnologías en un horizonte 2026-2036) y el **Mapa de Trayectoria Tecnológica** (evolución de capacidades del área en el tiempo, por direccionador estratégico).
 
@@ -370,6 +370,12 @@ messages/
 
 ## Changelog
 
+### v1.2.1 — Radar legible y mapas alineados con Telecomunicaciones (octubre de 2026)
+
+- **Radar**: los direccionadores muestran su número (D1 a D5) y las tecnologías usan un nombre corto curado de hasta dos líneas (`shortName`), como en el radar de Telecomunicaciones; el nombre completo sigue en el detalle y en la información emergente.
+- **Sin solapes**: se ajustaron la posición angular (`angleOff`) y el desplazamiento de las etiquetas (`labelDy`, nuevo `labelDx`) de las tecnologías; el pipeline admite las columnas `shortName`, `labelDy`, `labelDx` en `items.csv` y `radarLabel` en `sectors.csv`.
+- **Mapas de trayectoria**: usan el mismo nombre corto (el nombre completo queda en el detalle como «Línea») y las pestañas de direccionador muestran un nombre abreviado.
+
 ### v1.2.0 — Actualización con el Mapa TT FINAL (octubre de 2026)
 
 - **Datos alineados al Excel FINAL** (`Mapa_TT_Electronica_Plantilla_FINAL_2026.xlsx`): direccionadores reordenados (D1 Microelectrónica, D2 Potencia y energía, D3 Automatización industrial, D4 y D5 sin cambio) y líneas renumeradas L01-L24 (D1 = L01-L05 … D5 = L21-L24).
@@ -377,7 +383,7 @@ messages/
 - **Nuevas sublíneas**: SL02d (circularidad y e-waste de PCB, validada por el vigía), SL16d/e (regulación y neurotecnología) y SL21e/f (climatización residencial y gasodomésticos).
 - **Metodología intacta**: anillo derivado del TRL con la rúbrica R1-R5; la revisión queda trazada en `data/electronica/curation-log.md`.
 - **Modales**: «Acerca de» muestra la fecha de actualización y los conteos reales; la Ayuda aclara la diferencia entre capas (L1-L4) y códigos de línea (L01-L24) y el estado pendiente de las capas L2-L4.
-- **Tests**: 229 tests unitarios; se fija el mapeo código → direccionador.
+- **Tests**: 234 tests unitarios; se fija el mapeo código → direccionador.
 
 ### v1.1.0 — Mapa de Trayectoria Tecnológica, en avance (2026)
 

@@ -18,6 +18,12 @@ function parseNumber(val: unknown, fallback = 0): number {
   return fallback;
 }
 
+function parseOptionalNumber(val: unknown): number | undefined {
+  if (val === undefined || val === null || val === "") return undefined;
+  const n = parseNumber(val, Number.NaN);
+  return Number.isNaN(n) ? undefined : n;
+}
+
 function parseOptionalString(val: unknown): string | undefined {
   if (val === undefined || val === null) return undefined;
   const str = String(val).trim();
@@ -50,6 +56,15 @@ function parseSublines(val: unknown): string[] | undefined {
 // caused reproducible label-overlap/click-interception in RadarChart).
 const MAX_LABEL_LINE_CHARS = 26;
 const MAX_LABEL_LINES = 3;
+
+/**
+ * Label lines for a curated short label: always returns at least one line so
+ * the chart never falls back to the full (long) name.
+ */
+export function curatedLabelLines(label: string | undefined): string[] | undefined {
+  if (!label) return undefined;
+  return generateNameLines(label) ?? [label];
+}
 
 export function generateNameLines(name: string): string[] | undefined {
   if (!name) return undefined;
@@ -124,7 +139,7 @@ function transformSectors(raw: Record<string, unknown>[], errors: IngestError[])
         id,
         label,
         shortLabel: parseOptionalString(row.shortLabel),
-        labelLines: generateNameLines(label),
+        labelLines: curatedLabelLines(parseOptionalString(row.radarLabel)) ?? generateNameLines(label),
         startAngle: parseNumber(row.startAngle, 0),
         color: parseOptionalString(row.color) || "#000000",
         bgLight: parseOptionalString(row.bgLight),
@@ -158,11 +173,13 @@ function transformItems(raw: Record<string, unknown>[], errors: IngestError[]): 
       return {
         id,
         name,
-        nameLines: generateNameLines(name),
+        nameLines: curatedLabelLines(parseOptionalString(row.shortName)) ?? generateNameLines(name),
         code: parseOptionalString(row.code),
         sectorId: parseOptionalString(row.sectorId) || "",
         ringId: parseOptionalString(row.ringId) || "",
         angleOff: parseNumber(row.angleOff, 0),
+        labelDy: parseOptionalNumber(row.labelDy),
+        labelDx: parseOptionalNumber(row.labelDx),
         maturity: { scaleId: "trl", value: trlValue },
         description: parseOptionalString(row.description),
         metadata: Object.keys(metadata).length > 0 ? metadata : undefined,

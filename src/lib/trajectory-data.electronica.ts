@@ -51,9 +51,11 @@ const NEUTRAL_COLOR = "bg-gray-100 text-gray-800";
  */
 export const electronicaConfig: TrajectoryConfig = {
   // ── Drivers: derivados de SECTORS (D1..D5) con color institucional ───────
+  // Etiqueta corta curada (sin el prefijo "Dn:", que el tab ya muestra), igual
+  // que el mapa de Telecomunicaciones; el nombre completo vive en el radar.
   drivers: SECTORS.map((s) => ({
     key: s.id,
-    label: s.label,
+    label: (s.labelLines?.join(" ") ?? s.label).replace(/^D\d:\s*/, ""),
     icon: s.icon,
     color: s.color,
   })),
@@ -130,12 +132,14 @@ export function buildElectronicaTrajectory(): TrajectoryDataset {
       layer: "L1",
       driver: `D${tech.sector + 1}`,
       horizon: normalizeHorizon(tech.horizon),
-      title: tech.name,
+      // Título corto curado (el mismo del radar); el nombre completo de la
+      // línea se conserva en meta para el panel de detalle.
+      title: tech.nameLines?.join(" ") ?? tech.name,
       detail: tech.desc,
       metric: { label: "TRL", value: tech.trl },
       relatedIds: [],
       source: "Radar tecnológico — Electrónica CEET",
-      meta: { Código: tech.code, Tipo: "tecnologia" },
+      meta: { Código: tech.code, Línea: tech.name, Tipo: "tecnologia" },
     });
   }
 
